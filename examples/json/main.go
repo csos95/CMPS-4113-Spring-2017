@@ -2,10 +2,10 @@
 package main
 
 import (
-	"io/ioutil"
-	"log"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"log"
 )
 
 //Example holds a string message

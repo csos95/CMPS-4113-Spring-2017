@@ -7,8 +7,8 @@ package main
 
 //import the fraction class which is accessed with fraction.[method]
 import (
-	"github.com/csos95/CMPS-4113-Spring-2017/examples/fraction/fraction"
 	"fmt"
+	"github.com/csos95/CMPS-4113-Spring-2017/examples/fraction/fraction"
 )
 
 func main() {

@@ -10,7 +10,7 @@ import "fmt"
 //This means that they are private and cannot be accessed outside of this package.
 //This is also true for naming of functions.
 type Fraction struct {
-	numerator int
+	numerator   int
 	denominator int
 }
 
@@ -30,7 +30,7 @@ func (f *Fraction) String() string {
 //Functions with receivers are similar to class methods in OO languages.
 //To add two fractions foo and bar together and store in foo, use foo.Add(bar)
 func (f *Fraction) Add(frac *Fraction) {
-	f.numerator = f.denominator * frac.numerator + f.numerator * frac.denominator
+	f.numerator = f.denominator*frac.numerator + f.numerator*frac.denominator
 	f.denominator *= frac.denominator
 	f.simplify()
 }
@@ -38,7 +38,7 @@ func (f *Fraction) Add(frac *Fraction) {
 //Addr method takes two pointers to a fraction.
 //To add two fractions foo and bar together and return the result, use fraction.Add(foo, bar)
 func Addr(a, b *Fraction) *Fraction {
-	f := &Fraction{numerator: a.denominator * b.numerator + a.numerator * b.denominator,
+	f := &Fraction{numerator: a.denominator*b.numerator + a.numerator*b.denominator,
 		denominator: a.denominator * b.denominator}
 	f.simplify()
 	return f
@@ -53,6 +53,7 @@ func GCD(a, b int) int {
 }
 
 //simplify a fraction
+//Because this method is lowercase, it is only accessible within this package
 func (f *Fraction) simplify() {
 	gcd := GCD(f.numerator, f.denominator)
 	f.numerator /= gcd

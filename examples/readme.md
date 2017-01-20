@@ -1,8 +1,9 @@
 ## Go examples
 
-* **hello_world** - hello world
-* **json** - parse a json file and print the message it contains
 * **fraction** - partial fraction package that shows how a package is structured and its use
+* **hello_world** - hello world
+* **hello_world_server** - a server example that shows that a package can be split across multiple files
+* **json** - parse a json file and print the message it contains
 
 ## Go Tour
 The official Go introductory tutorial is available [here](https://tour.golang.org)
