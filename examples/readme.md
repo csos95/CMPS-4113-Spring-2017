@@ -4,6 +4,7 @@
 * **hello_world** - hello world
 * **hello_world_server** - a server example that shows that a package can be split across multiple files
 * **json** - parse a json file and print the message it contains
+* **template_server** - a server example that shows how to use a template
 
 ## Go Tour
 The official Go introductory tutorial is available [here](https://tour.golang.org)
