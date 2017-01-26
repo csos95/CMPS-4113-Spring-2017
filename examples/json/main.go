@@ -1,4 +1,4 @@
-//This example show how to read and parse a json file
+//This example shows how to read and parse a json file
 package main
 
 import (
