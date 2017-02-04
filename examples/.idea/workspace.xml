@@ -5,7 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SRS.pdf" afterPath="$PROJECT_DIR$/../SRS.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SRS.tex" afterPath="$PROJECT_DIR$/../SRS.tex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -468,7 +467,8 @@
     <MESSAGE value="Add readme.md to examples directory" />
     <MESSAGE value="Add setup guide for Go, Git, and Gogland to example directory readme.md" />
     <MESSAGE value="Add stack package testing using go examples" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add stack package testing using go examples" />
+    <MESSAGE value="Change order of examples listing in example readme&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change order of examples listing in example readme&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
