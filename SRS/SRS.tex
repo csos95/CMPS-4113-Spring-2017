@@ -1,4 +1,6 @@
 \documentclass{scrreprt}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
 \usepackage{listings}
 \usepackage{underscore}
 \usepackage[bookmarks=true]{hyperref}
@@ -39,7 +41,7 @@
 	\end{titlepage}
 	\tableofcontents
 	\chapter*{Revision History}
-	February 4, 2017 Initial Draft - Christopher Silva, Anthony Enem, Nathan Durst, Da Dong, and Shujing Zhang.
+	February 4, 2017 Initial Draft - Christopher Silva, Anthony Enem, Nathan Durst, Da Dong, and Shujing Zhang met at the Midwestern State University Library to work on the intial draft.
 %===============================================================================
 	\chapter{Introduction}
 	Dr. Stringfellow (hereafter referred to as the client), is interested in software that will help ensure that her computer science students are writing programs that fit her specifications. This software should calculate and display metrics about the users source code such as line of code, lines of documentation, and the ratio of the two.
@@ -80,6 +82,11 @@
 		\end{enumerate}
 		\item User closes the SMCS application.
 	\end{enumerate}
+	\begin{figure}[h]
+		\caption{Use Case Diagram}
+		\centering
+		\includegraphics{use-case-diagram.png}
+	\end{figure}
 %===============================================================================
 	\chapter{System}
 	\section{Development Environment}
