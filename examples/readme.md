@@ -1,11 +1,12 @@
 ## Go examples
 
-* **fraction** - partial fraction package that shows how a package is structured and its use
-* **hello_world** - hello world
-* **hello_world_server** - a server example that shows that a package can be split across multiple files
-* **json** - parse a json file and print the message it contains
-* **stack** - using go examples to test a package
-* **template_server** - a server example that shows how to use a template
+
+1. **hello_world** - hello world
+2. **json** - parse a json file and print the message it contains
+3. **fraction** - partial fraction package that shows how a package is structured and its use
+4. **hello_world_server** - a server example that shows that a package can be split across multiple files
+5. **template_server** - a server example that shows how to use a template
+6. **stack** - using go examples to test a package
 
 ## Go Tour
 The official Go introductory tutorial is available [here](https://tour.golang.org)
