@@ -45,7 +45,7 @@
 	\section{Purpose}
 	This document details the Project Plan for the Software Metrics Calculation System (hereafter referred to as SCMS), which the Software Engineering group ID-10-T (hereafter also referred to as the team) has devised to assist in the software development process. The plan outlines the different areas of the project that must be addressed for successful development of the software. It establishes guidelines for resources that will be used in the project, and also points out additional resources that are needed. The Project Plan shows how the team is comprised and states the means of reporting. This plan addresses some of the risks involved in the project and the steps to correct those risks, if they occur. Also, quality assurance will be mentioned, and a glossary of terms used in this document is included.
 	\section{Scope}
-	The client wants SMCS to quickly calculate code metrics on student source code. The client currently spends an excess amount of time looking for issues that could be solved if students had software to point them out. The client would like SMCS to support C++ and Java source code. The client would like SMCS to be easily extensible in the future to allow for more types of metrics or languages.
+	The client wants SMCS to quickly calculate code metrics on student source code. The client currently spends an excessive amount of time looking for issues that could be solved if students had software to point them out. The client would like SMCS to support C++ and Java source code. The client would like SMCS to be easily extensible in the future to allow for more types of metrics or languages.
 	\section{Main Objective}
 	The main objective of SMCS is to help first and second year computer science students become better programmers by giving them a tool that will point out some frequent simple mistakes that they make.
 	\section{Overview of Document}
@@ -54,8 +54,27 @@
 	\section{Who are the Users?}
 	\section{Use Cases}
 	\section{Scenarios}
-	\chapter{Overall Description}
-	\section{Product Perspective}
-	\section{User Classes and Characteristics}
+	\chapter{System}
+	\section{Development Environment}
+	The team will program SMCS in Go using JetBrains Gogland as the IDE. The team will use Git for version control, Slack for communications, and LaTeX for documentation.
+	\section{Target Environment}
+	SMCS must run on Windows XP or later, Linux, and Mac OS X 10.7 or later.
+	\section{Functional Requirements}
+	SMCS must allow the user to load a source code file and view metrics about their code. SMCS must initially support C++ and/or Java.\\
+	SMCS must support the following metrics:
+	\begin{itemize}
+		\item Lines of Code (LOC) - The number of lines of code.
+		\item Lines of Documentation (LOD) - The number of lines of documentation.
+		\item Ration of LOC to LOD - This will be used to tell the user if there is too little documentation.
+		\item Blank Lines - The number of blank lines. This will be used to tell a user if there is not enough whitespace.
+		\item Total Lines - The total number of lines.
+		\item Number of Functions - The number of functions in a file.
+		\item Number of Function Parameters - The number of parameters in each function. This will be used to warn a user if there is an excessive amount of parameters in a function.
+		\item Number of Non-void Functions - The number of functions that do not have a void return type.
+		\item Methods Per Class - The number of methods in each class.
+		\item Lines Per Function - The number of lines in each function.
+		\item Cyclomatic complexity - The number of linearly independent paths within a program.
+	\end{itemize}
+	\section{Non-functional Requirements}
 	% add other chapters and sections to suit
 \end{document}
