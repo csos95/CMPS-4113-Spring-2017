@@ -98,7 +98,7 @@
 	\section{Development Environment}
 	The team will program SMCS in Go using JetBrains Gogland as the IDE. The team will use Git for version control, Slack for communications, and LaTeX for documentation.
 	\section{Target Environment}
-	SMCS must run on Windows XP or later, Linux, and Mac OS X 10.7 or later.
+	SMCS will target environments of Windows XP or later, Linux, and Mac OS X 10.7 or later.
 	\section{Functional Requirements}
 	SMCS must allow the user to load a source code file and view metrics about their code.\\
 	SMCS must support the following metrics:
@@ -119,6 +119,11 @@
 	The SMCS user interface will consist of two screens. The first will allow the user to submit source code file(s) to be analyzed and the second will display the results of the analysis. The submission screen will have a file selection button, a dropdown list of supported languages, an area to select which metrics the user wishes to use, and a submission button that will transfer the user to the results screen. The results screen will display a list of metrics that the user slected followed by a section for each metric. The list of metrics will be links that will scroll to that section.
 	
 	\section{Non-functional Requirements}
+	\begin{itemize}
+		\item SMCS must be programmed in an Object Oriented Language (OOP) to allow for future extension of functionality.
+		\item  SMCS must initially support C++ and/or Java.
+		\item SMCS must run on Windows XP or later.
+	\end{itemize}
 %===============================================================================
 	\chapter{Risks}
 	The development process of the SMCS involves several risks. All risks should be identified and action should be taken to reduce these risks to an acceptable level. Development risks include project knowledge, team member turnover, requirement adjustments, and changes in the specifications.
@@ -137,6 +142,20 @@
 		\hline 
 		Specifications Change & The client and all team members will be constantly updated on status of the project through each step of the development process. \\ 
 		\hline 
-	\end{tabular} 
+	\end{tabular}
+%===============================================================================
+	\chapter{Glossary}
+	\begin{itemize}
+		\item Client - Dr. Catherine Stringfellow
+		\item Git - Version control software
+		\item Go - OOP language developed by Google
+		\item Gogland - Go IDE developed by JetBrains
+		\item IDE - Integrated Development Environment
+		\item LaTeX - Markdown language used for creating high quality documents
+		\item OOP - Object Oriented Programming
+		\item Slack - Group communication software used by developers
+		\item SMCS - Software Metrics Calculation System
+		\item Team - Software Engineering team ID-10-T Comprised of Christopher Silva, Anthony Enem, Nathan Durst, Da Dong, and Shujing Zhang
+	\end{itemize}
 	% add other chapters and sections to suit
 \end{document}
