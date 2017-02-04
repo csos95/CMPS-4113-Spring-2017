@@ -100,7 +100,7 @@
 	\section{Target Environment}
 	SMCS must run on Windows XP or later, Linux, and Mac OS X 10.7 or later.
 	\section{Functional Requirements}
-	SMCS must allow the user to load a source code file and view metrics about their code. SMCS must initially support C++ and/or Java.\\
+	SMCS must allow the user to load a source code file and view metrics about their code.\\
 	SMCS must support the following metrics:
 	\begin{itemize}
 		\item Lines of Code (LOC) - The number of lines of code.
@@ -115,6 +115,9 @@
 		\item Lines Per Function - The number of lines in each function.
 		\item Cyclomatic complexity - The number of linearly independent paths within a program.
 	\end{itemize}
+	\section{User Interface}
+	The SMCS user interface will consist of two screens. The first will allow the user to submit source code file(s) to be analyzed and the second will display the results of the analysis. The submission screen will have a file selection button, a dropdown list of supported languages, an area to select which metrics the user wishes to use, and a submission button that will transfer the user to the results screen. The results screen will display a list of metrics that the user slected followed by a section for each metric. The list of metrics will be links that will scroll to that section.
+	
 	\section{Non-functional Requirements}
 %===============================================================================
 	\chapter{Risks}
