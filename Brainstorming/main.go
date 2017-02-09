@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"strings"
 )
 
@@ -103,5 +104,14 @@ func main() {
 	results := interpreter.Analyze(source)
 	for _, result := range results {
 		fmt.Println(result)
+	}
+	tmpl := template.Must(template.New("metrics.html").ParseFiles("metrics.html"))
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		tmpl.ExecuteTemplate(w, "metrics.html", results)
+	})
+
+	err := http.ListenAndServe("127.0.0.1:8080", nil)
+	if err != nil {
+		log.Println(err)
 	}
 }
