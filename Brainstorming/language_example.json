@@ -1,0 +1,29 @@
+ {
+    "language":"Go",
+    "description":"Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.",
+    "homepage":"https://golang.org",
+    "extensions":[
+        "go"
+    ],
+    "keywords":[
+        "break", "default", "func", "interface", "select", 
+        "case", "defer", "go", "map", "struct", 
+        "chan", "else", "goto", "package", "switch", 
+        "const", "fallthrough", "if", "range", "type", 
+        "continue", "for", "import", "return", "var"
+    ],
+    "operators":[
+        "+", "&", "+=", "&=", "&&", "==", "!=", "(", ")", 
+        "-", "|", "-=", "|=", "||", "<", "<=", "[", "]", 
+        "*", "^", "*=", "^=", "<-", ">", ">=", "{", "}", 
+        "/", "<<", "/=", "<<=", "++", "=", ":=.", ",", ";",
+        "%", ">>", "%=", ">>=", "--", "!", "...", ".", ":", 
+        "&^", "&^="
+    ],
+    "linecomments":[
+        "//"
+    ],
+    "blockcomments":[
+        "/*", "*/"
+    ]
+}
