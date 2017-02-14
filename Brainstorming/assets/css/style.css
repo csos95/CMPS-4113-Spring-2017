@@ -1,0 +1,75 @@
+body {
+    background-color: #dddddd;
+}
+
+.content-box {
+    width: 70%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.content {
+    background-color: #eeeeee;
+    width: auto;
+    height: auto;
+    padding: 20px;
+    margin: 10px;
+    text-align: left;
+    border: 2px solid;
+}
+
+.post-title {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.post-title h3 a {
+    text-decoration: none;
+}
+
+.post-title h3 a:link{
+    color:#000000;
+}
+
+.post-title h3  a:visited{
+    color:#000000;
+}
+
+.post-title h3  a:hover{
+    color:#0000ff;
+}
+.post-title h3  a:active{
+    color:#0000ff;
+}
+
+.post-body {
+    font-family: Georgia, serif;
+    word-wrap: break-word;
+}
+
+.tags {
+    border: 1px solid;
+    padding: 5px;
+}
+
+.sidebar {
+    width: 10%;
+    min-width: 120px;
+    top: 0;
+    left: 0;
+    float: right;
+    //position: absolute;
+    background-color: #eeeeee;
+    padding: 10px;
+    margin: 10px;
+    text-align: left;
+    border: 2px solid;
+}
+
+textarea{
+    width: 100%;
+}
+
+/*input[type="text"] {
+    width: 50%;
+}*/

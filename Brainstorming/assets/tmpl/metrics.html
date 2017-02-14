@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="content-box">
+        <div class="content">
+            <div class="post-title">
+                <h3>Source</h3>
+            </div>
+            <hr>
+            <div class="post-body">
+                <pre>{{.Source}}</pre>
+            </div>
+        </div>
+        {{- range $i, $result := .Results}}
+        <div class="content">
+            <div class="post-title">
+                <h3>{{$result.Metric}}</h3>
+            </div>
+            <hr>
+            <div class="post-body">
+                {{$result.Body}}
+            </div>
+        </div>
+        {{- end}}
+    </div>
+</body>
+</html>

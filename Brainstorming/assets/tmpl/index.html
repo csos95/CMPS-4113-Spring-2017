@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="content-box">
+        <div class="content">
+            <div class="post-title">
+                <h3>Source Code Upload</h3>
+            </div>
+            <hr>
+            <div class="post-body">
+                <form enctype="multipart/form-data" action="http://127.0.0.1:8080/upload/" method="post">
+                    <input type="file" name="uploadfile" />
+                    <input type="hidden" name="token" value="{{.}}"/><br>
+                    <input type="submit" value="upload" />
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
