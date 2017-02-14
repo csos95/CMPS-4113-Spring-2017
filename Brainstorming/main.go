@@ -64,7 +64,7 @@ func LinesOfDocumentation(source string) (Result, error) {
 	lines := strings.Split(source, "\n")
 	lineCount := 0
 	for _, line := range lines {
-		if strings.Contains(line, "//") {
+		if line != "" && (len(line) > 1 && line[:2] == "//") {
 			lineCount++
 		}
 	}
