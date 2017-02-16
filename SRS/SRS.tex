@@ -91,6 +91,7 @@
 			\item User accepts SMCS’ automatically detected programming language from the file(s) extension.
 			\item User selects file(s) extension of source code file(s) from a drop-down menu of accepted languages if automatically detected language is incorrect.
 		\end{enumerate}
+		\item User selects the metrics they wish to use.
 		\item User clicks a button for SMCS to begin source code analysis.
 		\item SMCS analysis
 		\begin{enumerate}
@@ -138,14 +139,18 @@
 	
 	\begin{figure}[h]
 		\centering
-		\includegraphics[scale=0.5]{user-interface1.png}
-		\caption{Source code selection interface}
-	\end{figure}
-	
-	\begin{figure}[h]
-		\centering
-		\includegraphics[scale=0.5]{user-interface2.png}
-		\caption{Source code metrics interface}
+		\begin{minipage}{.5\textwidth}
+			\centering
+			\includegraphics[width=1\linewidth]{user-interface1.png}
+			\captionof{figure}{Source code selection interface}
+			\label{fig:test1}
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\centering
+			\includegraphics[width=1\linewidth]{user-interface2.png}
+			\captionof{figure}{Source code metrics interface}
+			\label{fig:test2}
+		\end{minipage}
 	\end{figure}
 	
 	\section{Non-functional Requirements}
