@@ -8,13 +8,13 @@
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
-
+\pagenumbering{arabic}
 \usepackage{fancyhdr}
 \fancypagestyle{plain}{
 	\fancyhf{}% Clear header/footer
 	\fancyhead[L]{Software Requirements Specification}% Left header
+	\fancyfoot[C]{\thepage}
 }
-
 \hypersetup{
 	bookmarks=false,    % show bookmarks bar?
 	pdftitle={Software Requirement Specification},    % title
@@ -53,6 +53,7 @@
 		\vfill
 		\rule{16cm}{5pt}
 	\end{titlepage}
+	\pagenumbering{roman}
 	\tableofcontents
 	\chapter*{Revision History}
 	\begin{tabular}{|p{1.5cm}|p{3cm}|p{9.5cm}|}
@@ -66,6 +67,7 @@
 	\end{tabular} 
 %===============================================================================
 	\chapter{Introduction}
+	\pagenumbering{arabic}
 	Dr. Stringfellow (hereafter referred to as the client), is interested in software that will help ensure that her computer science students are writing programs that fit her specifications. This software should calculate and display metrics about the users source code such as line of code, lines of documentation, the ratio of the two, etc.
 	\section{Purpose}
 	This document details the software requirements for the Software Metrics Calculation System (hereafter referred to as SCMS), which the Software Engineering group ID-10-T (hereafter also referred to as the team) has devised to assist in the software development process. The plan outlines the different areas of the project that must be addressed for successful development of the software. It establishes guidelines for resources that will be used in the project, and also points out additional resources that are needed. This plan addresses some of the risks involved in the project and the steps to correct those risks, if they occur. Also, quality assurance will be mentioned, and a glossary of terms used in this document is included.
