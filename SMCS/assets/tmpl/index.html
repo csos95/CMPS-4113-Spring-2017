@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <h1>Index</h1>
+    <form enctype="multipart/form-data" action="http://{{.Config.Domain}}:{{.Config.Port}}/metrics.html" method="post">
+        <input type="file" name="uploadfile" />
+        <input type="hidden" name="token" value="{{.}}" /><br>
+        <input type="submit" value="upload" />
+    </form>
+    <h2>languages supported:</h2>
+    <ul>
+        {{- range $name, $extensions := .Extensions }}
+        <li>{{ $name }}</li>
+        {{- end }}
+    </ul>
+</body>
+</html>
