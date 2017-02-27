@@ -16,6 +16,9 @@
                 <form enctype="multipart/form-data" action="http://{{.Config.Domain}}:{{.Config.Port}}/metrics.html" method="post">
                     <input type="file" name="uploadfile" />
                     <input type="hidden" name="token" value="{{.}}" /><br>
+                    <select>
+                        <option value="c">C</option>
+                    </select><br>
                     <input type="submit" value="upload" />
                 </form>
             </div>

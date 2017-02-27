@@ -3,6 +3,7 @@ package analyzer
 import (
 	"fmt"
 	"html/template"
+	"strings"
 )
 
 type Metric func([]Token) (Result, error)
@@ -20,11 +21,13 @@ func LinesOfCode(tokens []Token) (Result, error) {
 func LinesOfDocumentation(tokens []Token) (Result, error) {
 	lines := 0
 	for _, token := range tokens {
-		if token.Type == "line comment" || token.Type == "block comment" {
+		if token.Type == "line comment" {
 			lines++
+		} else if token.Type == "block comment" {
+			lines += strings.Count(token.Value, "\n") + 1
 		}
 	}
-	return Result{Metric: "Lines of Documentation", Body: template.HTML(fmt.Sprintf("There are %d instances of documentation (lines coming soon).", lines))}, nil
+	return Result{Metric: "Lines of Documentation", Body: template.HTML(fmt.Sprintf("There are %d lines of documentation.", lines))}, nil
 }
 
 func NumberOfFunctions(tokens []Token) (Result, error) {
