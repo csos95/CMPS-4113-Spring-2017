@@ -44,7 +44,7 @@ func metricsHandler(w http.ResponseWriter, r *http.Request, s *Server) {
 		source := string(buff.Bytes())
 
 		page := &Page{Config: s.Config,
-			Analysis: s.Analyzer.Analyze("c", source, []string{"Lines of Code", "Lines of Documentation", "Number of Functions"}),
+			Analysis: s.Analyzer.Analyze("c", source, []string{"Lines of Code", "Lines of Documentation", "Number of Functions", "Blank Lines"}),
 			Source:   source, Language: s.Analyzer.Languages["c"]}
 
 		s.Template.ExecuteTemplate(w, "metrics.html", page)

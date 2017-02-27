@@ -59,6 +59,7 @@ func NewAnalyzer() *Analyzer {
 	metrics["Lines of Code"] = LinesOfCode
 	metrics["Lines of Documentation"] = LinesOfDocumentation
 	metrics["Number of Functions"] = NumberOfFunctions
+	metrics["Blank Lines"] = BlankLines
 
 	return &Analyzer{Languages: languages, Metrics: metrics}
 }
