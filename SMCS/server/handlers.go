@@ -49,6 +49,6 @@ func metricsHandler(w http.ResponseWriter, r *http.Request, s *Server) {
 
 		s.Template.ExecuteTemplate(w, "metrics.html", page)
 	} else if r.Method == "GET" {
-		s.Template.ExecuteTemplate(w, "metrics.html", s)
+		http.Redirect(w, r, "http://"+s.Config.Domain+":"+s.Config.Port+"/", http.StatusFound)
 	}
 }
