@@ -1,31 +1,31 @@
 package analyzer
 
 import (
+	"encoding/json"
+	"fmt"
 	"html/template"
 	"io/ioutil"
-	"encoding/json"
 	"log"
-	"fmt"
 )
 
 type Result struct {
 	Metric string
-	Body template.HTML
+	Body   template.HTML
 }
 
 type Analysis struct {
-	Source string
+	Source  string
 	Results []Result
 }
 
 type Language struct {
-	Name string `json:"name"`
-	Description string `json:"description"`
-	Homepage string `json:"homepage"`
-	Extensions []string `json:"extensions"`
-	Keywords []string `json:"keywords"`
-	Operators []string `json:"operators"`
-	LineComments []string `json:"linecomments"`
+	Name          string   `json:"name"`
+	Description   string   `json:"description"`
+	Homepage      string   `json:"homepage"`
+	Extensions    []string `json:"extensions"`
+	Keywords      []string `json:"keywords"`
+	Operators     []string `json:"operators"`
+	LineComments  []string `json:"linecomments"`
 	BlockComments []string `json:"blockcomments"`
 }
 
@@ -46,20 +46,19 @@ func NewLanguage(filepath string) *Language {
 
 type Analyzer struct {
 	Languages map[string]*Language
-	Metrics map[string]Metric
+	Metrics   map[string]Metric
 }
 
 func NewAnalyzer() *Analyzer {
 	languages := make(map[string]*Language)
 
-	languages["c++"] = &Language{Name: "c++", Extensions: []string{".cpp", ".h", ".hpp"}}
-	languages["java"] = &Language{Name: "java", Extensions: []string{".java"}}
-	languages["go"] = &Language{Name: "go", Extensions: []string{".go"}}
+	languages["c"] = &Language{Name: "c", Extensions: []string{".c", ".h"}}
 
 	metrics := map[string]Metric{}
 
 	metrics["Lines of Code"] = LinesOfCode
 	metrics["Lines of Documentation"] = LinesOfDocumentation
+	metrics["Number of Functions"] = NumberOfFunctions
 
 	return &Analyzer{Languages: languages, Metrics: metrics}
 }

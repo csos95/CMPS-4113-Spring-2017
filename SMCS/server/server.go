@@ -1,12 +1,12 @@
 package server
 
 import (
-	"net/http"
+	"encoding/json"
 	"github.com/csos95/CMPS-4113-Spring-2017/SMCS/analyzer"
 	"html/template"
 	"io/ioutil"
 	"log"
-	"encoding/json"
+	"net/http"
 )
 
 type Config struct {
@@ -58,7 +58,13 @@ func (s *Server) Run() {
 		http.HandleFunc(k, makeHandler(v, s))
 	}
 
-	err := http.ListenAndServe(s.Config.Domain + ":" + s.Config.Port, nil)
+	assetfs := http.FileServer(http.Dir("assets"))
+	http.Handle("/assets/", http.StripPrefix("/assets/", assetfs))
+	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "/assets/img/favicon.ico", http.StatusMovedPermanently)
+	})
+
+	err := http.ListenAndServe(s.Config.Domain+":"+s.Config.Port, nil)
 	if err != nil {
 		log.Println(err)
 	}

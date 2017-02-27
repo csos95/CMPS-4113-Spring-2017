@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 </head>
 <body>
-    <h1>Index</h1>
-    <form enctype="multipart/form-data" action="http://{{.Config.Domain}}:{{.Config.Port}}/metrics.html" method="post">
-        <input type="file" name="uploadfile" />
-        <input type="hidden" name="token" value="{{.}}" /><br>
-        <input type="submit" value="upload" />
-    </form>
+    <div class="content-box">
+        <div class="content">
+            <div class="post-title">
+                <h3>Source Code Upload</h3>
+            </div>
+            <hr>
+            <div class="post-body">
+                <form enctype="multipart/form-data" action="http://{{.Config.Domain}}:{{.Config.Port}}/metrics.html" method="post">
+                    <input type="file" name="uploadfile" />
+                    <input type="hidden" name="token" value="{{.}}" /><br>
+                    <input type="submit" value="upload" />
+                </form>
+            </div>
+        </div>
+    </div>
     <h2>languages supported:</h2>
     <ul>
         {{- range $name, $extensions := .Extensions }}

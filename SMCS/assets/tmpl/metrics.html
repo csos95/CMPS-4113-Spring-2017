@@ -3,11 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Metrics</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <!-- prism for code syntax highlghting-->
+    <link href="/assets/css/prism.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Metrics</h1>
-    {{- range $index, $result := .Analysis.Results }}
-    <div>{{ $result.Body }}</div>
-    {{ end }}
+    <div class="content-box">
+        <div class="content">
+            <div class="post-title">
+                <h3>Source</h3>
+            </div>
+            <hr>
+            <div class="post-body">
+                <pre><code class="language-{{ .Language.Name }}">{{.Source}}</code></pre>
+            </div>
+        </div>
+        {{- range $index, $result := .Analysis.Results }}
+        <div class="content">
+            <div class="post-title">
+                <h3>{{ $result.Metric }}</h3>
+            </div>
+            <hr>
+            <div class="post-body">
+                {{ $result.Body }}
+            </div>
+        </div>
+        {{- end}}
+    </div>
+    <!-- prism.js for syntax highlighting-->
+    <script src="/assets/js/prism.js"></script>
 </body>
 </html>
