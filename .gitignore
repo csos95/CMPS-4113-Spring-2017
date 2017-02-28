@@ -1,4 +1,6 @@
 *.DS_Store
+**/.idea/
+*.exe
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
