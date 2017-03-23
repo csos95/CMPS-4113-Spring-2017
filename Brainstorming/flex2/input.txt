@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+//this is the main function
 int main(void) {
     int x = 2;
     float y = 3.5;
@@ -7,5 +8,8 @@ int main(void) {
     int w = x + x;
     int u = w - x;
     printf("z: %d\n", z);
+    /*
+    * this is a block comment
+    */
     return 0;
 }

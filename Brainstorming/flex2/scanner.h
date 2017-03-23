@@ -19,6 +19,7 @@
 #define RIGHT_BRACE 24
 #define DOUBLE_QUOTE 25
 #define SINGLE_QUOTE 26
+#define NEWLINE 27
 
 //other
 #define FUNCTION 31
@@ -28,6 +29,8 @@
 #define IDENTIFIER 35
 #define FUNCTION_CALL 36
 #define RETURN 37
+#define LINE_COMMENT 38
+#define BLOCK_COMMENT 39
 
 //relational operators
 #define EQ 41

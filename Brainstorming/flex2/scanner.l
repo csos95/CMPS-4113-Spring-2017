@@ -11,11 +11,13 @@
 [0-9]+.[0-9]+               return FLOAT;
 "'"."'"                     return CHAR;
 \".*\"                      return STRING;
+\/\/.*                      return LINE_COMMENT;
+\/\*(?:[^\*]|\*[^\/])*\*\/  return BLOCK_COMMENT;
 "#include"                  return INCLUDE;
 "<"[a-zA-Z]+(.h)?">"        return HEADER;
 "return"                    return RETURN;
 ;                           return SEMICOLON;
-[a-zA-Z]+" "[a-zA-Z]+\(.*\)                  return FUNCTION;
+[a-zA-Z]+" "[a-zA-Z]+" "?\(.*\) return FUNCTION;
 [a-zA-Z]+\(.*\)             return FUNCTION_CALL;
 
 "int"                       return tINT;
@@ -30,7 +32,9 @@
 
 [_a-zA-Z][_a-zA-Z0-9]*      return VAR_NAME;
 
-[ \t\n]                             ;
+"\r"?"\n"                        return NEWLINE;
+
+[ \t]                             ;
 .                                   printf("wat.");
 %%
 
