@@ -39,6 +39,9 @@
 #define LT 44
 #define GE 45
 #define LE 46
+#define NOT 47
+#define OR 48
+#define AND 49
 
 //arithmetic operators
 #define ADD 51
@@ -51,3 +54,16 @@
 
 //assignment operators
 #define ASSIGNMENT 61
+#define ADDE       62
+#define SUBE       63
+#define MULE       64
+#define DIVE       65
+#define MODE       66
+
+//bitwise operators
+#define BADD 71
+#define BOR  72
+#define BXOR 73
+#define BNOT 74
+#define BSHL 75
+#define BSHR 76

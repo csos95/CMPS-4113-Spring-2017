@@ -29,6 +29,20 @@
 "*"                         return MUL;
 "+"                         return ADD;
 "-"                         return SUB;
+"!"                         return NOT;
+"||"                        return OR;
+"&&"                        return AND;
+"+="                        return ADDE;
+"-="                        return SUBE;
+"*="                        return MULE;
+"/="                        return DIVE;
+"%="                        return MODE;
+"&"                         return BADD;
+"|"                         return BOR;
+"^"                         return BXOR;
+"~"                         return BNOT;
+"<<"                        return BSHL;
+">>"                        return BSHR;
 
 [_a-zA-Z][_a-zA-Z0-9]*      return VAR_NAME;
 
