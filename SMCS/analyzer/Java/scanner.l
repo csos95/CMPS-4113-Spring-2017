@@ -5,10 +5,7 @@
 %%
 
 "import java."+*                    return IMPORT;
-"public"                            return PUBLIC;
-"private"                           return PRIVATE;
-"protected"                         return PROTECTED;
-"class"                             return CLASS;
+(public|private|protected)" class "[a-zA-Z]+       return CLASS;
 
 "int"                               return tINT;
 "float"|"double"                    return tFLOAT;
@@ -25,20 +22,17 @@
 "'"\w|\W"'"                         return CHAR;
 \".*\"                              return STRING;
 "true"|"false"                      return BOOL;
-"null"                              return NULL;
 
 ";"                                 return SEMICOLON;
 ":"                                 return COLON;
 "{"                                 return LEFT_BRACE;
 "}"                                 return RIGHT_BRACE;
 "return"                            return RETURN;
-(static)?[a-zA-Z]+" "[a-zA-Z]+" "?\(.*\)    return FUNCTION;
-[a-zA-Z]+\(.*\)                     return FUNCTION_CALL;
+(public|private|protected)[ \t]+(static)?[ \t]+[a-zA-Z]+[ \t]+[a-zA-Z]+[ \t]*\(.*\)    return FUNCTION;
+[a-zA-Z\.]+\(.*\)                     return FUNCTION_CALL;
 \/\/.*                              return LINE_COMMENT;
-\/\*(?:[^\*]|\*[^\/])*\*\/          return BLOCK_COMMENT;
 [_a-zA-Z][_a-zA-Z0-9]*              return VAR_NAME;
 
-//relation operators
 "=="                                return EQ;
 "!="                                return NE;
 ">"                                 return GT;
@@ -72,8 +66,8 @@
 
 
 
-
-[ \t\n]                             ;
+"\r"?"\n"			return NEWLINE;
+[ \t]                             ;
 .                                   printf("wat.");
 %%
 

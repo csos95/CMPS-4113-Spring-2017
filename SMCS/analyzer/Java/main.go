@@ -17,12 +17,13 @@ extern int yylex(void);
 import "C"
 
 var names = []string{
+        "",
         "INT",
         "CHAR",
         "FLOAT",
         "STRING",
         "BOOL",
-        "NULL",
+	"",
         "",
         "",
         "",
@@ -41,7 +42,7 @@ var names = []string{
         "COLON",
         "LEFT_BRACE",
         "RIGHT_BRACE",
-        "",
+        "NEWLINE",
         "",
         "",
         "",

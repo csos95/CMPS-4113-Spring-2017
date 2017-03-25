@@ -4,7 +4,6 @@
 #define FLOAT 3
 #define STRING 4
 #define BOOL 5
-#define NULL 6
 
 //type names
 #define tINT 11
@@ -22,6 +21,7 @@
 #define COLON 22
 #define LEFT_BRACE 23
 #define RIGHT_BRACE 24
+#define NEWLINE 25
 
 //other
 #define FUNCTION 31
