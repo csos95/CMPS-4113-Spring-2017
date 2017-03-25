@@ -4,10 +4,7 @@
 #define FLOAT 3
 #define STRING 4
 #define BOOL 5
-#define CONST 6
-#define FINAL 7
-#define VOID 8
-#define STATIC 9
+#define NULL 6
 
 //type names
 #define tINT 11
@@ -15,23 +12,26 @@
 #define tFLOAT 13
 #define tSTRING 14
 #define tBOOL 15
+#define tFINAL 16
+#define tCONST 17
+#define tVOID 18
+#define tSTATIC 19
 
 //symbols
 #define SEMICOLON 21
 #define COLON 22
 #define LEFT_BRACE 23
 #define RIGHT_BRACE 24
-#define DOUBLE_QUOTE 25
-#define SINGLE_QUOTE 26
 
 //other
 #define FUNCTION 31
 #define VAR_NAME 32
 #define IMPORT 33
-#define PACKAGE 34
-#define IDENTIFIER 35
-#define FUNCTION_CALL 36
-#define RETURN 37
+#define IDENTIFIER 34
+#define FUNCTION_CALL 35
+#define RETURN 36
+#define LINE_COMMENT 37
+#define BLOCK_COMMENT 38
 
 //relational operators
 #define EQ 41
@@ -50,8 +50,16 @@
 #define INC 56
 #define DEC 57
 
-//assignment operators
+//other operators
 #define ASSIGNMENT 61
+#define ADDE 62
+#define MULE 63
+#define SUBE 64
+#define DIVE 65
+#define MODE 66
+#define NOT 67
+#define OR 68
+#define AND 69
 
 //control structures
 #define IF 71
@@ -75,6 +83,14 @@
 #define INTERFACE 93
 
 //access modifiers
-#define PRIVATE #101
-#define PUBLIC #102
-#define PROTECTED #103
+#define PRIVATE 101
+#define PUBLIC 102
+#define PROTECTED 103
+
+//bitwise operators
+#define BAND 111
+#define BOR 112
+#define BXOR 113
+#define BNOT 114
+#define BSHL 115
+#define BSHR 116
