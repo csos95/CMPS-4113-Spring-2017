@@ -43,7 +43,7 @@ var names = []string{"NULL",
         "right brace",
         "double quote",
         "single quote",
-        "",
+        "newline",
         "",
         "",
         "",
@@ -54,8 +54,8 @@ var names = []string{"NULL",
         "identifier",
         "function call",
         "return",
-        "",
-        "",
+        "line comment",
+        "block comment",
         "",
         "EQ",
         "NE",
@@ -80,7 +80,7 @@ var names = []string{"NULL",
         "assignment"};
 
 func main() {
-    file, err := ioutil.ReadFile("input.txt")
+    file, err := ioutil.ReadFile("lex.yy.c")
     if err != nil {
         fmt.Println(err)
     }
