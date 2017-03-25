@@ -67,3 +67,15 @@
 #define BNOT 74
 #define BSHL 75
 #define BSHR 76
+
+//control structures
+#define IF 81
+#define ELSE 82
+#define WHILE 83
+#define FOR 84
+#define SWITCH 85
+#define TRY 86
+#define CASE 87
+#define BREAK 88
+#define CONTINUE 89
+#define FINALLY 90

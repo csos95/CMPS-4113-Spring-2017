@@ -43,6 +43,15 @@
 "~"                         return BNOT;
 "<<"                        return BSHL;
 ">>"                        return BSHR;
+"if"                        return IF;
+"else"                      return ELSE;
+"While"                     return WHILE;
+"for"                       return FOR;
+"switch"                    return SWITCH;
+"case"                      return CASE;
+"break"                     return BREAK;
+"continue"                  return CONTINUE;
+"finally"                   return FINALLY;
 
 [_a-zA-Z][_a-zA-Z0-9]*      return VAR_NAME;
 
