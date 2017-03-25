@@ -1,0 +1,61 @@
+\documentclass{scrreprt}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{hyperref}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\pagenumbering{arabic}
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+	\fancyhf{}% Clear header/footer
+	\fancyhead[L]{Software Requirements Specification}% Left header
+	\fancyfoot[C]{\thepage}
+}
+\hypersetup{
+	bookmarks=false,    % show bookmarks bar?
+	pdftitle={Software Requirement Specification},    % title
+	pdfauthor={Christopher Silva},                     % author
+	pdfsubject={TeX and LaTeX},                        % subject of the document
+	pdfkeywords={TeX, LaTeX, graphics, images}, % list of keywords
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=blue,       % color of internal links
+	citecolor=black,       % color of links to bibliography
+	filecolor=black,        % color of file links
+	urlcolor=purple,        % color of external links
+	linktoc=page            % only page is linked
+}%
+\author{Christopher Silva}
+\date{}
+\def\myversion{1.0 }
+\begin{document}
+	\begin{titlepage}
+		\flushright
+		\LARGE{ID-10-T}
+		%\includegraphics[scale=0.08]{logo.png}
+		\rule{16cm}{5pt}\vskip1cm
+		\Huge{USER MANUAL}\\
+		\vspace{2cm}
+		for\\
+		\vspace{2cm}
+		Software Metrics Calculation System\\
+		\vspace{2cm}
+		\LARGE{Version \myversion\\}
+		\vspace{2cm}
+		Prepared by Christopher Silva\\
+		Anthony Enem\\
+		Nathan Durst\\
+		Da Dong\\
+		Shujing Zhang\\
+		\vfill
+		\rule{16cm}{5pt}
+	\end{titlepage}
+	\pagenumbering{roman}
+	\tableofcontents	
+%============================================================================
+	\chapter{Introduction}
+	
+\end{document}
