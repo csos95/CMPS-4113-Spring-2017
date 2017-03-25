@@ -89,7 +89,21 @@ var names = []string{"NULL",
         "BXOR",
         "BNOT",
         "BSHL",
-        "BSHR"};
+        "BSHR",
+        "",
+        "",
+        "",
+        "",
+        "IF",
+        "ELSE",
+        "WHILE",
+        "FOR",
+        "SWITCH",
+        "TRY",
+        "CASE",
+        "BREAK",
+        "CONTINUE",
+        "FINALLY"};
 
 func main() {
     file, err := ioutil.ReadFile("lex.yy.c")
