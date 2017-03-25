@@ -1,11 +1,22 @@
+package main
+import (
+    "fmt"
+    "io/ioutil"
+)
+
+/*
 #include <stdio.h>
 #include "scanner.h"
 
-extern int yylex();
-extern int yylineno;
-extern char* yytext;
+typedef struct yy_buffer_state *YY_BUFFER_STATE;
+extern YY_BUFFER_STATE yy_scan_string(char*);
+extern void yy_delete_buffer(YY_BUFFER_STATE);
 
-char *names[] = {NULL,
+extern int yylex(void);
+*/
+import "C"
+
+var names = []string{"NULL",
         "int",
         "char",
         "float",
@@ -52,9 +63,9 @@ char *names[] = {NULL,
         "LT",
         "GE",
         "LE",
-        "",
-        "",
-        "",
+        "NOT",
+        "OR",
+        "AND",
         "",
         "ADD",
         "SUB",
@@ -66,16 +77,37 @@ char *names[] = {NULL,
         "",
         "",
         "",
-        "assignment"};
+        "assignment",
+        "ADDE",
+        "SUBE",
+        "MULE",
+        "DIVE",
+        "MODE",
+        "",
+        "BADD",
+        "BOR",
+        "BXOR",
+        "BNOT",
+        "BSHL",
+        "BSHR"};
 
-int lexer(void) {
-    int ntoken, vtoken;
-
-    ntoken = yylex();
-
-    while(ntoken) {
-        printf("%d - %s\n", ntoken, names[ntoken]);
-        ntoken = yylex();
+func main() {
+    file, err := ioutil.ReadFile("lex.yy.c")
+    if err != nil {
+        fmt.Println(err)
     }
-    return 0;
+
+    contents := string(file)
+    state := C.yy_scan_string(C.CString(contents))
+
+    ntoken := C.int(C.yylex())
+
+    for ntoken != 0 {
+        fmt.Printf("%d - %s\n", ntoken, names[ntoken])
+        ntoken = C.int(C.yylex())
+    }
+
+    C.yy_delete_buffer(state);
+
 }
+
