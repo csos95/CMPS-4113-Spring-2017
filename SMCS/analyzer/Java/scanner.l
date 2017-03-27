@@ -31,6 +31,7 @@
 (public|private|protected)[ \t]+(static)?[ \t]+[a-zA-Z]+[ \t]+[a-zA-Z]+[ \t]*\(.*\)    return FUNCTION;
 [a-zA-Z\.]+\(.*\)                     return FUNCTION_CALL;
 \/\/.*                              return LINE_COMMENT;
+\/*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\/   return BLOCK_COMMENT;
 [_a-zA-Z][_a-zA-Z0-9]*              return VAR_NAME;
 
 "=="                                return EQ;
