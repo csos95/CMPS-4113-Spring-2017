@@ -6,6 +6,7 @@
 
 "import java."+*                    return IMPORT;
 (public|private|protected)" class "[a-zA-Z]+       return CLASS;
+(public|private|protected)" interface "[a-zA-Z]+    return INTERFACE;
 
 "int"                               return tINT;
 "float"|"double"                    return tFLOAT;
@@ -14,8 +15,7 @@
 "bool"                              return tBOOL;
 "static"                            return tSTATIC;
 "void"                              return tVOID;
-"final"                             return tFINAL;
-"const"                             return tCONST;
+"const"|"final"                     return tCONST;
 
 [0-9]+                              return INT;
 [0-9]+.[0-9]+                       return FLOAT;

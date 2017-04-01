@@ -81,15 +81,10 @@
 #define STRUCT 92
 #define INTERFACE 93
 
-//access modifiers
-#define PRIVATE 101
-#define PUBLIC 102
-#define PROTECTED 103
-
 //bitwise operators
-#define BAND 111
-#define BOR 112
-#define BXOR 113
-#define BNOT 114
-#define BSHL 115
-#define BSHR 116
+#define BAND 101
+#define BOR 102
+#define BXOR 103
+#define BNOT 104
+#define BSHL 105
+#define BSHR 106
