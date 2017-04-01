@@ -20,13 +20,13 @@
 "break"                             return BREAK;
 "goto"                              return GOTO;
 "continue"                          return CONTINUE;
-"throw"[ \t]+.+";" | "throws"       return THROW;
+"throw"[ \t]+.+";"|"throws"       return THROW;
 "finally"                           return FINALLY;
 
 "int"                               return tINT;
 "float"|"double"                    return tFLOAT;
 "char"                              return tCHAR;
-"string"                            return tSTRING;
+"String"                            return tSTRING;
 "bool"                              return tBOOL;
 "static"                            return tSTATIC;
 "void"                              return tVOID;
