@@ -4,7 +4,7 @@
 
 %%
 
-"import java."+*                    return IMPORT;
+"import java".*";"                return IMPORT;
 (public|private|protected)" class "[a-zA-Z]+       return CLASS;
 (public|private|protected)" interface "[a-zA-Z]+    return INTERFACE;
 
