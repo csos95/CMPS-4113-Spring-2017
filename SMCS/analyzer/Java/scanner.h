@@ -11,10 +11,9 @@
 #define tFLOAT 13
 #define tSTRING 14
 #define tBOOL 15
-#define tFINAL 16
-#define tCONST 17
-#define tVOID 18
-#define tSTATIC 19
+#define tCONST 16
+#define tVOID 17
+#define tSTATIC 18
 
 //symbols
 #define SEMICOLON 21
@@ -40,6 +39,9 @@
 #define LT 44
 #define GE 45
 #define LE 46
+#define NOT 47
+#define OR 48
+#define AND 49
 
 //arithmetic operators
 #define ADD 51
@@ -53,13 +55,10 @@
 //other operators
 #define ASSIGNMENT 61
 #define ADDE 62
-#define MULE 63
-#define SUBE 64
+#define SUBE 63
+#define MULE 64
 #define DIVE 65
 #define MODE 66
-#define NOT 67
-#define OR 68
-#define AND 69
 
 //control structures
 #define IF 71

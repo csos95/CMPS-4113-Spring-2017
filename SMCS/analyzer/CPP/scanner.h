@@ -11,26 +11,26 @@
 #define tFLOAT 13
 #define tSTRING 14
 #define tBOOL 15
+#define tCONST 16
+#define tVOID 17
+#define tSTATIC 18
 
 //symbols
 #define SEMICOLON 21
 #define COLON 22
 #define LEFT_BRACE 23
 #define RIGHT_BRACE 24
-#define DOUBLE_QUOTE 25
-#define SINGLE_QUOTE 26
-#define NEWLINE 27
+#define NEWLINE 25
 
 //other
 #define FUNCTION 31
 #define VAR_NAME 32
-#define INCLUDE 33
-#define HEADER 34
-#define IDENTIFIER 35
-#define FUNCTION_CALL 36
-#define RETURN 37
-#define LINE_COMMENT 38
-#define BLOCK_COMMENT 39
+#define IMPORT 33
+#define IDENTIFIER 34
+#define FUNCTION_CALL 35
+#define RETURN 36
+#define LINE_COMMENT 37
+#define BLOCK_COMMENT 38
 
 //relational operators
 #define EQ 41
@@ -60,22 +60,36 @@
 #define DIVE       65
 #define MODE       66
 
-//bitwise operators
-#define BADD 71
-#define BOR  72
-#define BXOR 73
-#define BNOT 74
-#define BSHL 75
-#define BSHR 76
-
 //control structures
-#define IF 81
-#define ELSE 82
-#define WHILE 83
-#define FOR 84
-#define SWITCH 85
-#define TRY 86
-#define CASE 87
-#define BREAK 88
-#define CONTINUE 89
-#define FINALLY 90
+#define IF 71
+#define ELSE 72
+#define WHILE 73
+#define FOR 74
+#define SWITCH 75
+#define DO 76
+#define TRY 77
+#define CATCH 78
+#define CASE 79
+#define BREAK 80
+#define GOTO 81
+#define CONTINUE 82
+#define THROW 83
+#define FINALLY 84
+
+//data structures
+#define CLASS 91
+#define STRUCT 92
+#define INTERFACE 93
+
+//access modifiers
+#define PRIVATE 101
+#define PUBLIC 102
+#define PROTECTED 103
+
+//bitwise operators
+#define BAND 111
+#define BOR 112
+#define BXOR 113
+#define BNOT 114
+#define BSHL 115
+#define BSHR 116
