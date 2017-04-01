@@ -4,9 +4,10 @@
 
 %%
 
-"import java".*";"                return IMPORT;
+"import java".*";"                  return IMPORT;
 (public|private|protected)" class "[a-zA-Z]+       return CLASS;
 (public|private|protected)" interface "[a-zA-Z]+    return INTERFACE;
+"new"                               return NEW;
 
 "if"[ \t]*\(.*\)                    return IF;
 "else"                              return ELSE;
@@ -20,7 +21,7 @@
 "break"                             return BREAK;
 "goto"                              return GOTO;
 "continue"                          return CONTINUE;
-"throw"[ \t]+.+";"|"throws"       return THROW;
+"throw"[ \t]+.+";"|"throws"([ \t]+[_a-zA-Z][_a-zA-Z0-9]*",")*[ \t]+[_a-zA-Z][_a-zA-Z0-9]*       return THROW;
 "finally"                           return FINALLY;
 
 "int"                               return tINT;

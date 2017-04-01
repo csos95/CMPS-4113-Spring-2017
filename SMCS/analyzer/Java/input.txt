@@ -17,8 +17,7 @@ import java.util.ArrayList;
 public class Source {
 
 	public static void main(String[] args)
-			throws Exception, IOException
-	{
+			throws Exception, IOException {
 		//Calls function to return a file name
 		// and prints coin values to the file that
 		// will later be read from

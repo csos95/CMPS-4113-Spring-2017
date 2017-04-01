@@ -111,7 +111,7 @@ var names = []string{
         "CLASS",
         "STRUCT",
         "INTERFACE",
-        "",
+        "NEW",
         "",
         "",
         "",

@@ -80,6 +80,7 @@
 #define CLASS 91
 #define STRUCT 92
 #define INTERFACE 93
+#define NEW 94
 
 //bitwise operators
 #define BAND 101
