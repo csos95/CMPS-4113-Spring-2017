@@ -37,7 +37,7 @@ var names = []string{
         "tVOID",
         "tSTATIC",
         "",
-	"",
+        "",
         "SEMICOLON",
         "COLON",
         "LEFT_BRACE",
