@@ -13,7 +13,7 @@
 \".*\"                      return STRING;
 "true"|"false"              return BOOL;
 \/\/.*                      return LINE_COMMENT;
-\/\*(?:[^\*]|\*[^\/])*\*\/  return BLOCK_COMMENT;
+\/*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\/   return BLOCK_COMMENT;
 "#include"                  return IMPORT;
 "<"[a-zA-Z]+(.h)?">"        return IMPORT;
 "return"                    return RETURN;
@@ -43,7 +43,7 @@
 "*="                        return MULE;
 "/="                        return DIVE;
 "%="                        return MODE;
-"&"                         return BADD;
+"&"                         return BAND;
 "|"                         return BOR;
 "^"                         return BXOR;
 "~"                         return BNOT;
@@ -56,12 +56,12 @@
 "switch"                    return SWITCH;
 "do"						return DO;
 "try"						return TRY;
-"catch"						return catch;
+"catch"						return CATCH;
 "case"                      return CASE;
 "break"                     return BREAK;
 "goto"						return GOTO;
 "continue"                  return CONTINUE;
-"throw"						return throw;
+"throw"						return THROW;
 "finally"                   return FINALLY;
 "struct"					return STRUCT;
 [_a-zA-Z][_a-zA-Z0-9]*      return VAR_NAME;

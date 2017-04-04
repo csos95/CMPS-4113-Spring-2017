@@ -81,10 +81,9 @@
 #define STRUCT 92
 #define INTERFACE 93
 
-//access modifiers
-#define PRIVATE 101
-#define PUBLIC 102
-#define PROTECTED 103
+//new operators
+#define NEW 101
+
 
 //bitwise operators
 #define BAND 111
