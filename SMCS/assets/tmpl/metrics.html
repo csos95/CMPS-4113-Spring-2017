@@ -18,8 +18,8 @@
                 <pre><code class="language-{{ .Language.Name }}">{{.Source}}</code></pre>
             </div>
         </div>
-        {{- range $index, $result := .Analysis.Results }}
         <div class="content">
+        {{- range $index, $result := .Analysis.Results }}
             <div class="post-title">
                 <h3>{{ $result.Metric }}</h3>
             </div>
@@ -27,8 +27,8 @@
             <div class="post-body">
                 {{ $result.Body }}
             </div>
-        </div>
         {{- end}}
+        </div>
     </div>
     <!-- prism.js for syntax highlighting-->
     <script src="/assets/js/prism.js"></script>
