@@ -33,10 +33,10 @@ var names = []string{
         "tFLOAT",
         "tSTRING",
         "tBOOL",
-        "tFINAL",
         "tCONST",
         "tVOID",
         "tSTATIC",
+        "",
         "",
         "SEMICOLON",
         "COLON",
@@ -64,9 +64,9 @@ var names = []string{
         "LT",
         "GE",
         "LE",
-        "",
-        "",
-        "",
+        "NOT",
+        "OR",
+        "AND",
         "",
         "ADD",
         "SUB",
@@ -84,9 +84,9 @@ var names = []string{
         "SUBE",
         "DIVE",
         "MODE",
-        "NOT",
-        "OR",
-        "AND",
+        "",
+        "",
+        "",
         "",
         "IF",
         "ELSE",
@@ -111,17 +111,7 @@ var names = []string{
         "CLASS",
         "STRUCT",
         "INTERFACE",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "PRIVATE",
-        "PUBLIC",
-        "PROTECTED",
-        "",
+        "NEW",
         "",
         "",
         "",
@@ -136,7 +126,7 @@ var names = []string{
         "BSHR"};
 
 func main() {
-    file, err := ioutil.ReadFile("input.txt")
+    file, err := ioutil.ReadFile("input.java")
     if err != nil {
         fmt.Println(err)
     }

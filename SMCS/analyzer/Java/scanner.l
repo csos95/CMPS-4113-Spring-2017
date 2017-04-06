@@ -4,18 +4,34 @@
 
 %%
 
-"import java."+*                    return IMPORT;
+"import java".*";"                  return IMPORT;
 (public|private|protected)" class "[a-zA-Z]+       return CLASS;
+(public|private|protected)" interface "[a-zA-Z]+    return INTERFACE;
+"new"                               return NEW;
+
+"if"[ \t]*\(.*\)                    return IF;
+"else"                              return ELSE;
+"while"[ \t]*\(.*\)                 return WHILE;
+"for"[ \t]*\(.*\)                   return FOR;
+"switch"[ \t]*\(.*\)                return SWITCH;
+"do"                                return DO;
+"try"                               return TRY;
+"catch"[ \t]*\(.*\)                 return CATCH;
+"case"[ \t]+.+":"                   return CASE;
+"break"                             return BREAK;
+"goto"                              return GOTO;
+"continue"                          return CONTINUE;
+"throw"[ \t]+.+";"|"throws"([ \t]+[_a-zA-Z][_a-zA-Z0-9]*",")*[ \t]+[_a-zA-Z][_a-zA-Z0-9]*       return THROW;
+"finally"                           return FINALLY;
 
 "int"                               return tINT;
 "float"|"double"                    return tFLOAT;
 "char"                              return tCHAR;
-"string"                            return tSTRING;
+"String"                            return tSTRING;
 "bool"                              return tBOOL;
 "static"                            return tSTATIC;
 "void"                              return tVOID;
-"final"                             return tFINAL;
-"const"                             return tCONST;
+"const"|"final"                     return tCONST;
 
 [0-9]+                              return INT;
 [0-9]+.[0-9]+                       return FLOAT;
