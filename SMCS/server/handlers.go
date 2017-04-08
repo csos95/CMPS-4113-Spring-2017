@@ -13,7 +13,7 @@ type Page struct {
 	Extensions map[string][]string
 	Source     string
 	Analysis   analyzer.Analysis
-	Language   *analyzer.Language
+	Languages  map[string]*analyzer.Language
 	Metrics    map[string]analyzer.Metric
 }
 
@@ -25,7 +25,8 @@ func makeHandler(fn func(http.ResponseWriter, *http.Request, *Server), s *Server
 
 func indexHandler(w http.ResponseWriter, r *http.Request, s *Server) {
 	if r.Method == "GET" {
-		page := &Page{Config: s.Config, Extensions: s.Analyzer.Extensions(), Metrics: s.Analyzer.Metrics}
+		page := &Page{Config: s.Config, Extensions: s.Analyzer.Extensions(), Metrics: s.Analyzer.Metrics, Languages: s.Analyzer.Languages}
+		log.Println(page)
 		s.Template.ExecuteTemplate(w, "index.html", page)
 	}
 }
@@ -44,6 +45,9 @@ func metricsHandler(w http.ResponseWriter, r *http.Request, s *Server) {
 		io.Copy(buff, file)
 		source := string(buff.Bytes())
 
+		log.Println(r.Form)
+		language := r.Form["language"][0]
+
 		metrics := make([]string, 0)
 		log.Println(r.Form)
 		selectedMetrics := r.Form["metric"]
@@ -57,8 +61,8 @@ func metricsHandler(w http.ResponseWriter, r *http.Request, s *Server) {
 
 		log.Println(metrics)
 
-		page := &Page{Config: s.Config, Source: source, Language: s.Analyzer.Languages["c"],
-			Analysis: s.Analyzer.Analyze("c", source, metrics)}
+		page := &Page{Config: s.Config, Source: source, Languages: s.Analyzer.Languages,
+			Analysis: s.Analyzer.Analyze(language, source, metrics)}
 
 		s.Template.ExecuteTemplate(w, "metrics.html", page)
 	} else if r.Method == "GET" {

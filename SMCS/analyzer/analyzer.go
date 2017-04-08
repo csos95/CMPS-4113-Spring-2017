@@ -14,6 +14,7 @@ type Result struct {
 }
 
 type Analysis struct {
+	Language *Language
 	Source  string
 	Results []Result
 }
@@ -53,6 +54,8 @@ func NewAnalyzer() *Analyzer {
 	languages := make(map[string]*Language)
 
 	languages["c"] = &Language{Name: "c", Extensions: []string{".c", ".h"}}
+	languages["cpp"] = &Language{Name: "cpp", Extensions: []string{".cpp", ".hpp"}}
+	languages["java"] = &Language{Name: "java", Extensions: []string{".java"}}
 
 	metrics := map[string]Metric{}
 
@@ -79,7 +82,7 @@ func (a *Analyzer) Extensions() map[string][]string {
 }
 
 func (a *Analyzer) Analyze(language, source string, metrics []string) Analysis {
-	analysis := Analysis{Source: source}
+	analysis := Analysis{Language: a.Languages[language],Source: source}
 
 	tokens := Tokenize(language, analysis.Source)
 
