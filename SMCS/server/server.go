@@ -7,15 +7,15 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"runtime"
 	"os/exec"
+	"runtime"
 	"time"
 )
 
 type Config struct {
 	Domain string `json:"domain"`
 	Port   string `json:"port"`
-	Mode string `json:"mode"`
+	Mode   string `json:"mode"`
 }
 
 func NewConfig(filepath string) *Config {
@@ -71,7 +71,7 @@ func (s *Server) Run() {
 	if s.Config.Mode == "standalone" {
 		go func() {
 			time.Sleep(time.Second * 2)
-			openBrowser("http://"+s.Config.Domain+":"+s.Config.Port+"/")
+			openBrowser("http://" + s.Config.Domain + ":" + s.Config.Port + "/")
 		}()
 	}
 
