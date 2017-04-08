@@ -1,4 +1,4 @@
-//**************************************************************
+/**************************************************************
 //                   Project #1 Mutant Flatworld Explorers
 //                    Name: Da Dong
 //                    Data Structures Date: 02/04/2015
@@ -18,7 +18,7 @@
 //                      ObjectName::vector
 //                    Parameters: none
 //                     Complexity: none
-//********************************************************************
+//********************************************************************/
 #include<iostream>
 #include<vector>
 #include<cstring>
@@ -38,7 +38,8 @@ int main()
 	vector<int>v1(51);
 	//set a vector to store the loction that the robot has been previously lost
 	vector< pair <int, int> > v;
-
+/****
+adkasdbkas*/
 	//input the Max size of the rectangular
 	cin >> MaxX >> MaxY;
 

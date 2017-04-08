@@ -13,7 +13,7 @@
 \".*\"                      return STRING;
 "true"|"false"              return BOOL;
 \/\/.*                      return LINE_COMMENT;
-\/*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\/   return BLOCK_COMMENT;
+\/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\/   return BLOCK_COMMENT;
 "#include"                  return IMPORT;
 "<"[a-zA-Z]+(.h)?">"        return IMPORT;
 "return"                    return RETURN;
