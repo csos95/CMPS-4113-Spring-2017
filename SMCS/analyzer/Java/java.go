@@ -1,8 +1,4 @@
-package main
-import (
-    "fmt"
-    "io/ioutil"
-)
+package java
 
 /*
 #include <stdio.h>
@@ -13,11 +9,13 @@ extern YY_BUFFER_STATE yy_scan_string(char*);
 extern void yy_delete_buffer(YY_BUFFER_STATE);
 
 extern int yylex(void);
+extern int yylineno;
+extern char* yytext;
 */
 import "C"
 
 var names = []string{
-        "",
+        "NULL",
         "INT",
         "CHAR",
         "FLOAT",
@@ -125,23 +123,17 @@ var names = []string{
         "BSHL",
         "BSHR"};
 
-func main() {
-    file, err := ioutil.ReadFile("input.java")
-    if err != nil {
-        fmt.Println(err)
-    }
+var state *C.struct_yy_buffer_state
 
-    contents := string(file)
-    state := C.yy_scan_string(C.CString(contents))
+func Parse(source string) {
+        state = C.yy_scan_string(C.CString(source))
+}
 
-    ntoken := C.int(C.yylex())
+func NextToken() (string, string) {
+        return names[C.int(C.yylex())], C.GoString(C.yytext)
+}
 
-    for ntoken != 0 {
-        fmt.Printf("%d - %s\n", ntoken, names[ntoken])
-        ntoken = C.int(C.yylex())
-    }
-
-    C.yy_delete_buffer(state);
-
+func Close() {
+        C.yy_delete_buffer(state)
 }
 
