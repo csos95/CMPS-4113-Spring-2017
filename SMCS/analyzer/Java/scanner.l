@@ -8,6 +8,7 @@
 (public|private|protected)" class "[a-zA-Z]+       return CLASS;
 (public|private|protected)" interface "[a-zA-Z]+    return INTERFACE;
 "new"                               return NEW;
+","                                 return COMMA;
 
 "if"[ \t]*\(.*\)                    return IF;
 "else"                              return ELSE;
