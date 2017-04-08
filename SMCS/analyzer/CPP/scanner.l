@@ -14,10 +14,9 @@
 "true"|"false"              return BOOL;
 \/\/.*                      return LINE_COMMENT;
 \/*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\/   return BLOCK_COMMENT;
-"#include"                  return IMPORT;
-"<"[a-zA-Z]+(.h)?">"        return IMPORT;
+"#include".*"\r"?"\n"       return IMPORT;
 "return"                    return RETURN;
-;                           return SEMICOLON;
+";"                         return SEMICOLON;
 ":"                         return COLON;
 [a-zA-Z]+" "[a-zA-Z]+" "?\(.*\) return FUNCTION;
 [a-zA-Z]+\(.*\)             return FUNCTION_CALL;
