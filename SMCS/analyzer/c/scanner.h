@@ -24,7 +24,7 @@
 //other
 #define FUNCTION 31
 #define VAR_NAME 32
-#define INCLUDE 33
+#define IMPORT 33
 #define HEADER 34
 #define IDENTIFIER 35
 #define FUNCTION_CALL 36
