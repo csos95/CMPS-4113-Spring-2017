@@ -16,7 +16,6 @@
 [a-zA-Z]+" "[a-zA-Z]+" "?\(.*\) return FUNCTION;
 [a-zA-Z]+\(.*\)             return FUNCTION_CALL;
 
-[_a-zA-Z][_a-zA-Z0-9]*      return VAR_NAME;
 
 [0-9]+                      return INT;
 [0-9]+.[0-9]+               return FLOAT;
@@ -26,6 +25,8 @@
 "float"                     return tFLOAT;
 "char"                      return tCHAR;
 "string"                    return tSTRING;
+
+[_a-zA-Z][_a-zA-Z0-9]*      return VAR_NAME;
 
 "="                         return ASSIGNMENT;
 "*"                         return MUL;

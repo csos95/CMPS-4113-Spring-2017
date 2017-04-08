@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{float}
 \pagenumbering{arabic}
 \usepackage{fancyhdr}
 \fancypagestyle{plain}{
@@ -61,7 +62,7 @@
 	\pagenumbering{arabic}
 	
 	\section{Overview}
-	The Software Metrics Calculation System (SMCS) is a piece of software that allows the user to analyze and view various metrics about their source code. \\
+	The Software Metrics Calculation System (SMCS) is a piece of software that allows the user to analyze and view various metrics about their source code. 
 	This document will describe the features and usage of SMCS.
 	
 	\section{Background}
@@ -69,12 +70,14 @@
 	SMCS was created by the Software Engineering group ID-10-T to fulfill this need.
 	
 	\section{How to use this document}
-	This document is split into four chapters. \\
-	Chapter 1: An introduction to SMCS. \\
-	Chapter 2: Describes the purpose of SMCS and the software requirements. \\
-	Chapter 3: Details how to use SMCS. \\
-	Chapter 4: Describes the metrics available in SMCS. \\
-	Chapter 5: Lists contact information and how to report a bug.
+	This document is split into four chapters: 
+	\begin{itemize}
+		\item Chapter 1: An introduction to SMCS. 
+		\item Chapter 2: Describes the purpose of SMCS and the software requirements. 
+		\item Chapter 3: Details how to use SMCS. 
+		\item Chapter 4: Describes the metrics available in SMCS. 
+		\item Chapter 5: Lists contact information and how to report a bug.
+	\end{itemize}
 	
 %============================================================================
 	{\let\clearpage\relax \chapter{Software Overview}}
@@ -92,42 +95,63 @@
 %============================================================================
 	{\let\clearpage\relax \chapter{Getting Started}}
 	\section{How to Start SMCS}
-	To start SMCS in standalone mode simply double click on the application. \\
-	This will start a local web server on port 8080 and launch your default web browser to the SMCS code submission page. \\
-	If you wish to host SMCS on a server so that it is accessible from anywhere, open config.json and change the "standalone" configuration option to false, ensure that port 8080 is forwarded correctly and then start SMCS. \\
+	To start SMCS in standalone mode simply double click on the application. 
+	This will start a local web server on port 8080 and launch your default web browser to the SMCS code submission page. 
+	If you wish to host SMCS on a server so that it is accessible from anywhere, open config.json and change the "standalone" configuration option to false, ensure that port 8080 is forwarded correctly and then start SMCS. 
 	SMCS will only open the web browser if it is in standalone mode.
 
 	\section{User interface}
-	The user interface is split into two pages, a source code submission page, and an analysis results page. \\
+	The user interface is split into two pages, a source code submission page, and an analysis results page. The next three pages show these two pages labeled with descriptions of the UI elements.
 	
-	GRAPHIC OF SUBMISSION PAGE WITH NUMBERED ELEMENTS HERE \\
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.7]{lguiu.png}
+		\caption{Source Code Submission page with labeled elements}
+	\end{figure}
 	
-	LIST  OF WHAT THE NUMBERED UI ELEMENTS REPRESENT HERE \\
+	This page is used to select the source code and metrics you want to use in the analysis.
 	
-	GRAPHIC OF RESULTS PAGE WITH NUMBERED ELEMENTS HERE \\
+	\begin{enumerate}
+		\item Choose File - Use this button to select a source code file.
+		\item Language Selection - If the correct language is not automatically selected, use this combobox to select the correct one.
+		\item Metrics Selection - Use these checkboxes to select the metrics you wish to use.
+		\item Upload - Use this button to run the selected metrics on your source code.
+		\item File Name - This is the file that is currently selected.
+	\end{enumerate}
 	
-	LIST  OF WHAT THE NUMBERED UI ELEMENTS REPRESENT HERE \\
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.7]{lguir.png}
+		\caption{Analysis Results page with labeled elements}
+	\end{figure}
 	
-	USE CASES HERE \\
+	This page shows your selected source code and the results of the analysis.
+	
+	\begin{enumerate}
+		\item Source Code - Your selected source code file syntax highlighted
+		\item Metrics Results - A listing of the results of the metrics you selected.
+	\end{enumerate}
 	
 
 %============================================================================
 	{\let\clearpage\relax \chapter{Available Metrics}}
+	This chapter describes the metrics available to use in SMCS.
 	
 	\section{Lines of ...}
 	\begin{itemize}
-		\item Lines of Code - The number of lines of code in your source.
-		\item Lines of Documentation - The number of lines of documentation in your source.
-		\item Ratio of LOC to LOD - It could be a problem if the ratio of documentation to code is too low.
-		\item Blank Lines - The number of blank lines in you source.
+		\item Code - The number of lines of code in your source.
+		\item Documentation - The number of lines of documentation in your source.
+		\item Ratio - The ration of Lines of Code to Lines of Documentation. It could be a problem if the ratio of documentation to code is too low.
+		\item Whitespace - The number of blank lines in you source.
 		\item Total Lines - The total number of lines in your source.
 	\end{itemize}
 	Note: A line that contains code and documentation will be counted as both a line of code and documentation.
 	
 	\section{Number of ...}
 	\begin{itemize}
-		\item Number of Functions - The number of functions in your source.
-		\item Number of Function parameters - The number of parameters in each function. If you have too many parameters in a function it could cause trouble, especially if it is used often.
+		\item Functions - The number of functions in your source.
+		\item Function parameters - The number of parameters in each function. If you have too many parameters in a function it could cause trouble, especially if it is used often.
+		\item Classes - The number of 
 		\item Methods per Class - The number of methods in each class.
 		\item Lines per Function - the number of lines in each function.
 	\end{itemize}
