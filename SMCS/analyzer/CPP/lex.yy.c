@@ -89,7 +89,7 @@
 #define YY_STATE_EOF(state) (YY_END_OF_BUFFER + state + 1)
 
 /* Special action meaning "start processing a new file". */
-#define YY_NEW_FILE yyrestart( yyin )
+#define YY_NEW_FILE yyrestart_cpp( yyin_cpp )
 
 #define YY_END_OF_BUFFER_CHAR 0
 
@@ -99,7 +99,7 @@
 typedef struct yy_buffer_state *YY_BUFFER_STATE;
 
 extern int yyleng;
-extern FILE *yyin, *yyout;
+extern FILE *yyin_cpp, *yyout_cpp;
 
 #define EOB_ACT_CONTINUE_SCAN 0
 #define EOB_ACT_END_OF_FILE 1
@@ -192,8 +192,8 @@ struct yy_buffer_state
 	 * possible backing-up.
 	 *
 	 * When we actually see the EOF, we change the status to "new"
-	 * (via yyrestart()), so that the user can continue scanning by
-	 * just pointing yyin at a new input file.
+	 * (via yyrestart_cpp()), so that the user can continue scanning by
+	 * just pointing yyin_cpp at a new input file.
 	 */
 #define YY_BUFFER_EOF_PENDING 2
 	};
@@ -220,49 +220,49 @@ static char *yy_c_buf_p = (char *) 0;
 static int yy_init = 1;		/* whether we need to initialize */
 static int yy_start = 0;	/* start state number */
 
-/* Flag which is used to allow yywrap()'s to do buffer switches
- * instead of setting up a fresh yyin.  A bit of a hack ...
+/* Flag which is used to allow yywrap_cpp()'s to do buffer switches
+ * instead of setting up a fresh yyin_cpp.  A bit of a hack ...
  */
 static int yy_did_buffer_switch_on_eof;
 
-void yyrestart YY_PROTO(( FILE *input_file ));
+void yyrestart_cpp YY_PROTO(( FILE *input_file ));
 
-void yy_switch_to_buffer YY_PROTO(( YY_BUFFER_STATE new_buffer ));
-void yy_load_buffer_state YY_PROTO(( void ));
-YY_BUFFER_STATE yy_create_buffer YY_PROTO(( FILE *file, int size ));
-void yy_delete_buffer YY_PROTO(( YY_BUFFER_STATE b ));
-void yy_init_buffer YY_PROTO(( YY_BUFFER_STATE b, FILE *file ));
-void yy_flush_buffer YY_PROTO(( YY_BUFFER_STATE b ));
-#define YY_FLUSH_BUFFER yy_flush_buffer( yy_current_buffer )
+void yy_switch_to_buffer_cpp YY_PROTO(( YY_BUFFER_STATE new_buffer ));
+void yy_load_buffer_state_cpp YY_PROTO(( void ));
+YY_BUFFER_STATE yy_create_buffer_cpp YY_PROTO(( FILE *file, int size ));
+void yy_delete_buffer_cpp YY_PROTO(( YY_BUFFER_STATE b ));
+void yy_init_buffer_cpp YY_PROTO(( YY_BUFFER_STATE b, FILE *file ));
+void yy_flush_buffer_cpp YY_PROTO(( YY_BUFFER_STATE b ));
+#define YY_FLUSH_BUFFER yy_flush_buffer_cpp( yy_current_buffer )
 
-YY_BUFFER_STATE yy_scan_buffer YY_PROTO(( char *base, yy_size_t size ));
-YY_BUFFER_STATE yy_scan_string YY_PROTO(( yyconst char *yy_str ));
-YY_BUFFER_STATE yy_scan_bytes YY_PROTO(( yyconst char *bytes, int len ));
+YY_BUFFER_STATE yy_scan_buffer_cpp YY_PROTO(( char *base, yy_size_t size ));
+YY_BUFFER_STATE yy_scan_string_cpp YY_PROTO(( yyconst char *yy_str ));
+YY_BUFFER_STATE yy_scan_bytes_cpp YY_PROTO(( yyconst char *bytes, int len ));
 
 static void *yy_flex_alloc YY_PROTO(( yy_size_t ));
 static void *yy_flex_realloc YY_PROTO(( void *, yy_size_t ));
 static void yy_flex_free YY_PROTO(( void * ));
 
-#define yy_new_buffer yy_create_buffer
+#define yy_new_buffer yy_create_buffer_cpp
 
 #define yy_set_interactive(is_interactive) \
 	{ \
 	if ( ! yy_current_buffer ) \
-		yy_current_buffer = yy_create_buffer( yyin, YY_BUF_SIZE ); \
+		yy_current_buffer = yy_create_buffer_cpp( yyin_cpp, YY_BUF_SIZE ); \
 	yy_current_buffer->yy_is_interactive = is_interactive; \
 	}
 
 #define yy_set_bol(at_bol) \
 	{ \
 	if ( ! yy_current_buffer ) \
-		yy_current_buffer = yy_create_buffer( yyin, YY_BUF_SIZE ); \
+		yy_current_buffer = yy_create_buffer_cpp( yyin_cpp, YY_BUF_SIZE ); \
 	yy_current_buffer->yy_at_bol = at_bol; \
 	}
 
 #define YY_AT_BOL() (yy_current_buffer->yy_at_bol)
 
 typedef unsigned char YY_CHAR;
-FILE *yyin = (FILE *) 0, *yyout = (FILE *) 0;
+FILE *yyin_cpp = (FILE *) 0, *yyout_cpp = (FILE *) 0;
 typedef int yy_state_type;
 extern char *yytext;
 #define yytext_ptr yytext
@@ -602,9 +602,9 @@ char *yytext;
 
 #ifndef YY_SKIP_YYWRAP
 #ifdef __cplusplus
-extern "C" int yywrap YY_PROTO(( void ));
+extern "C" int yywrap_cpp YY_PROTO(( void ));
 #else
-extern int yywrap YY_PROTO(( void ));
+extern int yywrap_cpp YY_PROTO(( void ));
 #endif
 #endif
 
@@ -622,7 +622,7 @@ static int yy_flex_strlen YY_PROTO(( yyconst char * ));
 
 #ifndef YY_NO_INPUT
 #ifdef __cplusplus
-static int yyinput YY_PROTO(( void ));
+static int yyin_cppput YY_PROTO(( void ));
 #else
 static int input YY_PROTO(( void ));
 #endif
@@ -674,7 +674,7 @@ YY_MALLOC_DECL
 /* This used to be an fputs(), but since the string might contain NUL's,
  * we now use fwrite().
  */
-#define ECHO (void) fwrite( yytext, yyleng, 1, yyout )
+#define ECHO (void) fwrite( yytext, yyleng, 1, yyout_cpp )
 #endif
 
 /* Gets input and stuffs it into "buf".  number of characters read, or YY_NULL,
@@ -686,16 +686,16 @@ YY_MALLOC_DECL
 		{ \
 		int c = '*', n; \
 		for ( n = 0; n < max_size && \
-			     (c = getc( yyin )) != EOF && c != '\n'; ++n ) \
+			     (c = getc( yyin_cpp )) != EOF && c != '\n'; ++n ) \
 			buf[n] = (char) c; \
 		if ( c == '\n' ) \
 			buf[n++] = (char) c; \
-		if ( c == EOF && ferror( yyin ) ) \
+		if ( c == EOF && ferror( yyin_cpp ) ) \
 			YY_FATAL_ERROR( "input in flex scanner failed" ); \
 		result = n; \
 		} \
-	else if ( ((result = fread( buf, 1, max_size, yyin )) == 0) \
-		  && ferror( yyin ) ) \
+	else if ( ((result = fread( buf, 1, max_size, yyin_cpp )) == 0) \
+		  && ferror( yyin_cpp ) ) \
 		YY_FATAL_ERROR( "input in flex scanner failed" );
 #endif
 
@@ -721,7 +721,7 @@ YY_MALLOC_DECL
  * easily add parameters.
  */
 #ifndef YY_DECL
-#define YY_DECL int yylex YY_PROTO(( void ))
+#define YY_DECL int yylex_cpp YY_PROTO(( void ))
 #endif
 
 /* Code executed at the beginning of each rule, after yytext and yyleng
@@ -761,17 +761,17 @@ YY_DECL
 		if ( ! yy_start )
 			yy_start = 1;	/* first start state */
 
-		if ( ! yyin )
-			yyin = stdin;
+		if ( ! yyin_cpp )
+			yyin_cpp = stdin;
 
-		if ( ! yyout )
-			yyout = stdout;
+		if ( ! yyout_cpp )
+			yyout_cpp = stdout;
 
 		if ( ! yy_current_buffer )
 			yy_current_buffer =
-				yy_create_buffer( yyin, YY_BUF_SIZE );
+				yy_create_buffer_cpp( yyin_cpp, YY_BUF_SIZE );
 
-		yy_load_buffer_state();
+		yy_load_buffer_state_cpp();
 		}
 
 	while ( 1 )		/* loops until end-of-file is reached */
@@ -1153,15 +1153,15 @@ case YY_STATE_EOF(INITIAL):
 			{
 			/* We're scanning a new file or input source.  It's
 			 * possible that this happened because the user
-			 * just pointed yyin at a new source and called
-			 * yylex().  If so, then we have to assure
+			 * just pointed yyin_cpp at a new source and called
+			 * yylex_cpp().  If so, then we have to assure
 			 * consistency between yy_current_buffer and our
 			 * globals.  Here is the right place to do so, because
 			 * this is the first action (other than possibly a
 			 * back-up) that will match for the new input source.
 			 */
 			yy_n_chars = yy_current_buffer->yy_n_chars;
-			yy_current_buffer->yy_input_file = yyin;
+			yy_current_buffer->yy_input_file = yyin_cpp;
 			yy_current_buffer->yy_buffer_status = YY_BUFFER_NORMAL;
 			}
 
@@ -1214,7 +1214,7 @@ case YY_STATE_EOF(INITIAL):
 				{
 				yy_did_buffer_switch_on_eof = 0;
 
-				if ( yywrap() )
+				if ( yywrap_cpp() )
 					{
 					/* Note: because we've taken care in
 					 * yy_get_next_buffer() to have set up
@@ -1267,7 +1267,7 @@ case YY_STATE_EOF(INITIAL):
 			"fatal flex scanner internal error--no action found" );
 	} /* end of action switch */
 		} /* end of scanning one token */
-	} /* end of yylex */
+	} /* end of yylex_cpp */
 
 
 /* yy_get_next_buffer - try to read in a new buffer
@@ -1384,7 +1384,7 @@ static int yy_get_next_buffer()
 		if ( number_to_move == YY_MORE_ADJ )
 			{
 			ret_val = EOB_ACT_END_OF_FILE;
-			yyrestart( yyin );
+			yyrestart_cpp( yyin_cpp );
 			}
 
 		else
@@ -1519,7 +1519,7 @@ register char *yy_bp;
 
 
 #ifdef __cplusplus
-static int yyinput()
+static int yyin_cppput()
 #else
 static int input()
 #endif
@@ -1557,19 +1557,19 @@ static int input()
 					 */
 
 					/* Reset buffer status. */
-					yyrestart( yyin );
+					yyrestart_cpp( yyin_cpp );
 
 					/* fall through */
 
 				case EOB_ACT_END_OF_FILE:
 					{
-					if ( yywrap() )
+					if ( yywrap_cpp() )
 						return EOF;
 
 					if ( ! yy_did_buffer_switch_on_eof )
 						YY_NEW_FILE;
 #ifdef __cplusplus
-					return yyinput();
+					return yyin_cppput();
 #else
 					return input();
 #endif
@@ -1592,24 +1592,24 @@ static int input()
 
 
 #ifdef YY_USE_PROTOS
-void yyrestart( FILE *input_file )
+void yyrestart_cpp( FILE *input_file )
 #else
-void yyrestart( input_file )
+void yyrestart_cpp( input_file )
 FILE *input_file;
 #endif
 	{
 	if ( ! yy_current_buffer )
-		yy_current_buffer = yy_create_buffer( yyin, YY_BUF_SIZE );
+		yy_current_buffer = yy_create_buffer_cpp( yyin_cpp, YY_BUF_SIZE );
 
-	yy_init_buffer( yy_current_buffer, input_file );
-	yy_load_buffer_state();
+	yy_init_buffer_cpp( yy_current_buffer, input_file );
+	yy_load_buffer_state_cpp();
 	}
 
 
 #ifdef YY_USE_PROTOS
-void yy_switch_to_buffer( YY_BUFFER_STATE new_buffer )
+void yy_switch_to_buffer_cpp( YY_BUFFER_STATE new_buffer )
 #else
-void yy_switch_to_buffer( new_buffer )
+void yy_switch_to_buffer_cpp( new_buffer )
 YY_BUFFER_STATE new_buffer;
 #endif
 	{
@@ -1625,11 +1625,11 @@ YY_BUFFER_STATE new_buffer;
 		}
 
 	yy_current_buffer = new_buffer;
-	yy_load_buffer_state();
+	yy_load_buffer_state_cpp();
 
 	/* We don't actually know whether we did this switch during
-	 * EOF (yywrap()) processing, but the only time this flag
-	 * is looked at is after yywrap() is called, so it's safe
+	 * EOF (yywrap_cpp()) processing, but the only time this flag
+	 * is looked at is after yywrap_cpp() is called, so it's safe
 	 * to go ahead and always set it.
 	 */
 	yy_did_buffer_switch_on_eof = 1;
@@ -1637,22 +1637,22 @@ YY_BUFFER_STATE new_buffer;
 
 
 #ifdef YY_USE_PROTOS
-void yy_load_buffer_state( void )
+void yy_load_buffer_state_cpp( void )
 #else
-void yy_load_buffer_state()
+void yy_load_buffer_state_cpp()
 #endif
 	{
 	yy_n_chars = yy_current_buffer->yy_n_chars;
 	yytext_ptr = yy_c_buf_p = yy_current_buffer->yy_buf_pos;
-	yyin = yy_current_buffer->yy_input_file;
+	yyin_cpp = yy_current_buffer->yy_input_file;
 	yy_hold_char = *yy_c_buf_p;
 	}
 
 
 #ifdef YY_USE_PROTOS
-YY_BUFFER_STATE yy_create_buffer( FILE *file, int size )
+YY_BUFFER_STATE yy_create_buffer_cpp( FILE *file, int size )
 #else
-YY_BUFFER_STATE yy_create_buffer( file, size )
+YY_BUFFER_STATE yy_create_buffer_cpp( file, size )
 FILE *file;
 int size;
 #endif
@@ -1661,7 +1661,7 @@ int size;
 
 	b = (YY_BUFFER_STATE) yy_flex_alloc( sizeof( struct yy_buffer_state ) );
 	if ( ! b )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer()" );
+		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer_cpp()" );
 
 	b->yy_buf_size = size;
 
@@ -1670,20 +1670,20 @@ int size;
 	 */
 	b->yy_ch_buf = (char *) yy_flex_alloc( b->yy_buf_size + 2 );
 	if ( ! b->yy_ch_buf )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer()" );
+		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer_cpp()" );
 
 	b->yy_is_our_buffer = 1;
 
-	yy_init_buffer( b, file );
+	yy_init_buffer_cpp( b, file );
 
 	return b;
 	}
 
 
 #ifdef YY_USE_PROTOS
-void yy_delete_buffer( YY_BUFFER_STATE b )
+void yy_delete_buffer_cpp( YY_BUFFER_STATE b )
 #else
-void yy_delete_buffer( b )
+void yy_delete_buffer_cpp( b )
 YY_BUFFER_STATE b;
 #endif
 	{
@@ -1707,16 +1707,16 @@ extern int isatty YY_PROTO(( int ));
 #endif
 
 #ifdef YY_USE_PROTOS
-void yy_init_buffer( YY_BUFFER_STATE b, FILE *file )
+void yy_init_buffer_cpp( YY_BUFFER_STATE b, FILE *file )
 #else
-void yy_init_buffer( b, file )
+void yy_init_buffer_cpp( b, file )
 YY_BUFFER_STATE b;
 FILE *file;
 #endif
 
 
 	{
-	yy_flush_buffer( b );
+	yy_flush_buffer_cpp( b );
 
 	b->yy_input_file = file;
 	b->yy_fill_buffer = 1;
@@ -1734,9 +1734,9 @@ FILE *file;
 
 
 #ifdef YY_USE_PROTOS
-void yy_flush_buffer( YY_BUFFER_STATE b )
+void yy_flush_buffer_cpp( YY_BUFFER_STATE b )
 #else
-void yy_flush_buffer( b )
+void yy_flush_buffer_cpp( b )
 YY_BUFFER_STATE b;
 #endif
 
@@ -1759,15 +1759,15 @@ YY_BUFFER_STATE b;
 	b->yy_buffer_status = YY_BUFFER_NEW;
 
 	if ( b == yy_current_buffer )
-		yy_load_buffer_state();
+		yy_load_buffer_state_cpp();
 	}
 
 
 #ifndef YY_NO_SCAN_BUFFER
 #ifdef YY_USE_PROTOS
-YY_BUFFER_STATE yy_scan_buffer( char *base, yy_size_t size )
+YY_BUFFER_STATE yy_scan_buffer_cpp( char *base, yy_size_t size )
 #else
-YY_BUFFER_STATE yy_scan_buffer( base, size )
+YY_BUFFER_STATE yy_scan_buffer_cpp( base, size )
 char *base;
 yy_size_t size;
 #endif
@@ -1782,7 +1782,7 @@ yy_size_t size;
 
 	b = (YY_BUFFER_STATE) yy_flex_alloc( sizeof( struct yy_buffer_state ) );
 	if ( ! b )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_scan_buffer()" );
+		YY_FATAL_ERROR( "out of dynamic memory in yy_scan_buffer_cpp()" );
 
 	b->yy_buf_size = size - 2;	/* "- 2" to take care of EOB's */
 	b->yy_buf_pos = b->yy_ch_buf = base;
@@ -1794,7 +1794,7 @@ yy_size_t size;
 	b->yy_fill_buffer = 0;
 	b->yy_buffer_status = YY_BUFFER_NEW;
 
-	yy_switch_to_buffer( b );
+	yy_switch_to_buffer_cpp( b );
 
 	return b;
 	}
@@ -1803,9 +1803,9 @@ yy_size_t size;
 
 #ifndef YY_NO_SCAN_STRING
 #ifdef YY_USE_PROTOS
-YY_BUFFER_STATE yy_scan_string( yyconst char *yy_str )
+YY_BUFFER_STATE yy_scan_string_cpp( yyconst char *yy_str )
 #else
-YY_BUFFER_STATE yy_scan_string( yy_str )
+YY_BUFFER_STATE yy_scan_string_cpp( yy_str )
 yyconst char *yy_str;
 #endif
 	{
@@ -1813,16 +1813,16 @@ yyconst char *yy_str;
 	for ( len = 0; yy_str[len]; ++len )
 		;
 
-	return yy_scan_bytes( yy_str, len );
+	return yy_scan_bytes_cpp( yy_str, len );
 	}
 #endif
 
 
 #ifndef YY_NO_SCAN_BYTES
 #ifdef YY_USE_PROTOS
-YY_BUFFER_STATE yy_scan_bytes( yyconst char *bytes, int len )
+YY_BUFFER_STATE yy_scan_bytes_cpp( yyconst char *bytes, int len )
 #else
-YY_BUFFER_STATE yy_scan_bytes( bytes, len )
+YY_BUFFER_STATE yy_scan_bytes_cpp( bytes, len )
 yyconst char *bytes;
 int len;
 #endif
@@ -1836,16 +1836,16 @@ int len;
 	n = len + 2;
 	buf = (char *) yy_flex_alloc( n );
 	if ( ! buf )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_scan_bytes()" );
+		YY_FATAL_ERROR( "out of dynamic memory in yy_scan_bytes_cpp()" );
 
 	for ( i = 0; i < len; ++i )
 		buf[i] = bytes[i];
 
 	buf[len] = buf[len+1] = YY_END_OF_BUFFER_CHAR;
 
-	b = yy_scan_buffer( buf, n );
+	b = yy_scan_buffer_cpp( buf, n );
 	if ( ! b )
-		YY_FATAL_ERROR( "bad buffer in yy_scan_bytes()" );
+		YY_FATAL_ERROR( "bad buffer in yy_scan_bytes_cpp()" );
 
 	/* It's okay to grow etc. this buffer, and we should throw it
 	 * away when we're done.
@@ -2018,13 +2018,13 @@ void *ptr;
 #if YY_MAIN
 int main()
 	{
-	yylex();
+	yylex_cpp();
 	return 0;
 	}
 #endif
 #line 72 "scanner.l"
 
 
-int yywrap(void) {
+int yywrap_cpp(void) {
     return 1;
 }

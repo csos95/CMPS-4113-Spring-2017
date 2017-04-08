@@ -5,10 +5,10 @@ package cpp
 #include "scanner.h"
 
 typedef struct yy_buffer_state *YY_BUFFER_STATE;
-extern YY_BUFFER_STATE yy_scan_string(char*);
-extern void yy_delete_buffer(YY_BUFFER_STATE);
+extern YY_BUFFER_STATE yy_scan_string_cpp(char*);
+extern void yy_delete_buffer_cpp(YY_BUFFER_STATE);
 
-extern int yylex(void);
+extern int yylex_cpp(void);
 extern int yylineno;
 extern char* yytext;
 */
@@ -125,13 +125,13 @@ var names = []string{
 var state *C.struct_yy_buffer_state
 
 func Parse(source string) {
-	state = C.yy_scan_string(C.CString(source))
+	state = C.yy_scan_string_cpp(C.CString(source))
 }
 
 func NextToken() (string, string) {
-	return names[C.int(C.yylex())], C.GoString(C.yytext)
+	return names[C.int(C.yylex_cpp())], C.GoString(C.yytext)
 }
 
 func Close() {
-	C.yy_delete_buffer(state)
+	C.yy_delete_buffer_cpp(state)
 }
