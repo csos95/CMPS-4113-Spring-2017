@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**************************************************************
 //                   Project #1 Mutant Flatworld Explorers
 //                    Name: Da Dong
@@ -167,3 +168,18 @@ adkasdbkas*/
 	}
 	return 0;
 }
+=======
+#include <iostream>
+#include <stuff.h>
+
+//this is the main function
+int main(void) {
+    int x = 2;
+    float y = 3.5;
+    float z = x * y;
+    int w = x + x;
+    int u = w - x;
+    printf("z: %d\n", z);
+    return 0;
+}
+>>>>>>> 697ec7a85e164056021ed11386c5851f9576b767

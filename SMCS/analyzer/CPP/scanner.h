@@ -82,7 +82,6 @@
 #define INTERFACE 93
 #define NEW 94
 
-
 //bitwise operators
 #define BAND 101
 #define BOR 102

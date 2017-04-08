@@ -2,6 +2,8 @@ package analyzer
 
 import (
 	"github.com/csos95/CMPS-4113-Spring-2017/SMCS/analyzer/c"
+	//"github.com/csos95/CMPS-4113-Spring-2017/SMCS/analyzer/CPP"
+	//"github.com/csos95/CMPS-4113-Spring-2017/SMCS/analyzer/Java"
 	"log"
 )
 
@@ -10,14 +12,25 @@ type Token struct {
 	Value string
 }
 type NextToken func() (string, string)
+type Close func()
 
 func Tokenize(language, source string) []Token {
 	var next NextToken
 	var tokens []Token
+	var close Close
 	switch language {
 	case "c":
 		c.Parse(source)
 		next = c.NextToken
+		close = c.Close
+		//case "cpp":
+		//	cpp.Parse(source)
+		//	next = cpp.NextToken
+		//	close = cpp.Close
+		//case "java":
+		//	java.Parse(source)
+		//	next = java.NextToken
+		//	close = java.Close
 	}
 
 	ntoken, vtoken := next()
@@ -28,7 +41,7 @@ func Tokenize(language, source string) []Token {
 		ntoken, vtoken = next()
 	}
 
-	c.Close()
+	close()
 
 	return tokens
 }

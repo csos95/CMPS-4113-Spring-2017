@@ -8,6 +8,7 @@
 (public|private|protected)" class "[a-zA-Z]+       return CLASS;
 (public|private|protected)" interface "[a-zA-Z]+    return INTERFACE;
 "new"                               return NEW;
+","                                 return COMMA;
 
 "if"[ \t]*\(.*\)                    return IF;
 "else"                              return ELSE;
@@ -47,7 +48,7 @@
 (public|private|protected)[ \t]+(static)?[ \t]+[a-zA-Z]+[ \t]+[a-zA-Z]+[ \t]*\(.*\)    return FUNCTION;
 [a-zA-Z\.]+\(.*\)                     return FUNCTION_CALL;
 \/\/.*                              return LINE_COMMENT;
-\/*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\/   return BLOCK_COMMENT;
+\/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\/   return BLOCK_COMMENT;
 [_a-zA-Z][_a-zA-Z0-9]*              return VAR_NAME;
 
 "=="                                return EQ;
