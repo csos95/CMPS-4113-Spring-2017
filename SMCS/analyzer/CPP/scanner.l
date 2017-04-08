@@ -6,6 +6,7 @@
 
 "{"                         return LEFT_BRACE;
 "}"                         return RIGHT_BRACE;
+","                         return COMMA;
 
 [0-9]+                      return INT;
 [0-9]+.[0-9]+               return FLOAT;

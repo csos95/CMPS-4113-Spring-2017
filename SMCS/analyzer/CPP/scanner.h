@@ -21,6 +21,7 @@
 #define LEFT_BRACE 23
 #define RIGHT_BRACE 24
 #define NEWLINE 25
+#define COMMA 26
 
 //other
 #define FUNCTION 31

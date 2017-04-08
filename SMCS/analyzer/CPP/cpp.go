@@ -40,7 +40,7 @@ var names = []string{
 	"LEFT_BRACE",
 	"RIGHT_BRACE",
 	"NEWLINE",
-	"",
+	",",
 	"",
 	"",
 	"",
