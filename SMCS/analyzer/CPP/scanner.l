@@ -13,7 +13,7 @@
 \".*\"                      return STRING;
 "true"|"false"              return BOOL;
 \/\/.*                      return LINE_COMMENT;
-\/*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\/   return BLOCK_COMMENT;
+\/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\/   return BLOCK_COMMENT;
 "#include".*"\r"?"\n"       return IMPORT;
 "return"                    return RETURN;
 ";"                         return SEMICOLON;
@@ -26,7 +26,7 @@
 "char"                      return tCHAR;
 "string"                    return tSTRING;
 "bool"						return tBOOL;
-"const"						return tCONST;	
+"const"						return tCONST;
 "void"						return tVOID;
 "static"					return tSTATIC;
 

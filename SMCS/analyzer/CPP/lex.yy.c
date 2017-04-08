@@ -934,7 +934,7 @@ return tBOOL;
 case 21:
 YY_RULE_SETUP
 #line 29 "scanner.l"
-return tCONST;	
+return tCONST;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
