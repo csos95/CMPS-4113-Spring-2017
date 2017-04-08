@@ -126,7 +126,7 @@ var names = []string{
         "BSHR"};
 
 func main() {
-    file, err := ioutil.ReadFile("input.txt")
+    file, err := ioutil.ReadFile("input.java")
     if err != nil {
         fmt.Println(err)
     }
