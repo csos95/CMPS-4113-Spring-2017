@@ -19,13 +19,16 @@
                     <select>
                         <option value="c">C</option>
                     </select><br>
-                    <input type="checkbox" name="metric" value="Lines of Code">Lines of Code<br>
-                    <input type="checkbox" name="metric" value="Lines of Documentation">Lines of Documentation<br>
+                    {{- range $metric := .Metrics }}
+                    <input type="checkbox" name="metric" value="{{ $metric }}">{{ $metric }}<br>
+                    {{- end }}
+                    <!--<input type="checkbox" name="metric" value="Lines of Code">Lines of Code<br>-->
+                    <!--<input type="checkbox" name="metric" value="Lines of Documentation">Lines of Documentation<br>-->
                     <!--<input type="checkbox" name="metric" value="Ratio of LOC to LOD">Ratio of LOC to LOD<br>-->
-                    <input type="checkbox" name="metric" value="Blank Lines">Blank Lines<br>
-                    <input type="checkbox" name="metric" value="Total Lines">Total Lines<br>
+                    <!--<input type="checkbox" name="metric" value="Blank Lines">Blank Lines<br>-->
+                    <!--<input type="checkbox" name="metric" value="Total Lines">Total Lines<br>-->
 
-                    <input type="checkbox" name="metric" value="Number of Functions">Number of Functions<br>
+                    <!--<input type="checkbox" name="metric" value="Number of Functions">Number of Functions<br>-->
                     <!--<input type="checkbox" name="metric" value="Number of Function Parameters">Number of Function Parameters<br>-->
                     <!--<input type="checkbox" name="metric" value="Number of Classes">Number of Classes<br>-->
                     <!--<input type="checkbox" name="metric" value="Methods per Class">Methods per Class<br>-->
