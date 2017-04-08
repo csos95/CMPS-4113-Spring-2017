@@ -7,11 +7,15 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os/exec"
+	"runtime"
+	"time"
 )
 
 type Config struct {
 	Domain string `json:"domain"`
 	Port   string `json:"port"`
+	Mode   string `json:"mode"`
 }
 
 func NewConfig(filepath string) *Config {
@@ -64,9 +68,32 @@ func (s *Server) Run() {
 		http.Redirect(w, r, "/assets/img/favicon.ico", http.StatusMovedPermanently)
 	})
 
+	if s.Config.Mode == "standalone" {
+		go func() {
+			time.Sleep(time.Second * 2)
+			openBrowser("http://" + s.Config.Domain + ":" + s.Config.Port + "/")
+		}()
+	}
+
 	err := http.ListenAndServe(s.Config.Domain+":"+s.Config.Port, nil)
 	if err != nil {
 		log.Println(err)
 	}
 
+}
+
+//openBrowser opens the default user browser with the specified url
+//taken from github.com/rodzzlessa24/openbrowser.go
+func openBrowser(url string) bool {
+	var args []string
+	switch runtime.GOOS {
+	case "darwin":
+		args = []string{"open"}
+	case "windows":
+		args = []string{"cmd", "/c", "start"}
+	default:
+		args = []string{"xdg-open"}
+	}
+	cmd := exec.Command(args[0], append(args[1:], url)...)
+	return cmd.Start() == nil
 }
