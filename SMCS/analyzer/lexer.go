@@ -12,7 +12,7 @@ type Token struct {
 	Value string
 }
 type NextToken func() (string, string)
-type Close func() ()
+type Close func()
 
 func Tokenize(language, source string) []Token {
 	var next NextToken
@@ -23,14 +23,14 @@ func Tokenize(language, source string) []Token {
 		c.Parse(source)
 		next = c.NextToken
 		close = c.Close
-	//case "cpp":
-	//	cpp.Parse(source)
-	//	next = cpp.NextToken
-	//	close = cpp.Close
-	//case "java":
-	//	java.Parse(source)
-	//	next = java.NextToken
-	//	close = java.Close
+		//case "cpp":
+		//	cpp.Parse(source)
+		//	next = cpp.NextToken
+		//	close = cpp.Close
+		//case "java":
+		//	java.Parse(source)
+		//	next = java.NextToken
+		//	close = java.Close
 	}
 
 	ntoken, vtoken := next()

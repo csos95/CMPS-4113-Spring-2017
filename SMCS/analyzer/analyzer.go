@@ -15,8 +15,8 @@ type Result struct {
 
 type Analysis struct {
 	Language *Language
-	Source  string
-	Results []Result
+	Source   string
+	Results  []Result
 }
 
 type Language struct {
@@ -82,7 +82,7 @@ func (a *Analyzer) Extensions() map[string][]string {
 }
 
 func (a *Analyzer) Analyze(language, source string, metrics []string) Analysis {
-	analysis := Analysis{Language: a.Languages[language],Source: source}
+	analysis := Analysis{Language: a.Languages[language], Source: source}
 
 	tokens := Tokenize(language, analysis.Source)
 

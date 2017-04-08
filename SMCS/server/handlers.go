@@ -26,7 +26,6 @@ func makeHandler(fn func(http.ResponseWriter, *http.Request, *Server), s *Server
 func indexHandler(w http.ResponseWriter, r *http.Request, s *Server) {
 	if r.Method == "GET" {
 		page := &Page{Config: s.Config, Extensions: s.Analyzer.Extensions(), Metrics: s.Analyzer.Metrics, Languages: s.Analyzer.Languages}
-		log.Println(page)
 		s.Template.ExecuteTemplate(w, "index.html", page)
 	}
 }
@@ -45,21 +44,15 @@ func metricsHandler(w http.ResponseWriter, r *http.Request, s *Server) {
 		io.Copy(buff, file)
 		source := string(buff.Bytes())
 
-		log.Println(r.Form)
 		language := r.Form["language"][0]
 
 		metrics := make([]string, 0)
-		log.Println(r.Form)
 		selectedMetrics := r.Form["metric"]
 		for _, metric := range selectedMetrics {
-			log.Println("checking for", metric)
 			if _, ok := s.Analyzer.Metrics[metric]; ok {
-				log.Println("ok")
 				metrics = append(metrics, metric)
 			}
 		}
-
-		log.Println(metrics)
 
 		page := &Page{Config: s.Config, Source: source, Languages: s.Analyzer.Languages,
 			Analysis: s.Analyzer.Analyze(language, source, metrics)}
