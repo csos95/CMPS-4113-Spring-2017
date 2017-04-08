@@ -39,13 +39,13 @@ func LinesOfDocumentation(tokens []Token) (Result, error) {
 			lines += strings.Count(token.Value, "\n") + 1
 		}
 	}
-	if lines == 1{
+	if lines == 1 {
 		return Result{Metric: "Lines of Documentation", Body: template.HTML(fmt.Sprintf("There is %d line of documentation.", lines))}, nil
 	}
 	return Result{Metric: "Lines of Documentation", Body: template.HTML(fmt.Sprintf("There are %d lines of documentation.", lines))}, nil
 }
 
-func BlankLines (tokens []Token) (Result, error) {
+func BlankLines(tokens []Token) (Result, error) {
 	lines := 0
 	nl := false
 	for _, token := range tokens {
@@ -65,7 +65,7 @@ func BlankLines (tokens []Token) (Result, error) {
 	return Result{Metric: "Blank Lines", Body: template.HTML(fmt.Sprintf("There are %d blank lines.", lines))}, nil
 }
 
-func TotalLines (tokens []Token) (Result, error) {
+func TotalLines(tokens []Token) (Result, error) {
 	lines := 1
 
 	for _, token := range tokens {

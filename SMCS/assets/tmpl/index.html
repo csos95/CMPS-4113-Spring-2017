@@ -16,11 +16,14 @@
                 <form enctype="multipart/form-data" action="http://{{.Config.Domain}}:{{.Config.Port}}/metrics.html" method="post">
                     <input type="file" name="uploadfile" />
                     <input type="hidden" name="token" value="{{.}}" /><br>
-                    <select>
-                        <option value="c">C</option>
+                    <select name="language">
+                        {{- range $language := .Languages }}
+                        <option value="{{ $language.Name }}">{{ $language.Name }}</option>
+                        {{- end }}
+                        <!--<option value="c">C</option>-->
                     </select><br>
-                    {{- range $metric := .Metrics }}
-                    <input type="checkbox" name="metric" value="{{ $metric }}">{{ $metric }}<br>
+                    {{- range $key, $value := .Metrics }}
+                    <input type="checkbox" name="metric" value="{{ $key }}">{{ $key }}<br>
                     {{- end }}
                     <!--<input type="checkbox" name="metric" value="Lines of Code">Lines of Code<br>-->
                     <!--<input type="checkbox" name="metric" value="Lines of Documentation">Lines of Documentation<br>-->
