@@ -12,12 +12,12 @@ func LinesOfCode(tokens []Token) (Result, error) {
 	lines := 1
 	nl := false
 	for _, token := range tokens {
-		if token.Type == "newline" {
+		if token.Type == "NEWLINE" {
 			if nl == false {
 				nl = true
 				lines++
 			}
-		} else if token.Type == "line comment" || token.Type == "block comment" {
+		} else if token.Type == "LINE_COMMENT" || token.Type == "BLOCK_COMMENT" {
 			nl = false
 			lines--
 		} else {
@@ -33,9 +33,9 @@ func LinesOfCode(tokens []Token) (Result, error) {
 func LinesOfDocumentation(tokens []Token) (Result, error) {
 	lines := 0
 	for _, token := range tokens {
-		if token.Type == "line comment" {
+		if token.Type == "LINE_COMMENT" {
 			lines++
-		} else if token.Type == "block comment" {
+		} else if token.Type == "BLOCK_COMMENT" {
 			lines += strings.Count(token.Value, "\n") + 1
 		}
 	}
@@ -49,7 +49,7 @@ func BlankLines(tokens []Token) (Result, error) {
 	lines := 0
 	nl := false
 	for _, token := range tokens {
-		if token.Type == "newline" {
+		if token.Type == "NEWLINE" {
 			if nl == false {
 				nl = true
 			} else {
@@ -69,7 +69,7 @@ func TotalLines(tokens []Token) (Result, error) {
 	lines := 1
 
 	for _, token := range tokens {
-		if token.Type == "newline" {
+		if token.Type == "NEWLINE" {
 			lines++
 		}
 	}
@@ -82,7 +82,7 @@ func TotalLines(tokens []Token) (Result, error) {
 func NumberOfFunctions(tokens []Token) (Result, error) {
 	funcs := 0
 	for _, token := range tokens {
-		if token.Type == "function" {
+		if token.Type == "FUNCTION" {
 			funcs++
 		}
 	}
