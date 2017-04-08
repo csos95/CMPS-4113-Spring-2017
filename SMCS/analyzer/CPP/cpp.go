@@ -16,7 +16,7 @@ extern int yylex(void);
 import "C"
 
 var names = []string{
-	"",
+	"NULL",
 	"INT",
 	"CHAR",
 	"FLOAT",
