@@ -71,6 +71,8 @@ func TotalLines(tokens []Token) (Result, error) {
 	for _, token := range tokens {
 		if token.Type == "NEWLINE" {
 			lines++
+		} else if token.Type == "BLOCK_COMMENT" {
+			lines += strings.Count(token.Value, "\n")
 		}
 	}
 	if lines == 1 {
