@@ -4,7 +4,6 @@ import (
 	"github.com/csos95/CMPS-4113-Spring-2017/SMCS/analyzer/c"
 	"github.com/csos95/CMPS-4113-Spring-2017/SMCS/analyzer/CPP"
 	"github.com/csos95/CMPS-4113-Spring-2017/SMCS/analyzer/Java"
-	"log"
 )
 
 type Token struct {
@@ -37,7 +36,7 @@ func Tokenize(language, source string) []Token {
 
 	for ntoken != "NULL" {
 		tokens = append(tokens, Token{Type: ntoken, Value: vtoken})
-		log.Println(ntoken, vtoken)
+		//log.Println(ntoken, vtoken)
 		ntoken, vtoken = next()
 	}
 

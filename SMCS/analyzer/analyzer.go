@@ -10,6 +10,7 @@ import (
 
 type Result struct {
 	Metric string
+	Value int
 	Body   template.HTML
 }
 
@@ -87,7 +88,6 @@ func (a *Analyzer) Analyze(language, source string, metrics []string) Analysis {
 	tokens := Tokenize(language, analysis.Source)
 
 	for _, metric := range metrics {
-		log.Println(metric)
 		result, err := a.Metrics[metric](tokens)
 		if err != nil {
 			analysis.Results = append(analysis.Results, Result{Metric: metric, Body: template.HTML(fmt.Sprintf("Error: %v", err))})

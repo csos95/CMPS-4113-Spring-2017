@@ -8,11 +8,11 @@
 <body>
     <div class="content-box">
         <div class="content">
-            <div class="post-title">
+            <div class="section-title">
                 <h3>Source Code Upload</h3>
             </div>
             <hr>
-            <div class="post-body">
+            <div class="section-body">
                 <form enctype="multipart/form-data" action="http://{{.Config.Domain}}:{{.Config.Port}}/metrics.html" method="post">
                     <input type="file" name="uploadfile" />
                     <input type="hidden" name="token" value="{{.}}" /><br>

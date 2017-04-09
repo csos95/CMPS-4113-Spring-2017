@@ -10,21 +10,21 @@
 <body>
     <div class="content-box">
         <div class="content">
-            <div class="post-title">
+            <div class="section-title">
                 <h3>Source</h3>
             </div>
             <hr>
-            <div class="post-body">
+            <div class="section-body">
                 <pre><code class="language-{{ .Analysis.Language.Name }}">{{.Source}}</code></pre>
             </div>
         </div>
         <div class="content">
         {{- range $index, $result := .Analysis.Results }}
-            <div class="post-title">
+            <div class="section-title">
                 <h3>{{ $result.Metric }}</h3>
             </div>
             <hr>
-            <div class="post-body">
+            <div class="section-body">
                 {{ $result.Body }}
             </div>
         {{- end}}
