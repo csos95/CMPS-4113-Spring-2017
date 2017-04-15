@@ -101,3 +101,26 @@ func NumberOfFunctions(tokens []Token) (Result, error) {
 	}
 	return Result{Metric: "Number of Functions", Value: funcs, Body: template.HTML(fmt.Sprintf("There are %d functions.", funcs))}, nil
 }
+
+func NumberOfClasses(tokens []Token) (Result, error) {
+	classes := 0
+
+	for _, token := range tokens {
+		if token.Type == "CLASS" {
+			classes++
+		}
+	}
+
+	if classes == 1 {
+		return Result{Metric: "Number of Classes", Value: classes, Body: template.HTML(fmt.Sprintf("There is %d class.", classes))}, nil
+	}
+	return Result{Metric: "Number of Classes", Value: classes, Body: template.HTML(fmt.Sprintf("There are %d classes.", classes))}, nil
+}
+
+//<!--<input type="checkbox" name="metric" value="Ratio of LOC to LOD">Ratio of LOC to LOD<br>-->
+//
+//<!--<input type="checkbox" name="metric" value="Number of Function Parameters">Number of Function Parameters<br>-->
+//<!--<input type="checkbox" name="metric" value="Methods per Class">Methods per Class<br>-->
+//<!--<input type="checkbox" name="metric" value="Lines per Function">Lines per Function<br>-->
+//
+//<!--<input type="checkbox" name="metric" value="Cyclomatic Complexity">Cyclomatic Complexity<br>-->

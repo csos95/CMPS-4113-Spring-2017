@@ -10,7 +10,7 @@ import (
 
 type Result struct {
 	Metric string
-	Value int
+	Value  int
 	Body   template.HTML
 }
 
@@ -66,6 +66,7 @@ func NewAnalyzer() *Analyzer {
 	metrics["Total Lines"] = TotalLines
 
 	metrics["Number of Functions"] = NumberOfFunctions
+	metrics["Number of Classes"] = NumberOfClasses
 
 	return &Analyzer{Languages: languages, Metrics: metrics}
 }
