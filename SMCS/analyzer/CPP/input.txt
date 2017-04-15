@@ -50,7 +50,7 @@ adkasdbkas*/
 		for (int c = 1; c <= MaxX; c++)
 			v1[c] = c;
 	}
-	
+
 	while (cin >> x >> y >> Dir >> str)
 	{
 		//using c-string to know the length of the instructions
