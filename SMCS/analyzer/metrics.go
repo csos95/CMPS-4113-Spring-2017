@@ -9,21 +9,25 @@ import (
 type Metric func([]Token) (Result, error)
 
 func LinesOfCode(tokens []Token) (Result, error) {
-	lines := 1
-	nl := false
+	lines := 0
+	codeLine := false
+
 	for _, token := range tokens {
+		if token.Type != "LINE_COMMENT" && token.Type != "BLOCK_COMMENT" && token.Type != "NEWLINE" {
+			codeLine = true
+		}
 		if token.Type == "NEWLINE" {
-			if nl == false {
-				nl = true
+			if codeLine {
 				lines++
 			}
-		} else if token.Type == "LINE_COMMENT" || token.Type == "BLOCK_COMMENT" {
-			nl = false
-			lines--
-		} else {
-			nl = false
+			codeLine = false
 		}
 	}
+
+	if codeLine {
+		lines++
+	}
+
 	if lines == 1 {
 		return Result{Metric: "Lines of Code", Value: lines, Body: template.HTML(fmt.Sprintf("There is %d line of code.", lines))}, nil
 	}
@@ -66,7 +70,11 @@ func BlankLines(tokens []Token) (Result, error) {
 }
 
 func TotalLines(tokens []Token) (Result, error) {
-	lines := 1
+	lines := 0
+
+	if len(tokens) != 0 {
+		lines = 1
+	}
 
 	for _, token := range tokens {
 		if token.Type == "NEWLINE" {
