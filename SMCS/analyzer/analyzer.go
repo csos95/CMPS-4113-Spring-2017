@@ -62,11 +62,17 @@ func NewAnalyzer() *Analyzer {
 
 	metrics["Lines of Code"] = LinesOfCode
 	metrics["Lines of Documentation"] = LinesOfDocumentation
+	metrics["Ratio of LOC to LOD"] = RatioOfLOCToLOD
 	metrics["Blank Lines"] = BlankLines
 	metrics["Total Lines"] = TotalLines
 
 	metrics["Number of Functions"] = NumberOfFunctions
+	metrics["Lines per Function"] = LinesPerFunction
+	metrics["Number of Function Parameters"] = NumberOfFunctionParameters
 	metrics["Number of Classes"] = NumberOfClasses
+	metrics["Metrics per Class"] = MethodsPerClass
+
+	metrics["Cyclomatic Complexity"] = CyclomaticComplexity
 
 	return &Analyzer{Languages: languages, Metrics: metrics}
 }

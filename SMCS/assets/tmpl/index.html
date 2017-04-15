@@ -20,7 +20,6 @@
                         {{- range $language := .Languages }}
                         <option value="{{ $language.Name }}">{{ $language.Name }}</option>
                         {{- end }}
-                        <!--<option value="c">C</option>-->
                     </select><br>
                     {{- range $key, $value := .Metrics }}
                     <input type="checkbox" name="metric" value="{{ $key }}">{{ $key }}<br>

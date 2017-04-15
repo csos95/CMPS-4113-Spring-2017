@@ -49,6 +49,10 @@ func LinesOfDocumentation(tokens []Token) (Result, error) {
 	return Result{Metric: "Lines of Documentation", Value: lines, Body: template.HTML(fmt.Sprintf("There are %d lines of documentation.", lines))}, nil
 }
 
+func RatioOfLOCToLOD(tokens []Token) (Result, error) {
+	return Result{Metric: "Ratio of LOC to LOD", Value: 0, Body: template.HTML("not yet implemented")}, nil
+}
+
 func BlankLines(tokens []Token) (Result, error) {
 	lines := 0
 	nl := false
@@ -102,6 +106,14 @@ func NumberOfFunctions(tokens []Token) (Result, error) {
 	return Result{Metric: "Number of Functions", Value: funcs, Body: template.HTML(fmt.Sprintf("There are %d functions.", funcs))}, nil
 }
 
+func LinesPerFunction(tokens []Token) (Result, error) {
+	return Result{Metric: "Lines per Function", Value: 0, Body: template.HTML("not yet implemented")}, nil
+}
+
+func NumberOfFunctionParameters(tokens []Token) (Result, error) {
+	return Result{Metric: "Number of Function Parameters", Value: 0, Body: template.HTML("not yet implemented")}, nil
+}
+
 func NumberOfClasses(tokens []Token) (Result, error) {
 	classes := 0
 
@@ -117,10 +129,9 @@ func NumberOfClasses(tokens []Token) (Result, error) {
 	return Result{Metric: "Number of Classes", Value: classes, Body: template.HTML(fmt.Sprintf("There are %d classes.", classes))}, nil
 }
 
-//<!--<input type="checkbox" name="metric" value="Ratio of LOC to LOD">Ratio of LOC to LOD<br>-->
-//
-//<!--<input type="checkbox" name="metric" value="Number of Function Parameters">Number of Function Parameters<br>-->
-//<!--<input type="checkbox" name="metric" value="Methods per Class">Methods per Class<br>-->
-//<!--<input type="checkbox" name="metric" value="Lines per Function">Lines per Function<br>-->
-//
-//<!--<input type="checkbox" name="metric" value="Cyclomatic Complexity">Cyclomatic Complexity<br>-->
+func MethodsPerClass(tokens []Token) (Result, error) {
+	return Result{Metric: "Methods per Class", Value: 0, Body: template.HTML("not yet implemented")}, nil
+}
+func CyclomaticComplexity(tokens []Token) (Result, error) {
+	return Result{Metric: "CyclomaticComplexity", Value: 0, Body: template.HTML("not yet implemented")}, nil
+}
