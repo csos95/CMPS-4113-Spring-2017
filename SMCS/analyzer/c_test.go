@@ -30,7 +30,7 @@ func Test_C_Hello(t *testing.T) {
 			expected = 1
 		}
 		if expected != result.Value {
-			t.Error(fmt.Sprintf("Expected %d, got %d", expected, result.Value))
+			t.Error(fmt.Sprintf("Expected %d %s, got %d %s", expected, result.Metric, result.Value, result.Metric))
 		}
 	}
 }
@@ -63,7 +63,7 @@ func Test_C_Add(t *testing.T) {
 			expected = 1
 		}
 		if expected != result.Value {
-			t.Error(fmt.Sprintf("Expected %d, got %d", expected, result.Value))
+			t.Error(fmt.Sprintf("Expected %d %s, got %d %s", expected, result.Metric, result.Value, result.Metric))
 		}
 	}
 }
@@ -99,7 +99,7 @@ func Test_C_Document(t *testing.T) {
 			expected = 1
 		}
 		if expected != result.Value {
-			t.Error(fmt.Sprintf("Expected %d, got %d", expected, result.Value))
+			t.Error(fmt.Sprintf("Expected %d %s, got %d %s", expected, result.Metric, result.Value, result.Metric))
 		}
 	}
 }
