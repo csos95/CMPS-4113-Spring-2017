@@ -34,4 +34,6 @@ sed -e 's/yy_switch_to_buffer/yy_switch_to_buffer_java/g' \
  -e 's/yyin/yyin_java/g' \
  -e 's/yy_load_buffer_state/yy_load_buffer_state_java/g' \
  -e 's/yy_init_buffer/yy_init_buffer_java/g' \
+ -e 's/yytext/yytext_java/g' \
+ -e 's/yyleng/yyleng_java/g' \
  lex.yy.c.bak > lex.yy.c

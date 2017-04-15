@@ -158,7 +158,7 @@ typedef struct yy_buffer_state *YY_BUFFER_STATE;
 typedef size_t yy_size_t;
 #endif
 
-extern yy_size_t yyleng;
+extern yy_size_t yyleng_c;
 
 extern FILE *yyin_c, *yyout_c;
 
@@ -172,13 +172,13 @@ extern FILE *yyin_c, *yyout_c;
 #define yyless(n) \
 	do \
 		{ \
-		/* Undo effects of setting up yytext. */ \
+		/* Undo effects of setting up yytext_c. */ \
         int yyless_macro_arg = (n); \
         YY_LESS_LINENO(yyless_macro_arg);\
 		*yy_cp = (yy_hold_char); \
 		YY_RESTORE_YY_MORE_OFFSET \
 		(yy_c_buf_p) = yy_cp = yy_bp + yyless_macro_arg - YY_MORE_ADJ; \
-		YY_DO_BEFORE_ACTION; /* set up yytext again */ \
+		YY_DO_BEFORE_ACTION; /* set up yytext_c again */ \
 		} \
 	while ( 0 )
 
@@ -269,10 +269,10 @@ static YY_BUFFER_STATE * yy_buffer_stack = 0; /**< Stack as an array. */
  */
 #define YY_CURRENT_BUFFER_LVALUE (yy_buffer_stack)[(yy_buffer_stack_top)]
 
-/* yy_hold_char holds the character lost when yytext is formed. */
+/* yy_hold_char holds the character lost when yytext_c is formed. */
 static char yy_hold_char;
 static yy_size_t yy_n_chars;		/* number of characters read into yy_ch_buf */
-yy_size_t yyleng;
+yy_size_t yyleng_c;
 
 /* Points to current character in buffer. */
 static char *yy_c_buf_p = (char *) 0;
@@ -342,8 +342,8 @@ extern int yylineno_c;
 
 int yylineno_c = 1;
 
-extern char *yytext;
-#define yytext_ptr yytext
+extern char *yytext_c;
+#define yytext_ptr yytext_c
 
 static yy_state_type yy_get_previous_state (void );
 static yy_state_type yy_try_NUL_trans (yy_state_type current_state  );
@@ -351,11 +351,11 @@ static int yy_get_next_buffer (void );
 static void yy_fatal_error (yyconst char msg[]  );
 
 /* Done after the current pattern has been matched and before the
- * corresponding action - sets up yytext.
+ * corresponding action - sets up yytext_c.
  */
 #define YY_DO_BEFORE_ACTION \
 	(yytext_ptr) = yy_bp; \
-	yyleng = (yy_size_t) (yy_cp - yy_bp); \
+	yyleng_c = (yy_size_t) (yy_cp - yy_bp); \
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
@@ -527,7 +527,7 @@ int yy_flex_debug_c = 0;
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-char *yytext;
+char *yytext_c;
 #line 1 "scanner.l"
 #line 2 "scanner.l"
 #include "scanner.h"
@@ -620,7 +620,7 @@ static int input (void );
 /* This used to be an fputs(), but since the string might contain NUL's,
  * we now use fwrite().
  */
-#define ECHO fwrite( yytext, yyleng, 1, yyout_c )
+#define ECHO fwrite( yytext_c, yyleng_c, 1, yyout_c )
 #endif
 
 /* Gets input and stuffs it into "buf".  number of characters read, or YY_NULL,
@@ -690,7 +690,7 @@ extern int yylex_c (void);
 #define YY_DECL int yylex_c (void)
 #endif /* !YY_DECL */
 
-/* Code executed at the beginning of each rule, after yytext and yyleng
+/* Code executed at the beginning of each rule, after yytext_c and yyleng_c
  * have been set up.
  */
 #ifndef YY_USER_ACTION
@@ -748,7 +748,7 @@ YY_DECL
 		{
 		yy_cp = (yy_c_buf_p);
 
-		/* Support of yytext. */
+		/* Support of yytext_c. */
 		*yy_cp = (yy_hold_char);
 
 		/* yy_bp points to the position in yy_ch_buf of the start of
@@ -1013,7 +1013,7 @@ case YY_STATE_EOF(INITIAL):
 					{
 					/* Note: because we've taken care in
 					 * yy_get_next_buffer() to have set up
-					 * yytext, we can now set up
+					 * yytext_c, we can now set up
 					 * yy_c_buf_p so that if some total
 					 * hoser (like flex itself) wants to
 					 * call the scanner after we return the
@@ -1266,7 +1266,7 @@ static int yy_get_next_buffer (void)
     
     yy_cp = (yy_c_buf_p);
 
-	/* undo effects of setting up yytext */
+	/* undo effects of setting up yytext_c */
 	*yy_cp = (yy_hold_char);
 
 	if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
@@ -1364,7 +1364,7 @@ static int yy_get_next_buffer (void)
 		}
 
 	c = *(unsigned char *) (yy_c_buf_p);	/* cast for 8-bit char's */
-	*(yy_c_buf_p) = '\0';	/* preserve yytext */
+	*(yy_c_buf_p) = '\0';	/* preserve yytext_c */
 	(yy_hold_char) = *++(yy_c_buf_p);
 
 	return c;
@@ -1739,14 +1739,14 @@ static void yy_fatal_error (yyconst char* msg )
 #define yyless(n) \
 	do \
 		{ \
-		/* Undo effects of setting up yytext. */ \
+		/* Undo effects of setting up yytext_c. */ \
         int yyless_macro_arg = (n); \
         YY_LESS_LINENO(yyless_macro_arg);\
-		yytext[yyleng] = (yy_hold_char); \
-		(yy_c_buf_p) = yytext + yyless_macro_arg; \
+		yytext_c[yyleng_c] = (yy_hold_char); \
+		(yy_c_buf_p) = yytext_c + yyless_macro_arg; \
 		(yy_hold_char) = *(yy_c_buf_p); \
 		*(yy_c_buf_p) = '\0'; \
-		yyleng = yyless_macro_arg; \
+		yyleng_c = yyless_macro_arg; \
 		} \
 	while ( 0 )
 
@@ -1782,7 +1782,7 @@ FILE *yyget_out_c  (void)
  */
 yy_size_t yyget_leng_c  (void)
 {
-        return yyleng;
+        return yyleng_c;
 }
 
 /** Get the current token.
@@ -1791,7 +1791,7 @@ yy_size_t yyget_leng_c  (void)
 
 char *yyget_text_c  (void)
 {
-        return yytext;
+        return yytext_c;
 }
 
 /** Set the current line number.

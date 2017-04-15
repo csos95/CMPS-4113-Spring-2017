@@ -34,4 +34,6 @@ sed -e 's/yy_switch_to_buffer/yy_switch_to_buffer_c/g' \
  -e 's/yyin/yyin_c/g' \
  -e 's/yy_load_buffer_state/yy_load_buffer_state_c/g' \
  -e 's/yy_init_buffer/yy_init_buffer_c/g' \
+ -e 's/yytext/yytext_c/g' \
+ -e 's/yyleng/yyleng_c/g' \
  lex.yy.c.bak > lex.yy.c

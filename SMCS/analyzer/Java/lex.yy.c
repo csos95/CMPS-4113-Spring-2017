@@ -124,11 +124,11 @@ extern FILE *yyin_java, *yyout_java;
 #define yyless(n) \
 	do \
 		{ \
-		/* Undo effects of setting up yytext. */ \
+		/* Undo effects of setting up yytext_java. */ \
 		*yy_cp = yy_hold_char; \
 		YY_RESTORE_YY_MORE_OFFSET \
 		yy_c_buf_p = yy_cp = yy_bp + n - YY_MORE_ADJ; \
-		YY_DO_BEFORE_ACTION; /* set up yytext again */ \
+		YY_DO_BEFORE_ACTION; /* set up yytext_java again */ \
 		} \
 	while ( 0 )
 
@@ -207,7 +207,7 @@ static YY_BUFFER_STATE yy_current_buffer = 0;
 #define YY_CURRENT_BUFFER yy_current_buffer
 
 
-/* yy_hold_char holds the character lost when yytext is formed. */
+/* yy_hold_char holds the character lost when yytext_java is formed. */
 static char yy_hold_char;
 
 static int yy_n_chars;		/* number of characters read into yy_ch_buf */
@@ -264,8 +264,8 @@ static void yy_flex_free YY_PROTO(( void * ));
 typedef unsigned char YY_CHAR;
 FILE *yyin_java = (FILE *) 0, *yyout_java = (FILE *) 0;
 typedef int yy_state_type;
-extern char *yytext;
-#define yytext_ptr yytext
+extern char *yytext_java;
+#define yytext_ptr yytext_java
 
 static yy_state_type yy_get_previous_state YY_PROTO(( void ));
 static yy_state_type yy_try_NUL_trans YY_PROTO(( yy_state_type current_state ));
@@ -273,7 +273,7 @@ static int yy_get_next_buffer YY_PROTO(( void ));
 static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 
 /* Done after the current pattern has been matched and before the
- * corresponding action - sets up yytext.
+ * corresponding action - sets up yytext_java.
  */
 #define YY_DO_BEFORE_ACTION \
 	yytext_ptr = yy_bp; \
@@ -651,7 +651,7 @@ static char *yy_last_accepting_cpos;
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-char *yytext;
+char *yytext_java;
 #line 1 "scanner.l"
 #define INITIAL 0
 #line 2 "scanner.l"
@@ -736,7 +736,7 @@ YY_MALLOC_DECL
 /* This used to be an fputs(), but since the string might contain NUL's,
  * we now use fwrite().
  */
-#define ECHO (void) fwrite( yytext, yyleng, 1, yyout_java )
+#define ECHO (void) fwrite( yytext_java, yyleng, 1, yyout_java )
 #endif
 
 /* Gets input and stuffs it into "buf".  number of characters read, or YY_NULL,
@@ -786,7 +786,7 @@ YY_MALLOC_DECL
 #define YY_DECL int yylex_java YY_PROTO(( void ))
 #endif
 
-/* Code executed at the beginning of each rule, after yytext and yyleng
+/* Code executed at the beginning of each rule, after yytext_java and yyleng
  * have been set up.
  */
 #ifndef YY_USER_ACTION
@@ -840,7 +840,7 @@ YY_DECL
 		{
 		yy_cp = yy_c_buf_p;
 
-		/* Support of yytext. */
+		/* Support of yytext_java. */
 		*yy_cp = yy_hold_char;
 
 		/* yy_bp points to the position in yy_ch_buf of the start of
@@ -1345,7 +1345,7 @@ case YY_STATE_EOF(INITIAL):
 					{
 					/* Note: because we've taken care in
 					 * yy_get_next_buffer() to have set up
-					 * yytext, we can now set up
+					 * yytext_java, we can now set up
 					 * yy_c_buf_p so that if some total
 					 * hoser (like flex itself) wants to
 					 * call the scanner after we return the
@@ -1611,7 +1611,7 @@ register char *yy_bp;
 	{
 	register char *yy_cp = yy_c_buf_p;
 
-	/* undo effects of setting up yytext */
+	/* undo effects of setting up yytext_java */
 	*yy_cp = yy_hold_char;
 
 	if ( yy_cp < yy_current_buffer->yy_ch_buf + 2 )
@@ -1710,7 +1710,7 @@ static int input()
 		}
 
 	c = *(unsigned char *) yy_c_buf_p;	/* cast for 8-bit char's */
-	*yy_c_buf_p = '\0';	/* preserve yytext */
+	*yy_c_buf_p = '\0';	/* preserve yytext_java */
 	yy_hold_char = *++yy_c_buf_p;
 
 
@@ -2059,9 +2059,9 @@ char msg[];
 #define yyless(n) \
 	do \
 		{ \
-		/* Undo effects of setting up yytext. */ \
-		yytext[yyleng] = yy_hold_char; \
-		yy_c_buf_p = yytext + n; \
+		/* Undo effects of setting up yytext_java. */ \
+		yytext_java[yyleng] = yy_hold_char; \
+		yy_c_buf_p = yytext_java + n; \
 		yy_hold_char = *yy_c_buf_p; \
 		*yy_c_buf_p = '\0'; \
 		yyleng = n; \

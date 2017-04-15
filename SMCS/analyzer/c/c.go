@@ -10,7 +10,7 @@ extern void yy_delete_buffer_c(YY_BUFFER_STATE);
 
 extern int yylex_c(void);
 extern int yylineno;
-extern char* yytext;
+extern char* yytext_c;
 */
 import "C"
 
@@ -130,7 +130,7 @@ func Parse(source string) {
 }
 
 func NextToken() (string, string) {
-	return names[C.int(C.yylex_c())], C.GoString(C.yytext)
+	return names[C.int(C.yylex_c())], C.GoString(C.yytext_c)
 }
 
 func Close() {
