@@ -37,7 +37,7 @@
 	\begin{titlepage}
 		\flushright
 		\LARGE{ID-10-T}
-		\includegraphics[scale=0.08]{logo.png}
+		%\includegraphics[scale=0.08]{logo.png}
 		\rule{16cm}{5pt}\vskip1cm
 		\centering
 		\Huge{Software Metrics Calculation System}\\
@@ -58,11 +58,11 @@
 	\pagenumbering{roman}
 	\tableofcontents
 %============================================================================
-	\chapter{Introduction}
+	{\let\clearpage\relax \chapter{Introduction}}
 	\pagenumbering{arabic}
 	
-	\section{Test Purpose}
-	This document describes the plan for testing the Software Metrics Calculation System (SMCS) . This Test Plan document supports the following objectives:
+	\section{Purpose}
+	This document describes the plan for testing the Software Metrics Calculation System (SMCS). This Test Plan document supports the following objectives:
 	Identify the required resources and provide an estimate of the test efforts.
 	List the deliverable elements of the test activities.
 	Recommend and describe the testing strategies to be employed.
@@ -72,106 +72,72 @@
 	This software will calculate and display metrics about the users source code such as line of code, lines of documentation, cyclical complexity, etc.
 	These metrics will be used to give the user feedback on their code and to correct commonly made mistakes.
 	
-	\section{Scope}
-	This is a List of test type we are going to follow
-	\begin{itemize}
-		\item Test 1: Unit Testing 
-		\item Test 2: validation Testing 
-		\item Test 3: System Testing
-	\end{itemize}
+	\section{Test types}
+	The following is a list of test types we are going to follow
+	\subsection{Unit testing}
+	The purpose of Unit tests is to discover any incorrect or insufficient code. This will be achieved by focusing on the operations encapsulated by the class and the state behavior of the class.
+	\subsection{Validation testing}
+	Once the individual modules and their relative data structures and methods have been tested, the validation phase will check that SMCS meets specifications defined in the requirements document.
+	\subsection{System testing}
+	Once the unit and validation testing are completed, the software then undergoes system tests which interacts with input and tests the successfulness of the browsers and operating systems. 
 	
 %============================================================================
-	{\let\clearpage\relax \chapter{Testing Requirement}}
+	{\let\clearpage\relax \chapter{Scope and Objectives}}
+	Outlined below are the main test types that will be performed. All test plans and conditions will be developed from the requirements document and design diagram.
 	
-	\section{Hardware Requirements}
+	\section{Unit Testing}
+	The SMCS development progress will be reviewed at regularly scheduled meetings. Each review will correspond to one system module. The objective of the reviews is to ensure correctness and functional integrity within each module. Issues to consider are the correctness of tokenization, parameters and arguments as well as expected returned values from modules. The testing method used for this phase is white box testing.\\\\
+	\textbf{Entrance Criteria} - A new  module should be coded in time for each peer review. As the group meets every Saturday, a new module should be completed so that it can be reviewed and tested.\\
+	\textbf{Exit Criteria} - All errors identified, during formal reviews and unit testing are fixed and tested.
 	
+	\section{Validation Testing}
+	The validation testing will prove that the minimum metrics specified from the requirements document will be implemented and their results will be correct. The actual testing method used for this phase is alpha testing.\\\\
+	\textbf{Entrance Criteria} - Enough code is provided and unit tested so that the user can complete the alpha testing successfully.\\
+	\textbf{Exit Criteria} - All errors from validation tests must be fixed or otherwise documented.
+	
+	\section{System testing}
+	This test phase proves that the system requirements are met as defined in the requirements document. This should prove that the SMCS will be successful on the specified operating systems as well as different internet browsers.\\\\
+	\textbf{Entrance Criteria} - All modules and classes are implemented, unit tested and validation tested.\\
+	\textbf{Exit Criteria} - All errors from the system test must be fixed or otherwise documented.
+	
+	\section{Testing strategy}
+	The testing strategy will utilize predominantly white box testing and alpha testing.
+%============================================================================	
 
-	\section{Software Requirements}
-	Operating System: Windows XP, OS X 10.7, Linux 2.6.23\\
-	Web Browser: Firefox, Chrome, Edge, Safari\\
+	{\let\clearpage\relax \chapter{Testing Requirements}}
+	The testing phases will require atleast five PCs with the following specifications:
+	\section{Hardware}
+	\begin{itemize}
+		\item 32 bit architecture
+		\item at least 500 MHz processor speed
+		\item at least 64 MB RAM
+	\end{itemize}
+
+	\section{Software}
+	\begin{itemize}
+		\item Windows XP, OS X 10.7, Linux 2.6.23 operating systems
+		\item Firefox, Chrome, Edge, Safari web browser
+	\end{itemize}
 
 %============================================================================
-	{\let\clearpage\relax \chapter{Getting Started}}
-	\section{How to Start SMCS}
-	To start SMCS in standalone mode simply double click on the application. 
-	This will start a local web server on port 8080 and launch your default web browser to the SMCS code submission page. 
-	If you wish to host SMCS on a server so that it is accessible from anywhere, open config.json and change the "standalone" configuration option to false, ensure that port 8080 is forwarded correctly and then start SMCS. 
-	SMCS will only open the web browser if it is in standalone mode.
+	{\let\clearpage\relax \chapter{Recording Procedures}}
+	During each test phase, errors will be recorded as they are detected. Errors will be categorized as high or low priority based on their impact on system performance.
+	\section{Unit test results}
+	All errors recorded during the unit test phase of each module along with the action taken to correct the error will be documented as a Unit test result.
 
-	\section{User interface}
-	The user interface is split into two pages, a source code submission page, and an analysis results page. The next three pages show these two pages labeled with descriptions of the UI elements.
+	\section{Validation test results}
+	All errors recorded during the validation test phase along with the category of the error, status of the error and action taken will be documented as a validation test result.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.7]{lguiu.png}
-		\caption{Source Code Submission page with labeled elements}
-	\end{figure}
+	\section{System test results}
+	All errors recorded during the system test phase along with the category of the error, status of the error and action taken will be documented as a system test result.
 	
-	This page is used to select the source code and metrics you want to use in the analysis.
-	
-	\begin{enumerate}
-		\item Choose File - Use this button to select a source code file.
-		\item Language Selection - If the correct language is not automatically selected, use this combobox to select the correct one.
-		\item Metrics Selection - Use these checkboxes to select the metrics you wish to use.
-		\item Upload - Use this button to run the selected metrics on your source code.
-		\item File Name - This is the file that is currently selected.
-	\end{enumerate}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.7]{lguir.png}
-		\caption{Analysis Results page with labeled elements}
-	\end{figure}
-	
-	This page shows your selected source code and the results of the analysis.
-	
-	\begin{enumerate}
-		\item Source Code - Your selected source code file syntax highlighted
-		\item Metrics Results - A listing of the results of the metrics you selected.
-	\end{enumerate}
 	
 
 %============================================================================
-	{\let\clearpage\relax \chapter{Available Metrics}}
-	This chapter describes the metrics available to use in SMCS.
+	{\let\clearpage\relax \chapter{Test Results}}
+	This chapter defines and describes the results of the testing process.
+	%insert table
 	
-	\section{Lines of ...}
-	\begin{itemize}
-		\item Code - The number of lines of code in your source.
-		\item Documentation - The number of lines of documentation in your source.
-		\item Ratio - The ration of Lines of Code to Lines of Documentation. It could be a problem if the ratio of documentation to code is too low.
-		\item Whitespace - The number of blank lines in you source.
-		\item Total Lines - The total number of lines in your source.
-	\end{itemize}
-	Note: A line that contains code and documentation will be counted as both a line of code and documentation.
-	
-	\section{Number of ...}
-	\begin{itemize}
-		\item Functions - The number of functions in your source.
-		\item Function parameters - The number of parameters in each function. If you have too many parameters in a function it could cause trouble, especially if it is used often.
-		\item Classes - The number of 
-		\item Methods per Class - The number of methods in each class.
-		\item Lines per Function - the number of lines in each function.
-	\end{itemize}
-	
-	\section{Cyclomatic Complexity}
-	Cyclomatic Complexity is the number of linearly independent paths within a program. \\
-	It is used to measure the complexity of a program. \\
-	
-	Example C code:
-	\begin{lstlisting}
-	if (A == 10) {
-	    if (B > C) {
-	        A = B;
-	    } else {
-	        A = C;
-	    }
-	}
-	printf(A);
-	printf(B);
-	printf(C);
-	\end{lstlisting}
-	This code has a three  separate paths that it can take so it has a cyclomatic complexity of three. 
 
 %============================================================================	
 	{\let\clearpage\relax \chapter{Appendix}}
@@ -196,4 +162,10 @@
 			Da Dong           & 940-782-4567 \\ \hline
 			Shujing Zhang     & 940-782-6789 \\ \hline
 		\end{tabular}
+	
+%============================================================================
+	{\let\clearpage\relax \chapter{Glossary}}
+	%alpha testing
+	%white box testing
+
 \end{document}

@@ -89,7 +89,7 @@
 #define YY_STATE_EOF(state) (YY_END_OF_BUFFER + state + 1)
 
 /* Special action meaning "start processing a new file". */
-#define YY_NEW_FILE yyrestart_java( yyin_java )
+#define YY_NEW_FILE yyrestart( yyin )
 
 #define YY_END_OF_BUFFER_CHAR 0
 
@@ -98,8 +98,8 @@
 
 typedef struct yy_buffer_state *YY_BUFFER_STATE;
 
-extern int yyleng_java;
-extern FILE *yyin_java, *yyout_java;
+extern int yyleng;
+extern FILE *yyin, *yyout;
 
 #define EOB_ACT_CONTINUE_SCAN 0
 #define EOB_ACT_END_OF_FILE 1
@@ -124,15 +124,15 @@ extern FILE *yyin_java, *yyout_java;
 #define yyless(n) \
 	do \
 		{ \
-		/* Undo effects of setting up yytext_java. */ \
+		/* Undo effects of setting up yytext. */ \
 		*yy_cp = yy_hold_char; \
 		YY_RESTORE_YY_MORE_OFFSET \
 		yy_c_buf_p = yy_cp = yy_bp + n - YY_MORE_ADJ; \
-		YY_DO_BEFORE_ACTION; /* set up yytext_java again */ \
+		YY_DO_BEFORE_ACTION; /* set up yytext again */ \
 		} \
 	while ( 0 )
 
-#define unput(c) yyunput( c, yytext_java_ptr )
+#define unput(c) yyunput( c, yytext_ptr )
 
 /* The following is because we cannot portably get our hands on size_t
  * (without autoconf's help, which isn't available because we want
@@ -192,8 +192,8 @@ struct yy_buffer_state
 	 * possible backing-up.
 	 *
 	 * When we actually see the EOF, we change the status to "new"
-	 * (via yyrestart_java()), so that the user can continue scanning by
-	 * just pointing yyin_java at a new input file.
+	 * (via yyrestart()), so that the user can continue scanning by
+	 * just pointing yyin at a new input file.
 	 */
 #define YY_BUFFER_EOF_PENDING 2
 	};
@@ -207,65 +207,65 @@ static YY_BUFFER_STATE yy_current_buffer = 0;
 #define YY_CURRENT_BUFFER yy_current_buffer
 
 
-/* yy_hold_char holds the character lost when yytext_java is formed. */
+/* yy_hold_char holds the character lost when yytext is formed. */
 static char yy_hold_char;
 
 static int yy_n_chars;		/* number of characters read into yy_ch_buf */
 
 
-int yyleng_java;
+int yyleng;
 
 /* Points to current character in buffer. */
 static char *yy_c_buf_p = (char *) 0;
 static int yy_init = 1;		/* whether we need to initialize */
 static int yy_start = 0;	/* start state number */
 
-/* Flag which is used to allow yywrap_java()'s to do buffer switches
- * instead of setting up a fresh yyin_java.  A bit of a hack ...
+/* Flag which is used to allow yywrap()'s to do buffer switches
+ * instead of setting up a fresh yyin.  A bit of a hack ...
  */
 static int yy_did_buffer_switch_on_eof;
 
-void yyrestart_java YY_PROTO(( FILE *input_file ));
+void yyrestart YY_PROTO(( FILE *input_file ));
 
-void yy_switch_to_buffer_java YY_PROTO(( YY_BUFFER_STATE new_buffer ));
-void yy_load_buffer_state_java YY_PROTO(( void ));
-YY_BUFFER_STATE yy_create_buffer_java YY_PROTO(( FILE *file, int size ));
-void yy_delete_buffer_java YY_PROTO(( YY_BUFFER_STATE b ));
-void yy_init_buffer_java YY_PROTO(( YY_BUFFER_STATE b, FILE *file ));
-void yy_flush_buffer_java YY_PROTO(( YY_BUFFER_STATE b ));
-#define YY_FLUSH_BUFFER yy_flush_buffer_java( yy_current_buffer )
+void yy_switch_to_buffer YY_PROTO(( YY_BUFFER_STATE new_buffer ));
+void yy_load_buffer_state YY_PROTO(( void ));
+YY_BUFFER_STATE yy_create_buffer YY_PROTO(( FILE *file, int size ));
+void yy_delete_buffer YY_PROTO(( YY_BUFFER_STATE b ));
+void yy_init_buffer YY_PROTO(( YY_BUFFER_STATE b, FILE *file ));
+void yy_flush_buffer YY_PROTO(( YY_BUFFER_STATE b ));
+#define YY_FLUSH_BUFFER yy_flush_buffer( yy_current_buffer )
 
-YY_BUFFER_STATE yy_scan_buffer_java YY_PROTO(( char *base, yy_size_t size ));
-YY_BUFFER_STATE yy_scan_string_java YY_PROTO(( yyconst char *yy_str ));
-YY_BUFFER_STATE yy_scan_bytes_java YY_PROTO(( yyconst char *bytes, int len ));
+YY_BUFFER_STATE yy_scan_buffer YY_PROTO(( char *base, yy_size_t size ));
+YY_BUFFER_STATE yy_scan_string YY_PROTO(( yyconst char *yy_str ));
+YY_BUFFER_STATE yy_scan_bytes YY_PROTO(( yyconst char *bytes, int len ));
 
 static void *yy_flex_alloc YY_PROTO(( yy_size_t ));
 static void *yy_flex_realloc YY_PROTO(( void *, yy_size_t ));
 static void yy_flex_free YY_PROTO(( void * ));
 
-#define yy_new_buffer yy_create_buffer_java
+#define yy_new_buffer yy_create_buffer
 
 #define yy_set_interactive(is_interactive) \
 	{ \
 	if ( ! yy_current_buffer ) \
-		yy_current_buffer = yy_create_buffer_java( yyin_java, YY_BUF_SIZE ); \
+		yy_current_buffer = yy_create_buffer( yyin, YY_BUF_SIZE ); \
 	yy_current_buffer->yy_is_interactive = is_interactive; \
 	}
 
 #define yy_set_bol(at_bol) \
 	{ \
 	if ( ! yy_current_buffer ) \
-		yy_current_buffer = yy_create_buffer_java( yyin_java, YY_BUF_SIZE ); \
+		yy_current_buffer = yy_create_buffer( yyin, YY_BUF_SIZE ); \
 	yy_current_buffer->yy_at_bol = at_bol; \
 	}
 
 #define YY_AT_BOL() (yy_current_buffer->yy_at_bol)
 
 typedef unsigned char YY_CHAR;
-FILE *yyin_java = (FILE *) 0, *yyout_java = (FILE *) 0;
+FILE *yyin = (FILE *) 0, *yyout = (FILE *) 0;
 typedef int yy_state_type;
-extern char *yytext_java;
-#define yytext_java_ptr yytext_java
+extern char *yytext;
+#define yytext_ptr yytext
 
 static yy_state_type yy_get_previous_state YY_PROTO(( void ));
 static yy_state_type yy_try_NUL_trans YY_PROTO(( yy_state_type current_state ));
@@ -273,11 +273,11 @@ static int yy_get_next_buffer YY_PROTO(( void ));
 static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 
 /* Done after the current pattern has been matched and before the
- * corresponding action - sets up yytext_java.
+ * corresponding action - sets up yytext.
  */
 #define YY_DO_BEFORE_ACTION \
-	yytext_java_ptr = yy_bp; \
-	yyleng_java = (int) (yy_cp - yy_bp); \
+	yytext_ptr = yy_bp; \
+	yyleng = (int) (yy_cp - yy_bp); \
 	yy_hold_char = *yy_cp; \
 	*yy_cp = '\0'; \
 	yy_c_buf_p = yy_cp;
@@ -651,7 +651,7 @@ static char *yy_last_accepting_cpos;
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-char *yytext_java;
+char *yytext;
 #line 1 "scanner.l"
 #define INITIAL 0
 #line 2 "scanner.l"
@@ -664,9 +664,9 @@ char *yytext_java;
 
 #ifndef YY_SKIP_YYWRAP
 #ifdef __cplusplus
-extern "C" int yywrap_java YY_PROTO(( void ));
+extern "C" int yywrap YY_PROTO(( void ));
 #else
-extern int yywrap_java YY_PROTO(( void ));
+extern int yywrap YY_PROTO(( void ));
 #endif
 #endif
 
@@ -674,7 +674,7 @@ extern int yywrap_java YY_PROTO(( void ));
 static void yyunput YY_PROTO(( int c, char *buf_ptr ));
 #endif
 
-#ifndef yytext_java_ptr
+#ifndef yytext_ptr
 static void yy_flex_strncpy YY_PROTO(( char *, yyconst char *, int ));
 #endif
 
@@ -684,7 +684,7 @@ static int yy_flex_strlen YY_PROTO(( yyconst char * ));
 
 #ifndef YY_NO_INPUT
 #ifdef __cplusplus
-static int yyin_javaput YY_PROTO(( void ));
+static int yyinput YY_PROTO(( void ));
 #else
 static int input YY_PROTO(( void ));
 #endif
@@ -736,7 +736,7 @@ YY_MALLOC_DECL
 /* This used to be an fputs(), but since the string might contain NUL's,
  * we now use fwrite().
  */
-#define ECHO (void) fwrite( yytext_java, yyleng_java, 1, yyout_java )
+#define ECHO (void) fwrite( yytext, yyleng, 1, yyout )
 #endif
 
 /* Gets input and stuffs it into "buf".  number of characters read, or YY_NULL,
@@ -748,16 +748,16 @@ YY_MALLOC_DECL
 		{ \
 		int c = '*', n; \
 		for ( n = 0; n < max_size && \
-			     (c = getc( yyin_java )) != EOF && c != '\n'; ++n ) \
+			     (c = getc( yyin )) != EOF && c != '\n'; ++n ) \
 			buf[n] = (char) c; \
 		if ( c == '\n' ) \
 			buf[n++] = (char) c; \
-		if ( c == EOF && ferror( yyin_java ) ) \
+		if ( c == EOF && ferror( yyin ) ) \
 			YY_FATAL_ERROR( "input in flex scanner failed" ); \
 		result = n; \
 		} \
-	else if ( ((result = fread( buf, 1, max_size, yyin_java )) == 0) \
-		  && ferror( yyin_java ) ) \
+	else if ( ((result = fread( buf, 1, max_size, yyin )) == 0) \
+		  && ferror( yyin ) ) \
 		YY_FATAL_ERROR( "input in flex scanner failed" );
 #endif
 
@@ -783,10 +783,10 @@ YY_MALLOC_DECL
  * easily add parameters.
  */
 #ifndef YY_DECL
-#define YY_DECL int yylex_java YY_PROTO(( void ))
+#define YY_DECL int yylex YY_PROTO(( void ))
 #endif
 
-/* Code executed at the beginning of each rule, after yytext_java and yyleng_java
+/* Code executed at the beginning of each rule, after yytext and yyleng
  * have been set up.
  */
 #ifndef YY_USER_ACTION
@@ -823,24 +823,24 @@ YY_DECL
 		if ( ! yy_start )
 			yy_start = 1;	/* first start state */
 
-		if ( ! yyin_java )
-			yyin_java = stdin;
+		if ( ! yyin )
+			yyin = stdin;
 
-		if ( ! yyout_java )
-			yyout_java = stdout;
+		if ( ! yyout )
+			yyout = stdout;
 
 		if ( ! yy_current_buffer )
 			yy_current_buffer =
-				yy_create_buffer_java( yyin_java, YY_BUF_SIZE );
+				yy_create_buffer( yyin, YY_BUF_SIZE );
 
-		yy_load_buffer_state_java();
+		yy_load_buffer_state();
 		}
 
 	while ( 1 )		/* loops until end-of-file is reached */
 		{
 		yy_cp = yy_c_buf_p;
 
-		/* Support of yytext_java. */
+		/* Support of yytext. */
 		*yy_cp = yy_hold_char;
 
 		/* yy_bp points to the position in yy_ch_buf of the start of
@@ -1270,7 +1270,7 @@ case YY_STATE_EOF(INITIAL):
 	case YY_END_OF_BUFFER:
 		{
 		/* Amount of text matched not including the EOB char. */
-		int yy_amount_of_matched_text = (int) (yy_cp - yytext_java_ptr) - 1;
+		int yy_amount_of_matched_text = (int) (yy_cp - yytext_ptr) - 1;
 
 		/* Undo the effects of YY_DO_BEFORE_ACTION. */
 		*yy_cp = yy_hold_char;
@@ -1280,15 +1280,15 @@ case YY_STATE_EOF(INITIAL):
 			{
 			/* We're scanning a new file or input source.  It's
 			 * possible that this happened because the user
-			 * just pointed yyin_java at a new source and called
-			 * yylex_java().  If so, then we have to assure
+			 * just pointed yyin at a new source and called
+			 * yylex().  If so, then we have to assure
 			 * consistency between yy_current_buffer and our
 			 * globals.  Here is the right place to do so, because
 			 * this is the first action (other than possibly a
 			 * back-up) that will match for the new input source.
 			 */
 			yy_n_chars = yy_current_buffer->yy_n_chars;
-			yy_current_buffer->yy_input_file = yyin_java;
+			yy_current_buffer->yy_input_file = yyin;
 			yy_current_buffer->yy_buffer_status = YY_BUFFER_NORMAL;
 			}
 
@@ -1303,7 +1303,7 @@ case YY_STATE_EOF(INITIAL):
 			{ /* This was really a NUL. */
 			yy_state_type yy_next_state;
 
-			yy_c_buf_p = yytext_java_ptr + yy_amount_of_matched_text;
+			yy_c_buf_p = yytext_ptr + yy_amount_of_matched_text;
 
 			yy_current_state = yy_get_previous_state();
 
@@ -1318,7 +1318,7 @@ case YY_STATE_EOF(INITIAL):
 
 			yy_next_state = yy_try_NUL_trans( yy_current_state );
 
-			yy_bp = yytext_java_ptr + YY_MORE_ADJ;
+			yy_bp = yytext_ptr + YY_MORE_ADJ;
 
 			if ( yy_next_state )
 				{
@@ -1341,18 +1341,18 @@ case YY_STATE_EOF(INITIAL):
 				{
 				yy_did_buffer_switch_on_eof = 0;
 
-				if ( yywrap_java() )
+				if ( yywrap() )
 					{
 					/* Note: because we've taken care in
 					 * yy_get_next_buffer() to have set up
-					 * yytext_java, we can now set up
+					 * yytext, we can now set up
 					 * yy_c_buf_p so that if some total
 					 * hoser (like flex itself) wants to
 					 * call the scanner after we return the
 					 * YY_NULL, it'll still work - another
 					 * YY_NULL will get returned.
 					 */
-					yy_c_buf_p = yytext_java_ptr + YY_MORE_ADJ;
+					yy_c_buf_p = yytext_ptr + YY_MORE_ADJ;
 
 					yy_act = YY_STATE_EOF(YY_START);
 					goto do_action;
@@ -1368,12 +1368,12 @@ case YY_STATE_EOF(INITIAL):
 
 			case EOB_ACT_CONTINUE_SCAN:
 				yy_c_buf_p =
-					yytext_java_ptr + yy_amount_of_matched_text;
+					yytext_ptr + yy_amount_of_matched_text;
 
 				yy_current_state = yy_get_previous_state();
 
 				yy_cp = yy_c_buf_p;
-				yy_bp = yytext_java_ptr + YY_MORE_ADJ;
+				yy_bp = yytext_ptr + YY_MORE_ADJ;
 				goto yy_match;
 
 			case EOB_ACT_LAST_MATCH:
@@ -1383,7 +1383,7 @@ case YY_STATE_EOF(INITIAL):
 				yy_current_state = yy_get_previous_state();
 
 				yy_cp = yy_c_buf_p;
-				yy_bp = yytext_java_ptr + YY_MORE_ADJ;
+				yy_bp = yytext_ptr + YY_MORE_ADJ;
 				goto yy_find_action;
 			}
 		break;
@@ -1394,7 +1394,7 @@ case YY_STATE_EOF(INITIAL):
 			"fatal flex scanner internal error--no action found" );
 	} /* end of action switch */
 		} /* end of scanning one token */
-	} /* end of yylex_java */
+	} /* end of yylex */
 
 
 /* yy_get_next_buffer - try to read in a new buffer
@@ -1408,7 +1408,7 @@ case YY_STATE_EOF(INITIAL):
 static int yy_get_next_buffer()
 	{
 	register char *dest = yy_current_buffer->yy_ch_buf;
-	register char *source = yytext_java_ptr;
+	register char *source = yytext_ptr;
 	register int number_to_move, i;
 	int ret_val;
 
@@ -1418,7 +1418,7 @@ static int yy_get_next_buffer()
 
 	if ( yy_current_buffer->yy_fill_buffer == 0 )
 		{ /* Don't try to fill the buffer, so this is an EOF. */
-		if ( yy_c_buf_p - yytext_java_ptr - YY_MORE_ADJ == 1 )
+		if ( yy_c_buf_p - yytext_ptr - YY_MORE_ADJ == 1 )
 			{
 			/* We matched a single character, the EOB, so
 			 * treat this as a final EOF.
@@ -1438,7 +1438,7 @@ static int yy_get_next_buffer()
 	/* Try to read more data. */
 
 	/* First move last chars to start of buffer. */
-	number_to_move = (int) (yy_c_buf_p - yytext_java_ptr) - 1;
+	number_to_move = (int) (yy_c_buf_p - yytext_ptr) - 1;
 
 	for ( i = 0; i < number_to_move; ++i )
 		*(dest++) = *(source++);
@@ -1511,7 +1511,7 @@ static int yy_get_next_buffer()
 		if ( number_to_move == YY_MORE_ADJ )
 			{
 			ret_val = EOB_ACT_END_OF_FILE;
-			yyrestart_java( yyin_java );
+			yyrestart( yyin );
 			}
 
 		else
@@ -1529,7 +1529,7 @@ static int yy_get_next_buffer()
 	yy_current_buffer->yy_ch_buf[yy_n_chars] = YY_END_OF_BUFFER_CHAR;
 	yy_current_buffer->yy_ch_buf[yy_n_chars + 1] = YY_END_OF_BUFFER_CHAR;
 
-	yytext_java_ptr = &yy_current_buffer->yy_ch_buf[0];
+	yytext_ptr = &yy_current_buffer->yy_ch_buf[0];
 
 	return ret_val;
 	}
@@ -1544,7 +1544,7 @@ static yy_state_type yy_get_previous_state()
 
 	yy_current_state = yy_start;
 
-	for ( yy_cp = yytext_java_ptr + YY_MORE_ADJ; yy_cp < yy_c_buf_p; ++yy_cp )
+	for ( yy_cp = yytext_ptr + YY_MORE_ADJ; yy_cp < yy_c_buf_p; ++yy_cp )
 		{
 		register YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1);
 		if ( yy_accept[yy_current_state] )
@@ -1611,7 +1611,7 @@ register char *yy_bp;
 	{
 	register char *yy_cp = yy_c_buf_p;
 
-	/* undo effects of setting up yytext_java */
+	/* undo effects of setting up yytext */
 	*yy_cp = yy_hold_char;
 
 	if ( yy_cp < yy_current_buffer->yy_ch_buf + 2 )
@@ -1638,7 +1638,7 @@ register char *yy_bp;
 	*--yy_cp = (char) c;
 
 
-	yytext_java_ptr = yy_bp;
+	yytext_ptr = yy_bp;
 	yy_hold_char = *yy_cp;
 	yy_c_buf_p = yy_cp;
 	}
@@ -1646,7 +1646,7 @@ register char *yy_bp;
 
 
 #ifdef __cplusplus
-static int yyin_javaput()
+static int yyinput()
 #else
 static int input()
 #endif
@@ -1667,7 +1667,7 @@ static int input()
 
 		else
 			{ /* need more input */
-			int offset = yy_c_buf_p - yytext_java_ptr;
+			int offset = yy_c_buf_p - yytext_ptr;
 			++yy_c_buf_p;
 
 			switch ( yy_get_next_buffer() )
@@ -1684,33 +1684,33 @@ static int input()
 					 */
 
 					/* Reset buffer status. */
-					yyrestart_java( yyin_java );
+					yyrestart( yyin );
 
 					/* fall through */
 
 				case EOB_ACT_END_OF_FILE:
 					{
-					if ( yywrap_java() )
+					if ( yywrap() )
 						return EOF;
 
 					if ( ! yy_did_buffer_switch_on_eof )
 						YY_NEW_FILE;
 #ifdef __cplusplus
-					return yyin_javaput();
+					return yyinput();
 #else
 					return input();
 #endif
 					}
 
 				case EOB_ACT_CONTINUE_SCAN:
-					yy_c_buf_p = yytext_java_ptr + offset;
+					yy_c_buf_p = yytext_ptr + offset;
 					break;
 				}
 			}
 		}
 
 	c = *(unsigned char *) yy_c_buf_p;	/* cast for 8-bit char's */
-	*yy_c_buf_p = '\0';	/* preserve yytext_java */
+	*yy_c_buf_p = '\0';	/* preserve yytext */
 	yy_hold_char = *++yy_c_buf_p;
 
 
@@ -1719,24 +1719,24 @@ static int input()
 
 
 #ifdef YY_USE_PROTOS
-void yyrestart_java( FILE *input_file )
+void yyrestart( FILE *input_file )
 #else
-void yyrestart_java( input_file )
+void yyrestart( input_file )
 FILE *input_file;
 #endif
 	{
 	if ( ! yy_current_buffer )
-		yy_current_buffer = yy_create_buffer_java( yyin_java, YY_BUF_SIZE );
+		yy_current_buffer = yy_create_buffer( yyin, YY_BUF_SIZE );
 
-	yy_init_buffer_java( yy_current_buffer, input_file );
-	yy_load_buffer_state_java();
+	yy_init_buffer( yy_current_buffer, input_file );
+	yy_load_buffer_state();
 	}
 
 
 #ifdef YY_USE_PROTOS
-void yy_switch_to_buffer_java( YY_BUFFER_STATE new_buffer )
+void yy_switch_to_buffer( YY_BUFFER_STATE new_buffer )
 #else
-void yy_switch_to_buffer_java( new_buffer )
+void yy_switch_to_buffer( new_buffer )
 YY_BUFFER_STATE new_buffer;
 #endif
 	{
@@ -1752,11 +1752,11 @@ YY_BUFFER_STATE new_buffer;
 		}
 
 	yy_current_buffer = new_buffer;
-	yy_load_buffer_state_java();
+	yy_load_buffer_state();
 
 	/* We don't actually know whether we did this switch during
-	 * EOF (yywrap_java()) processing, but the only time this flag
-	 * is looked at is after yywrap_java() is called, so it's safe
+	 * EOF (yywrap()) processing, but the only time this flag
+	 * is looked at is after yywrap() is called, so it's safe
 	 * to go ahead and always set it.
 	 */
 	yy_did_buffer_switch_on_eof = 1;
@@ -1764,22 +1764,22 @@ YY_BUFFER_STATE new_buffer;
 
 
 #ifdef YY_USE_PROTOS
-void yy_load_buffer_state_java( void )
+void yy_load_buffer_state( void )
 #else
-void yy_load_buffer_state_java()
+void yy_load_buffer_state()
 #endif
 	{
 	yy_n_chars = yy_current_buffer->yy_n_chars;
-	yytext_java_ptr = yy_c_buf_p = yy_current_buffer->yy_buf_pos;
-	yyin_java = yy_current_buffer->yy_input_file;
+	yytext_ptr = yy_c_buf_p = yy_current_buffer->yy_buf_pos;
+	yyin = yy_current_buffer->yy_input_file;
 	yy_hold_char = *yy_c_buf_p;
 	}
 
 
 #ifdef YY_USE_PROTOS
-YY_BUFFER_STATE yy_create_buffer_java( FILE *file, int size )
+YY_BUFFER_STATE yy_create_buffer( FILE *file, int size )
 #else
-YY_BUFFER_STATE yy_create_buffer_java( file, size )
+YY_BUFFER_STATE yy_create_buffer( file, size )
 FILE *file;
 int size;
 #endif
@@ -1788,7 +1788,7 @@ int size;
 
 	b = (YY_BUFFER_STATE) yy_flex_alloc( sizeof( struct yy_buffer_state ) );
 	if ( ! b )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer_java()" );
+		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer()" );
 
 	b->yy_buf_size = size;
 
@@ -1797,20 +1797,20 @@ int size;
 	 */
 	b->yy_ch_buf = (char *) yy_flex_alloc( b->yy_buf_size + 2 );
 	if ( ! b->yy_ch_buf )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer_java()" );
+		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer()" );
 
 	b->yy_is_our_buffer = 1;
 
-	yy_init_buffer_java( b, file );
+	yy_init_buffer( b, file );
 
 	return b;
 	}
 
 
 #ifdef YY_USE_PROTOS
-void yy_delete_buffer_java( YY_BUFFER_STATE b )
+void yy_delete_buffer( YY_BUFFER_STATE b )
 #else
-void yy_delete_buffer_java( b )
+void yy_delete_buffer( b )
 YY_BUFFER_STATE b;
 #endif
 	{
@@ -1834,16 +1834,16 @@ extern int isatty YY_PROTO(( int ));
 #endif
 
 #ifdef YY_USE_PROTOS
-void yy_init_buffer_java( YY_BUFFER_STATE b, FILE *file )
+void yy_init_buffer( YY_BUFFER_STATE b, FILE *file )
 #else
-void yy_init_buffer_java( b, file )
+void yy_init_buffer( b, file )
 YY_BUFFER_STATE b;
 FILE *file;
 #endif
 
 
 	{
-	yy_flush_buffer_java( b );
+	yy_flush_buffer( b );
 
 	b->yy_input_file = file;
 	b->yy_fill_buffer = 1;
@@ -1861,9 +1861,9 @@ FILE *file;
 
 
 #ifdef YY_USE_PROTOS
-void yy_flush_buffer_java( YY_BUFFER_STATE b )
+void yy_flush_buffer( YY_BUFFER_STATE b )
 #else
-void yy_flush_buffer_java( b )
+void yy_flush_buffer( b )
 YY_BUFFER_STATE b;
 #endif
 
@@ -1886,15 +1886,15 @@ YY_BUFFER_STATE b;
 	b->yy_buffer_status = YY_BUFFER_NEW;
 
 	if ( b == yy_current_buffer )
-		yy_load_buffer_state_java();
+		yy_load_buffer_state();
 	}
 
 
 #ifndef YY_NO_SCAN_BUFFER
 #ifdef YY_USE_PROTOS
-YY_BUFFER_STATE yy_scan_buffer_java( char *base, yy_size_t size )
+YY_BUFFER_STATE yy_scan_buffer( char *base, yy_size_t size )
 #else
-YY_BUFFER_STATE yy_scan_buffer_java( base, size )
+YY_BUFFER_STATE yy_scan_buffer( base, size )
 char *base;
 yy_size_t size;
 #endif
@@ -1909,7 +1909,7 @@ yy_size_t size;
 
 	b = (YY_BUFFER_STATE) yy_flex_alloc( sizeof( struct yy_buffer_state ) );
 	if ( ! b )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_scan_buffer_java()" );
+		YY_FATAL_ERROR( "out of dynamic memory in yy_scan_buffer()" );
 
 	b->yy_buf_size = size - 2;	/* "- 2" to take care of EOB's */
 	b->yy_buf_pos = b->yy_ch_buf = base;
@@ -1921,7 +1921,7 @@ yy_size_t size;
 	b->yy_fill_buffer = 0;
 	b->yy_buffer_status = YY_BUFFER_NEW;
 
-	yy_switch_to_buffer_java( b );
+	yy_switch_to_buffer( b );
 
 	return b;
 	}
@@ -1930,9 +1930,9 @@ yy_size_t size;
 
 #ifndef YY_NO_SCAN_STRING
 #ifdef YY_USE_PROTOS
-YY_BUFFER_STATE yy_scan_string_java( yyconst char *yy_str )
+YY_BUFFER_STATE yy_scan_string( yyconst char *yy_str )
 #else
-YY_BUFFER_STATE yy_scan_string_java( yy_str )
+YY_BUFFER_STATE yy_scan_string( yy_str )
 yyconst char *yy_str;
 #endif
 	{
@@ -1940,16 +1940,16 @@ yyconst char *yy_str;
 	for ( len = 0; yy_str[len]; ++len )
 		;
 
-	return yy_scan_bytes_java( yy_str, len );
+	return yy_scan_bytes( yy_str, len );
 	}
 #endif
 
 
 #ifndef YY_NO_SCAN_BYTES
 #ifdef YY_USE_PROTOS
-YY_BUFFER_STATE yy_scan_bytes_java( yyconst char *bytes, int len )
+YY_BUFFER_STATE yy_scan_bytes( yyconst char *bytes, int len )
 #else
-YY_BUFFER_STATE yy_scan_bytes_java( bytes, len )
+YY_BUFFER_STATE yy_scan_bytes( bytes, len )
 yyconst char *bytes;
 int len;
 #endif
@@ -1963,16 +1963,16 @@ int len;
 	n = len + 2;
 	buf = (char *) yy_flex_alloc( n );
 	if ( ! buf )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_scan_bytes_java()" );
+		YY_FATAL_ERROR( "out of dynamic memory in yy_scan_bytes()" );
 
 	for ( i = 0; i < len; ++i )
 		buf[i] = bytes[i];
 
 	buf[len] = buf[len+1] = YY_END_OF_BUFFER_CHAR;
 
-	b = yy_scan_buffer_java( buf, n );
+	b = yy_scan_buffer( buf, n );
 	if ( ! b )
-		YY_FATAL_ERROR( "bad buffer in yy_scan_bytes_java()" );
+		YY_FATAL_ERROR( "bad buffer in yy_scan_bytes()" );
 
 	/* It's okay to grow etc. this buffer, and we should throw it
 	 * away when we're done.
@@ -2059,19 +2059,19 @@ char msg[];
 #define yyless(n) \
 	do \
 		{ \
-		/* Undo effects of setting up yytext_java. */ \
-		yytext_java[yyleng_java] = yy_hold_char; \
-		yy_c_buf_p = yytext_java + n; \
+		/* Undo effects of setting up yytext. */ \
+		yytext[yyleng] = yy_hold_char; \
+		yy_c_buf_p = yytext + n; \
 		yy_hold_char = *yy_c_buf_p; \
 		*yy_c_buf_p = '\0'; \
-		yyleng_java = n; \
+		yyleng = n; \
 		} \
 	while ( 0 )
 
 
 /* Internal utility routines. */
 
-#ifndef yytext_java_ptr
+#ifndef yytext_ptr
 #ifdef YY_USE_PROTOS
 static void yy_flex_strncpy( char *s1, yyconst char *s2, int n )
 #else
@@ -2145,13 +2145,13 @@ void *ptr;
 #if YY_MAIN
 int main()
 	{
-	yylex_java();
+	yylex();
 	return 0;
 	}
 #endif
 #line 90 "scanner.l"
 
 
-int yywrap_java(void) {
+int yywrap(void) {
     return 1;
 }
