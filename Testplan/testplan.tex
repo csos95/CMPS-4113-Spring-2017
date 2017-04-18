@@ -13,7 +13,7 @@
 \usepackage{fancyhdr}
 \fancypagestyle{plain}{
 	\fancyhf{}% Clear header/footer
-	\fancyhead[L]{Software Metrics Calculation System User Manual}% Left header
+	\fancyhead[L]{Software Metrics Calculation System Test Plan}% Left header
 	\fancyfoot[C]{\thepage}
 }
 
@@ -72,7 +72,7 @@
 	This software will calculate and display metrics about the users source code such as line of code, lines of documentation, cyclical complexity, etc.
 	These metrics will be used to give the user feedback on their code and to correct commonly made mistakes.
 	
-	\section{Test types}
+	\section{Test Types}
 	The following is a list of test types we are going to follow
 	\subsection{Unit testing}
 	The purpose of Unit tests is to discover any incorrect or insufficient code. This will be achieved by focusing on the operations encapsulated by the class and the state behavior of the class.
@@ -95,12 +95,12 @@
 	\textbf{Entrance Criteria} - Enough code is provided and unit tested so that the user can complete the alpha testing successfully.\\
 	\textbf{Exit Criteria} - All errors from validation tests must be fixed or otherwise documented.
 	
-	\section{System testing}
+	\section{System Testing}
 	This test phase proves that the system requirements are met as defined in the requirements document. This should prove that the SMCS will be successful on the specified operating systems as well as different internet browsers.\\\\
 	\textbf{Entrance Criteria} - All modules and classes are implemented, unit tested and validation tested.\\
 	\textbf{Exit Criteria} - All errors from the system test must be fixed or otherwise documented.
 	
-	\section{Testing strategy}
+	\section{Testing Strategy}
 	The testing strategy will utilize predominantly white box testing and alpha testing.
 %============================================================================	
 
@@ -123,13 +123,13 @@
 	{\let\clearpage\relax \chapter{Recording Procedures}}
 	During each test phase, errors will be recorded as they are detected. Errors will be categorized as high or low priority based on their impact on system performance.
 	
-	\section{Unit test results}
+	\section{Unit Test Procedures}
 	All errors recorded during the unit test phase of each module along with the action taken to correct the error will be documented as a Unit test result.
 
-	\section{Validation test results}
+	\section{Validation Test Procedures}
 	All errors recorded during the validation test phase along with the category of the error, status of the error and action taken will be documented as a validation test result.
 	
-	\section{System test results}
+	\section{System Test Procedures}
 	All errors recorded during the system test phase along with the category of the error, status of the error and action taken will be documented as a system test result.
 	
 	
@@ -137,11 +137,30 @@
 %============================================================================
 	{\let\clearpage\relax \chapter{Test Results}}
 	This chapter defines and describes the results of the testing process.\\\\
+	
+	Unit Testing\\
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		\# & Input & Expected Output & Actual Output & Result \\ \hline
-		1 & + & ADD & TBD & TBD \\ \hline
-		2 & - & SUB & TBD & TBD \\ \hline
+		test & Input & Expected Output & Actual Output & Result \\ \hline
+		1 & + & ADD & ADD & true\\ \hline
+		2 & - & SUB & SUB & true\\ \hline
+		3 & int main() & FUNCTION & FUNCTION & true\\ \hline
+		4 & \#include \textless iostream \textgreater (.cpp) & IMPORT & IMPORT & true\\ \hline
+		5 & import java.util.Date (.java) & IMPORT & IMPORT & true\\ \hline
+		6 & //comment & LINECOMMENT & LINECOMMENT & true\\ \hline
+		7 & /*comment*/ & BLOCKCOMMENT & BLOCKCOMMENT & true\\ \hline
+		
+	\end{tabular} \\\\
+	
+	Validation Testing\\
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		test & Input & Expected Output & Actual Output & Result \\ \hline
+		1 & empty file & 0 LOC, 0 LOD & TBD & TBD\\ \hline
+		2 & 15 lines without comments & 15 LOC, 0 LOD & TBD & TBD\\ \hline
+		3 & 21 lines of just comments & 0 LOC, 21 LOD & TBD & TBD\\ \hline
+		4 & 7 lines of comments & 8 LOC, 7 LOD &TBD&TBD\\ & 8 lines of code &&&\\ \hline
+		5 &2 lines of code & 55 LOC, 12 LOD & TBD & TBD \\ & 12 lines of comments &&&\\ & 53 lines of code & &&\\ \hline
 		
 	\end{tabular}
 
@@ -171,7 +190,8 @@
 	
 %============================================================================
 	{\let\clearpage\relax \chapter{Glossary}}
-	%alpha testing
-	%white box testing
+	\textit{Alpha testing} - A trial of software carried out by a developer before a product is made available for beta testing.\\
+	
+	\textit{White-box testing} - A method of testing software that tests internal structures or workings of an application. 
 
 \end{document}
