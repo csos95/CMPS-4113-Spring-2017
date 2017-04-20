@@ -132,6 +132,7 @@ func NumberOfClasses(tokens []Token) (Result, error) {
 func MethodsPerClass(tokens []Token) (Result, error) {
 	return Result{Metric: "Methods per Class", Value: 0, Body: template.HTML("not yet implemented")}, nil
 }
+
 func CyclomaticComplexity(tokens []Token) (Result, error) {
 	return Result{Metric: "CyclomaticComplexity", Value: 0, Body: template.HTML("not yet implemented")}, nil
 }
