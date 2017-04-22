@@ -5,8 +5,8 @@
 %%
 
 "import java".*";"                  return IMPORT;
-(public|private|protected)" class "[a-zA-Z]+       return CLASS;
-(public|private|protected)" interface "[a-zA-Z]+    return INTERFACE;
+(public|private|protected)[ \t]+"class"[ \t]+[a-zA-Z]+       return CLASS;
+(public|private|protected)[ \t]+"interface"[ \t]+[a-zA-Z]+    return INTERFACE;
 "new"                               return NEW;
 ","                                 return COMMA;
 

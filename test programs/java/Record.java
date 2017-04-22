@@ -3,7 +3,7 @@
      
  */
 
-public class Record {
+public 		   class   Record {
     private String date_time;
     private int quantity;
     private double price;
