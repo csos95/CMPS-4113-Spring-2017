@@ -15,7 +15,7 @@
 "true"|"false"              return BOOL;
 \/\/.*                      return LINE_COMMENT;
 \/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\/   return BLOCK_COMMENT;
-"#include".*"\r"?"\n"       return IMPORT;
+"#[ /t]*include".*"\r"?"\n"       return IMPORT;
 "return"                    return RETURN;
 ";"                         return SEMICOLON;
 ":"                         return COLON;
