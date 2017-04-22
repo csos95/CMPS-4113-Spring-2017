@@ -5,8 +5,8 @@
 %%
 
 "import java".*";"                  return IMPORT;
-(public|private|protected)" class "[a-zA-Z]+       return CLASS;
-(public|private|protected)" interface "[a-zA-Z]+    return INTERFACE;
+(public|private|protected)[ \t]+"class"[ \t]+[a-zA-Z]+       return CLASS;
+(public|private|protected)[ \t]+"interface"[ \t]+[a-zA-Z]+    return INTERFACE;
 "new"                               return NEW;
 ","                                 return COMMA;
 
@@ -45,7 +45,7 @@
 "{"                                 return LEFT_BRACE;
 "}"                                 return RIGHT_BRACE;
 "return"                            return RETURN;
-(public|private|protected)[ \t]+(static)?[ \t]+[a-zA-Z]+[ \t]+[a-zA-Z]+[ \t]*\(.*\)    return FUNCTION;
+(public|private|protected)[ \t]+((static)[ \t]+)?([a-zA-Z]+[ \t]+)?[a-zA-Z]+[ \t]*\(.*\)    return FUNCTION;
 [a-zA-Z\.]+\(.*\)                     return FUNCTION_CALL;
 \/\/.*                              return LINE_COMMENT;
 \/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\/   return BLOCK_COMMENT;

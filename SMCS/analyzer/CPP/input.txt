@@ -17,15 +17,6 @@ int main()
 		cout << "invalid please enter number of days \n";
 		cin >> days;
 	}
-	cout << endl << setw(6) << "Day" << setw(20) << "Pay" << endl;
-	cout << "-----------------------------------" << endl;
-	for (count = 1; count <= days; count++)//creates a loop equal to days worked
-	{
-		cout << fixed << setprecision(2);
-		cout << setw(5) << count << setw(24) << salary << endl;
-		totSalary += salary;//accumulator calculates the sum of the salary
-		salary *= 2;//doubles the salary
-	}
 	cout << setw(7) << "Total" << setw(10) <<  "$" << setw(12) << totSalary << endl << endl;
 	system ("pause");
 	return 0;

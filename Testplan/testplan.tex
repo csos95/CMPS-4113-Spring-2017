@@ -1,0 +1,197 @@
+\documentclass{scrreprt}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\pagenumbering{arabic}
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+	\fancyhf{}% Clear header/footer
+	\fancyhead[L]{Software Metrics Calculation System Test Plan}% Left header
+	\fancyfoot[C]{\thepage}
+}
+
+\hypersetup{
+	bookmarks=false,    % show bookmarks bar?
+	pdftitle={Software Metrics Calculation System User Manual},    % title
+	pdfauthor={Christopher Silva},                     % author
+	pdfsubject={TeX and LaTeX},                        % subject of the document
+	pdfkeywords={TeX, LaTeX, graphics, images}, % list of keywords
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=blue,       % color of internal links
+	citecolor=black,       % color of links to bibliography
+	filecolor=black,        % color of file links
+	urlcolor=purple,        % color of external links
+	linktoc=page            % only page is linked
+}%
+\author{Christopher Silva}
+\date{}
+\def\myversion{1.0 }
+\begin{document}
+	\begin{titlepage}
+		\flushright
+		\LARGE{ID-10-T}
+		\includegraphics[scale=0.08]{logo.png}
+		\rule{16cm}{5pt}\vskip1cm
+		\centering
+		\Huge{Software Metrics Calculation System}\\
+		\vspace{2cm}
+		\Huge{Test Plan}\\
+		\vspace{2cm}
+		\LARGE{Version \myversion\\}
+		\vspace{2cm}
+		Prepared by\\
+	    Christopher Silva\\
+	    Shujing Zhang\\
+		Anthony Enem\\
+		Nathan Durst\\
+		Da Dong\\
+		\vfill
+		\rule{16cm}{5pt}
+	\end{titlepage}
+	\pagenumbering{roman}
+	\tableofcontents
+%============================================================================
+	{\let\clearpage\relax \chapter{Introduction}}
+	\pagenumbering{arabic}
+	
+	\section{Purpose}
+	This document describes the plan for testing the Software Metrics Calculation System (SMCS). This Test Plan document supports the following objectives:
+	Identify the required resources and provide an estimate of the test efforts.
+	List the deliverable elements of the test activities.
+	Recommend and describe the testing strategies to be employed.
+
+	\section{Product Overview}
+	The main objective of SMCS is to help first and second year computer science students become better programmers.
+	This software will calculate and display metrics about the users source code such as lines of code, lines of documentation, cyclical complexity, etc.
+	These metrics will be used to give the user feedback on their code and to correct commonly made mistakes.
+	
+	\section{Test Types}
+	The following is a list of test types we are going to follow
+	\subsection{Unit testing}
+	The purpose of Unit tests is to discover any incorrect or insufficient code. This will be achieved by focusing on the operations encapsulated by the class and the state behavior of the class.
+	\subsection{Validation testing}
+	Once the individual modules and their relative data structures and methods have been tested, the validation phase will check that SMCS meets specifications defined in the requirements document.
+	\subsection{System testing}
+	Once the unit and validation testing are completed, the software then undergoes system tests which interacts with input and tests the successfulness of the browsers and operating systems. 
+	
+%============================================================================
+	{\let\clearpage\relax \chapter{Scope and Objectives}}
+	Outlined below are the main test types that will be performed. All test plans and conditions will be developed from the requirements document and design diagram.
+	
+	\section{Unit Testing}
+	The SMCS development progress will be reviewed at regularly scheduled meetings. Each review will correspond to one system module. The objective of the reviews is to ensure correctness and functional integrity within each module. Issues to consider are the correctness of tokenization, parameters and arguments as well as expected returned values from modules. The testing method used for this phase is white box testing.\\\\
+	\textbf{Entrance Criteria} - A new  module should be coded in time for each peer review. As the group meets every Saturday, a new module should be completed so that it can be reviewed and tested.\\
+	\textbf{Exit Criteria} - All errors identified, during formal reviews and unit testing are fixed and tested.
+	
+	\section{Validation Testing}
+	The validation testing will prove that the minimum metrics specified from the requirements document will be implemented and their results will be correct. The actual testing method used for this phase is alpha testing.\\\\
+	\textbf{Entrance Criteria} - Enough code is provided and unit tested so that the user can complete the alpha testing successfully.\\
+	\textbf{Exit Criteria} - All errors from validation tests must be fixed or otherwise documented.
+	
+	\section{System Testing}
+	This test phase proves that the system requirements are met as defined in the requirements document. This should prove that the SMCS will be successful on the specified operating systems as well as different internet browsers.\\\\
+	\textbf{Entrance Criteria} - All modules and classes are implemented, unit tested and validation tested.\\
+	\textbf{Exit Criteria} - All errors from the system test must be fixed or otherwise documented.
+	
+	\section{Testing Strategy}
+	The testing strategy will utilize predominantly white box testing and alpha testing.
+%============================================================================	
+
+	{\let\clearpage\relax \chapter{Testing Requirements}}
+	The testing phases will require atleast five PCs with the following specifications:
+	\section{Hardware}
+	\begin{itemize}
+		\item 32 bit architecture
+		\item at least 500 MHz processor speed
+		\item at least 64 MB RAM
+	\end{itemize}
+
+	\section{Software}
+	\begin{itemize}
+		\item Windows XP, OS X 10.7, Linux 2.6.23 operating systems
+		\item Firefox, Chrome, Edge, Safari web browser
+	\end{itemize}
+
+%============================================================================
+	{\let\clearpage\relax \chapter{Recording Procedures}}
+	During each test phase, errors will be recorded as they are detected. Errors will be categorized as high or low priority based on their impact on system performance.
+	
+	\section{Unit Test Procedures}
+	All errors recorded during the unit test phase of each module along with the action taken to correct the error will be documented as a Unit test result.
+
+	\section{Validation Test Procedures}
+	All errors recorded during the validation test phase along with the category of the error, status of the error and action taken will be documented as a validation test result.
+	
+	\section{System Test Procedures}
+	All errors recorded during the system test phase along with the category of the error, status of the error and action taken will be documented as a system test result.
+	
+	
+
+%============================================================================
+	{\let\clearpage\relax \chapter{Test Results}}
+	This chapter defines and describes the results of the testing process.\\\\
+	
+	Unit Testing\\
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		test & Input & Expected Output & Actual Output & Result \\ \hline
+		1 & + & ADD & ADD & true\\ \hline
+		2 & - & SUB & SUB & true\\ \hline
+		3 & int main() & FUNCTION & FUNCTION & true\\ \hline
+		4 & \#include \textless iostream \textgreater (.cpp) & IMPORT & IMPORT & true\\ \hline
+		5 & import java.util.Date (.java) & IMPORT & IMPORT & true\\ \hline
+		6 & //comment & LINECOMMENT & LINECOMMENT & true\\ \hline
+		7 & /*comment*/ & BLOCKCOMMENT & BLOCKCOMMENT & true\\ \hline
+		
+	\end{tabular} \\\\
+	
+	Validation Testing\\
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		test & Input & Expected Output & Actual Output & Result \\ \hline
+		1 & empty file & 0 LOC, 0 LOD & TBD & TBD\\ \hline
+		2 & 15 lines without comments & 15 LOC, 0 LOD & TBD & TBD\\ \hline
+		3 & 21 lines of just comments & 0 LOC, 21 LOD & TBD & TBD\\ \hline
+		4 & 7 lines of comments & 8 LOC, 7 LOD &TBD&TBD\\ & 8 lines of code &&&\\ \hline
+		5 &2 lines of code & 55 LOC, 12 LOD & TBD & TBD \\ & 12 lines of comments &&&\\ & 53 lines of code & &&\\ \hline
+		
+	\end{tabular}
+
+%============================================================================	
+	{\let\clearpage\relax \chapter{Appendix}}
+	
+	\section{How to Report a Bug}
+	If you find any bugs, please tell us by sending an email to ID10T.BUG@example.com\\
+	Please include the following information when reporting a bug:\\
+	\begin{itemize}
+		\item A complete description of the problem what led to it.
+		\item What operating system and web browser you are using.
+		\item What error messages are displayed.
+	\end{itemize}
+	
+	\section{Contacts}
+		Contact information for ID-10-T team members.\\
+		\begin{tabular}{|l|c|}
+			\hline
+			Member Name       & Phone Number \\ \hline
+			Christopher Silva & 940-782-1234 \\ \hline
+			Anthony Enem      & 940-782-2345 \\ \hline
+			Nathan Durst      & 940-782-3456 \\ \hline
+			Da Dong           & 940-782-4567 \\ \hline
+			Shujing Zhang     & 940-782-6789 \\ \hline
+		\end{tabular}
+	
+%============================================================================
+	{\let\clearpage\relax \chapter{Glossary}}
+	\textit{Alpha testing} - A trial of software carried out by a developer before a product is made available for beta testing.\\
+	
+	\textit{White-box testing} - A method of testing software that tests internal structures or workings of an application. 
+
+\end{document}
