@@ -36,6 +36,219 @@ func Test_CPP_Hello(t *testing.T) {
 	}
 }
 
+func Test_CPP1(t *testing.T) {
+	program := `//Lines of Code: 20
+			//Lines of Documentation: 8
+			//Blank lines: 8
+			//Total Lines: 36
+			//Number of functions: 1
+
+			#include<iostream>
+			#include<fstream>
+			#include<stdio.h>
+			using namespace std;
+
+			int main()
+			{
+			    int a, b, c;
+			    char e, f, g;
+			    double x, y, z;
+
+			    a = 3;
+			    b = 6;
+
+			    x = 9.3323;
+			    y = 424.32341;
+
+			    //divide floating point numbers
+			    z = y / z;
+			    e = '4';
+			    f = 'A';
+
+			    //multiply integers
+			    c = a*b;
+
+			    //Print values
+			    cout << e << " " << c << " " << z << endl;
+
+			    return 0;
+			}`
+
+	a := NewAnalyzer()
+	var expected int
+
+	analysis := a.Analyze("c", program, []string{"Lines of Code", "Lines of Documentation", "Blank Lines", "Total Lines", "Number of Functions"})
+	for _, result := range analysis.Results {
+		switch result.Metric {
+		case "Lines of Code":
+			expected = 20
+		case "Lines of Documentation":
+			expected = 8
+		case "Blank Lines":
+			expected = 8
+		case "Total Lines":
+			expected = 36
+		case "Number of Functions":
+			expected = 1
+		}
+		if expected != result.Value {
+			t.Error(fmt.Sprintf("Expected %d %s, got %d %s", expected, result.Metric, result.Value, result.Metric))
+		}
+	}
+}
+
+func Test_CPP2(t *testing.T) {
+	program := `//Lines of Code: 20
+			//Lines of Documentation: 10
+			//Blank lines: 10
+			//Total Lines: 40
+			//Number of functions: 2
+
+			#include<iostream>
+			#include<string>
+			#include<stdio.h>
+
+			using namespace std;
+
+			//This function adds 2 numbers using a for loop
+			// and returns their sum
+			int sum(int a, int b)
+			{
+			    int c = a;
+
+			    for(int i = 0; i < b; i++){
+				c += 1;
+			    }
+
+			    return c;
+			}
+
+			int main()
+			{
+			    int a, b, c;
+
+			    //Hello world
+			    cout << "Hello World" << endl;
+
+			    //Sum integers a and b
+			    c = sum(a, b);
+
+			    //print result
+			    cout << "Adding 2 integers: " << a << " + " << b << " = " << c << endl;
+
+			    return 0;
+			}`
+
+	a := NewAnalyzer()
+	var expected int
+
+	analysis := a.Analyze("c", program, []string{"Lines of Code", "Lines of Documentation", "Blank Lines", "Total Lines", "Number of Functions"})
+	for _, result := range analysis.Results {
+		switch result.Metric {
+		case "Lines of Code":
+			expected = 20
+		case "Lines of Documentation":
+			expected = 10
+		case "Blank Lines":
+			expected = 10
+		case "Total Lines":
+			expected = 40
+		case "Number of Functions":
+			expected = 2
+		}
+		if expected != result.Value {
+			t.Error(fmt.Sprintf("Expected %d %s, got %d %s", expected, result.Metric, result.Value, result.Metric))
+		}
+	}
+}
+
+func Test_CPP3(t *testing.T) {
+	program := `//Lines of Code: 39
+			//Lines of Documentation: 12
+			//Blank lines: 11
+			//Total Lines: 62
+			//Number of functions: 6
+
+			#include<iostream>
+			#include<string>
+			#include<stdio.h>
+			#include<math.h>
+
+			using namespace std;
+
+			//Sum function
+			int sum(int a, int b)
+			{
+			    return a + b;
+			}
+
+			//Multiply function
+			int multiply(int &a, int b)
+			{
+			    return a * b;
+			}
+
+			//print function
+			void printHello()
+			{
+			    cout << "Hello y'all" << endl;
+			}
+
+			//Divide function
+			double divide(double a, double b)
+			{
+			    return a / b;
+			}
+
+			//Cosine function
+			double cosine(float b)
+			{
+			    return cos(b);
+			}
+
+			//Main function
+			int main()
+			{
+			    int a, b, c;
+			    double x, y, z;
+
+			    printHello();
+
+			    //Bunch of function calls
+			    a = 1;
+			    b = 43;
+			    c = sum(a, b);
+			    x = cos(3.142);
+			    y = cos(3.142*3.142);
+			    z = divide(x, y);
+			    b = multiply(a, c);
+
+			    return 0;
+			}`
+
+	a := NewAnalyzer()
+	var expected int
+
+	analysis := a.Analyze("c", program, []string{"Lines of Code", "Lines of Documentation", "Blank Lines", "Total Lines", "Number of Functions"})
+	for _, result := range analysis.Results {
+		switch result.Metric {
+		case "Lines of Code":
+			expected = 39
+		case "Lines of Documentation":
+			expected = 12
+		case "Blank Lines":
+			expected = 11
+		case "Total Lines":
+			expected = 62
+		case "Number of Functions":
+			expected = 6
+		}
+		if expected != result.Value {
+			t.Error(fmt.Sprintf("Expected %d %s, got %d %s", expected, result.Metric, result.Value, result.Metric))
+		}
+	}
+}
+
 func Test_CPP_Add(t *testing.T) {
 	program := `#include <iostream>
 				using namespace std;

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#mv lex.yy.c > lex.yy.bak
+#mv lex.yy.c > lex.yy.c.bak
 
 sed -e 's/yy_switch_to_buffer/yy_switch_to_buffer_cpp/g' \
  -e 's/yy_delete_buffer/yy_delete_buffer_cpp/g' \
