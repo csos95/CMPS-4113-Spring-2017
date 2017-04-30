@@ -1,6 +1,9 @@
 #include <stdio.h>
 
 //this is a line comment
+/*
+this is a block comment
+*/
 int main(void) {
     /*
     * this is a block comment
@@ -13,3 +16,4 @@ int main(void) {
     printf("z: %d\n", z);
     return 0;
 }
+/* another block*/

@@ -1,8 +1,8 @@
 package analyzer
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func Test_CPP_Hello(t *testing.T) {
@@ -698,8 +698,7 @@ func Test_CPP_Mutant(t *testing.T) {
 					vector<int>v1(51);
 					//set a vector to store the loction that the robot has been previously lost
 					vector< pair <int, int> > v;
-				/****
-				adkasdbkas*/
+			
 					//input the Max size of the rectangular
 					cin >> MaxX >> MaxY;
 
@@ -837,11 +836,11 @@ func Test_CPP_Mutant(t *testing.T) {
 		case "Lines of Code":
 			expected = 130
 		case "Lines of Documentation":
-			expected = 32
+			expected = 31
 		case "Blank Lines":
 			expected = 7
 		case "Total Lines":
-			expected = 169
+			expected = 168
 		case "Number of Functions":
 			expected = 1
 		}

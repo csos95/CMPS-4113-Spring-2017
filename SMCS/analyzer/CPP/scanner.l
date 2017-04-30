@@ -14,7 +14,7 @@
 \".*\"                      return STRING;
 "true"|"false"              return BOOL;
 \/\/.*                      return LINE_COMMENT;
-\/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\/   return BLOCK_COMMENT;
+\/\*(?:[^\*]*|[^\/])*\*\/   return BLOCK_COMMENT;
 "#[ /t]*include".*"\r"?"\n"       return IMPORT;
 "return"                    return RETURN;
 ";"                         return SEMICOLON;

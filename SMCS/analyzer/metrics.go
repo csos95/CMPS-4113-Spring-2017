@@ -50,7 +50,12 @@ func LinesOfDocumentation(tokens []Token) (Result, error) {
 }
 
 func RatioOfLOCToLOD(tokens []Token) (Result, error) {
-	return Result{Metric: "Ratio of LOC to LOD", Value: 0, Body: template.HTML("not yet implemented")}, nil
+	locResult, _ := LinesOfCode(tokens)
+	loc := locResult.Value
+	lodResult, _ := LinesOfDocumentation(tokens)
+	lod := lodResult.Value
+
+	return Result{Metric: "Ratio of LOC to LOD", Value: lod/loc, Body: template.HTML(fmt.Sprintf("The ratio of Lines of Documentation to Lines of Code is %d:%d.", lod, loc))}, nil
 }
 
 func BlankLines(tokens []Token) (Result, error) {
