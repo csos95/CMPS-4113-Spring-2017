@@ -19,7 +19,7 @@
 "return"                    return RETURN;
 ";"                         return SEMICOLON;
 ":"                         return COLON;
-[a-zA-Z]+[ \t]+[a-zA-Z]+[0 \t]*\(.*\) return FUNCTION;
+(double|int|void|char|float|string|bool)[ \t]+[a-zA-Z]+[0 \t]*\(.*\) return FUNCTION;
 [a-zA-Z]+\(.*\)             return FUNCTION_CALL;
 
 "int"                       return tINT;
