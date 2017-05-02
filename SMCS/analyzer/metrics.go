@@ -3,6 +3,7 @@ package analyzer
 import (
 	"fmt"
 	"html/template"
+	"log"
 	"strings"
 )
 
@@ -55,7 +56,7 @@ func RatioOfLOCToLOD(tokens []Token) (Result, error) {
 	lodResult, _ := LinesOfDocumentation(tokens)
 	lod := lodResult.Value
 
-	return Result{Metric: "Ratio of LOC to LOD", Value: lod/loc, Body: template.HTML(fmt.Sprintf("The ratio of Lines of Documentation to Lines of Code is %d:%d.", lod, loc))}, nil
+	return Result{Metric: "Ratio of LOC to LOD", Value: lod / loc, Body: template.HTML(fmt.Sprintf("The ratio of Lines of Documentation to Lines of Code is %d:%d.", lod, loc))}, nil
 }
 
 func BlankLines(tokens []Token) (Result, error) {
@@ -139,5 +140,41 @@ func MethodsPerClass(tokens []Token) (Result, error) {
 }
 
 func CyclomaticComplexity(tokens []Token) (Result, error) {
-	return Result{Metric: "CyclomaticComplexity", Value: 0, Body: template.HTML("not yet implemented")}, nil
+	type function struct {
+		name       string
+		lines      []string
+		complexity int
+	}
+
+	functions := make([]function, 0)
+	var currFunc function
+	nodes := 0
+	returns := 0
+	braces := 0
+	startFunc := false
+	for _, token := range tokens {
+		if token.Type == "FUNCTION" {
+			currFunc = function{name: token.Value, lines: make([]string, 0)}
+			nodes = 0
+			returns = 0
+			braces = 0
+			startFunc = true
+		} else if token.Type == "IF" || token.Type == "CASE" || token.Type == "FOR" || token.Type == "WHILE" {
+			nodes++
+		} else if token.Type == "RETURN" {
+			returns++
+		} else if token.Type == "LEFT_BRACE" {
+			braces++
+		} else if token.Type == "RIGHT_BRACE" {
+			braces--
+		}
+		currFunc.lines = append(currFunc.lines, token.Value)
+		if braces == 0 && !startFunc {
+			currFunc.complexity = nodes + 2*returns
+		} else if braces == 0 {
+			functions = append(functions, currFunc)
+		}
+	}
+	log.Println(functions)
+	return Result{Metric: "CyclomaticComplexity", Value: 0, Body: template.HTML(fmt.Sprintf("There are %d nodes", nodes))}, nil
 }

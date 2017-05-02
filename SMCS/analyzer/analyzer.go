@@ -67,12 +67,12 @@ func NewAnalyzer() *Analyzer {
 	metrics["Total Lines"] = TotalLines
 
 	metrics["Number of Functions"] = NumberOfFunctions
-	metrics["Lines per Function"] = LinesPerFunction
-	metrics["Number of Function Parameters"] = NumberOfFunctionParameters
+	//metrics["Lines per Function"] = LinesPerFunction
+	//metrics["Number of Function Parameters"] = NumberOfFunctionParameters
 	metrics["Number of Classes"] = NumberOfClasses
-	metrics["Metrics per Class"] = MethodsPerClass
+	//metrics["Methods per Class"] = MethodsPerClass
 
-	metrics["Cyclomatic Complexity"] = CyclomaticComplexity
+	//metrics["Cyclomatic Complexity"] = CyclomaticComplexity
 
 	return &Analyzer{Languages: languages, Metrics: metrics}
 }

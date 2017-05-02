@@ -2,13 +2,17 @@ package server
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/csos95/CMPS-4113-Spring-2017/SMCS/analyzer"
+	"github.com/gorilla/mux"
 	"html/template"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"os/exec"
 	"runtime"
+	"strings"
 	"time"
 )
 
@@ -18,55 +22,86 @@ type Config struct {
 	Mode   string `json:"mode"`
 }
 
-func NewConfig(filepath string) *Config {
+func NewConfig(filepath string) (*Config, error) {
 	config := &Config{}
 
 	file, err := ioutil.ReadFile(filepath)
 	if err != nil {
-		log.Println(err)
+		return DefaultConfig(filepath)
 	}
 
 	err = json.Unmarshal(file, &config)
 	if err != nil {
-		log.Println(err)
+		return nil, err
 	}
-	return config
+	return config, nil
+}
+
+func DefaultConfig(filepath string) (*Config, error) {
+	config := &Config{Domain: "0.0.0.0", Port: "8080", Mode: "server"}
+
+	js, _ := json.Marshal(config)
+
+	parts := strings.Split(filepath, "/")
+	path := strings.Join(parts[:len(parts)-1], "/")
+
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		err = os.MkdirAll(path, os.ModePerm)
+		if err != nil {
+			log.Println(err)
+		}
+	}
+
+	err := ioutil.WriteFile(filepath, js, os.ModePerm)
+	if err != nil {
+		return config, err
+	}
+	return config, nil
 }
 
 type Handler func(http.ResponseWriter, *http.Request, *Server)
 
 type Server struct {
 	Config   *Config
-	Handlers map[string]Handler
 	Template *template.Template
 	Analyzer *analyzer.Analyzer
 }
 
 func NewServer(filepath string) *Server {
-	config := NewConfig(filepath)
+	config, err := NewConfig(filepath)
+	if err != nil {
+		log.Println(err)
+	}
 
 	analyzer := analyzer.NewAnalyzer()
 
-	handlers := make(map[string]Handler)
-	handlers["/"] = indexHandler
-	handlers["/index.html"] = indexHandler
-	handlers["/metrics.html"] = metricsHandler
+	tmpl := template.New("")
+	files := []string{"index", "metrics"}
 
-	tmpl := template.Must(template.New("index.html").New("metrics.html").ParseFiles("assets/tmpl/index.html", "assets/tmpl/metrics.html"))
-
-	return &Server{Config: config, Handlers: handlers, Template: tmpl, Analyzer: analyzer}
-}
-
-func (s *Server) Run() {
-	for k, v := range s.Handlers {
-		http.HandleFunc(k, makeHandler(v, s))
+	for _, file := range files {
+		data, err := Asset(fmt.Sprintf("assets/tmpl/%s.html", file))
+		if err != nil {
+			log.Println(err)
+		}
+		tmpl = template.Must(tmpl.New(fmt.Sprintf("%s.html", file)).Parse(string(data)))
 	}
 
-	assetfs := http.FileServer(http.Dir("assets"))
-	http.Handle("/assets/", http.StripPrefix("/assets/", assetfs))
-	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+	//tmpl := template.Must(template.New("index.html").New("metrics.html").ParseFiles("assets/tmpl/index.html", "assets/tmpl/metrics.html"))
+
+	return &Server{Config: config, Template: tmpl, Analyzer: analyzer}
+}
+
+func (s *Server) Run() error {
+	router := mux.NewRouter()
+
+	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(assetFS())))
+	router.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/assets/img/favicon.ico", http.StatusMovedPermanently)
 	})
+
+	router.HandleFunc("/", makeHandler(indexHandler, s)).Methods("GET")
+	router.HandleFunc("/index.html", makeHandler(indexHandler, s)).Methods("GET")
+	router.HandleFunc("/metrics.html", makeHandler(metricsHandler, s)).Methods("POST")
 
 	if s.Config.Mode == "standalone" {
 		go func() {
@@ -75,11 +110,20 @@ func (s *Server) Run() {
 		}()
 	}
 
-	err := http.ListenAndServe(s.Config.Domain+":"+s.Config.Port, nil)
-	if err != nil {
-		log.Println(err)
+	srv := &http.Server{
+		Handler: router,
+		Addr:    s.Config.Domain + ":" + s.Config.Port,
+		// Good practice: enforce timeouts for servers you create!
+		WriteTimeout: 15 * time.Second,
+		ReadTimeout:  15 * time.Second,
 	}
 
+	err := srv.ListenAndServe()
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 //openBrowser opens the default user browser with the specified url

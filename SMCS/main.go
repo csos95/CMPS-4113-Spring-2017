@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/csos95/CMPS-4113-Spring-2017/SMCS/server"
+	"log"
 )
 
 func main() {
@@ -10,7 +11,10 @@ func main() {
 
 	server := server.NewServer("config.json")
 
-	server.Run()
+	err := server.Run()
+	if err != nil {
+		log.Println(err)
+	}
 
 	fmt.Println("Thank you for using SMCS.")
 }
