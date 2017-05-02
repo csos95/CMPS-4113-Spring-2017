@@ -5,7 +5,7 @@
 %%
 
 \/\/.*                      return LINE_COMMENT;
-\/\*(?:[^\*]*|[^\/])*\*\/   return BLOCK_COMMENT;
+\/\*(?:[^\*]|\*[^\/])*\*\/   return BLOCK_COMMENT;
 
 \".*\"                      return STRING;
 
