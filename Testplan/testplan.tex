@@ -42,11 +42,11 @@
 		\centering
 		\Huge{Software Metrics Calculation System}\\
 		\vspace{2cm}
-		\Huge{Test Plan}\\
+		\Huge{Test Report}\\
 		\vspace{2cm}
-		\LARGE{Version \myversion\\}
+		\LARGE{Version 2.0\\}
 		\vspace{2cm}
-		Prepared by\\
+		Prepared by:\\
 	    Christopher Silva\\
 	    Shujing Zhang\\
 		Anthony Enem\\
@@ -132,37 +132,58 @@
 	\section{System Test Procedures}
 	All errors recorded during the system test phase along with the category of the error, status of the error and action taken will be documented as a system test result.
 	
+	\section{Test Schedule}
+	The first iteration involves the unit testing phase. Unit testing will be divided into three groups and the goal is to determine if the tokenization of key words from each language is working correctly. Anthony and Nathan will test key words from Java while Shujing and Da will test key words from C++. Chris will be in charge of maintenance and fixing the bugs found while testing.\\
+	
+	The second iteration involves the validation testing phase. Similar to the the previous phase, testing will be divided into 3 groups. Anthony and Nathan will test metrics calculated from Java while Shujing and Da will test metrics calculated from C++. Chris will once again be in charge of fixing errors as they are reported.
 	
 
 %============================================================================
 	{\let\clearpage\relax \chapter{Test Results}}
-	This chapter defines and describes the results of the testing process.\\\\
+	This section defines and describes the results of the testing process.\\
 	
-	Unit Testing\\
+	Table 1 shows the unit testing phase of the tokenization of key words defined by the language.\\
+	
+	Table 1\\
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		test & Input & Expected Output & Actual Output & Result \\ \hline
 		1 & + & ADD & ADD & true\\ \hline
-		2 & - & SUB & SUB & true\\ \hline
-		3 & int main() & FUNCTION & FUNCTION & true\\ \hline
-		4 & \#include \textless iostream \textgreater (.cpp) & IMPORT & IMPORT & true\\ \hline
-		5 & import java.util.Date (.java) & IMPORT & IMPORT & true\\ \hline
-		6 & //comment & LINECOMMENT & LINECOMMENT & true\\ \hline
-		7 & /*comment*/ & BLOCKCOMMENT & BLOCKCOMMENT & true\\ \hline
+		2 & int main() & FUNCTION & FUNCTION & true\\ \hline
+		3 & \#include \textless iostream \textgreater (.cpp) & IMPORT & IMPORT & true\\ \hline
+		4 & //comment & LINECOMMENT & LINECOMMENT & true\\ \hline
+		5 & /*comment*/ & BLOCKCOMMENT & BLOCKCOMMENT & true\\ \hline
+		6 & 324 & INT & INT & true\\ \hline
+		7 & 83.6 & FLOAT & FLOAT & true\\ \hline
+		8 & string & t_STRING & t_STRING & true\\ \hline
 		
 	\end{tabular} \\\\
 	
-	Validation Testing\\
+	Table 2 shows the validation testing phase in which the tokens produced are calculated and the specified metrics are shown as output.\\
+	
+	Table 2\\
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		test & Input & Expected Output & Actual Output & Result \\ \hline
-		1 & empty file & 0 LOC, 0 LOD & TBD & TBD\\ \hline
-		2 & 15 lines without comments & 15 LOC, 0 LOD & TBD & TBD\\ \hline
-		3 & 21 lines of just comments & 0 LOC, 21 LOD & TBD & TBD\\ \hline
-		4 & 7 lines of comments & 8 LOC, 7 LOD &TBD&TBD\\ & 8 lines of code &&&\\ \hline
-		5 &2 lines of code & 55 LOC, 12 LOD & TBD & TBD \\ & 12 lines of comments &&&\\ & 53 lines of code & &&\\ \hline
+		test & Input File & Expected Output & Actual Output & Result \\ \hline
+		1 & P2a.cpp & 12 Blank Lines & 12 Blank Lines & true\\ &&61 LOC&61 LOC&\\&&17 LOD&17 LOD&\\&&1 Function&1 Function&\\ \hline
+		
+		2 & P2b.cpp & 9 Blank Lines & 9 Blank Lines & true\\ &&58 LOC&5 LOC&\\&&11 LOD&11 LOD&\\&&1 Function&1 Function&\\ \hline
+		
+		3 & P4c.cpp & 3 Blank Lines & 3 Blank Lines & true\\ &&29 LOC&29 LOC&\\&&8 LOD&8 LOD&\\&&5 Functions&5 Functions&\\ \hline
+		
+		4 & JAVA1.java & 2 Blank Lines & 2 Blank Lines & true\\ &&10 LOC&10 LOC&\\&&5 LOD&5 LOD&\\&&1 Class&1 Class&\\&&1 Function&1 Function&\\ \hline
+		
+		5 & JAVA2.java & 3 Blank Lines & 3 Blank Lines & true\\ &&14 LOC&14 LOC&\\&&6 LOD&6 LOD&\\&&1 Class&1 Class&\\&&2 Functions&2 Functions&\\ \hline
+		
+		6 & Prog2.java & 20 Blank Lines & 5 Blank Lines & false\\ &&346 LOC&26 LOC&\\&&147 LOD&493 LOD&\\&&1 Class&0 Classes&\\&&12 Functions&1 Function&\\ \hline
+		
 		
 	\end{tabular}
+
+
+%============================================================================	
+{\let\clearpage\relax \chapter{Analysis}}
+Our results show an error in validation testing that dealt with the parsing of block comments. Due to the way our regular expression was formed for that token, block comments are not parsed properly in certain cases.The reason this happens is due to the fact that lex doesn't support negative lookahead regex. Therefore, whatever was tokenized as a block comment and wasnt one could not be counted for its real token type. This error was recorded and will be fixed in the next iteration.
 
 %============================================================================	
 	{\let\clearpage\relax \chapter{Appendix}}
