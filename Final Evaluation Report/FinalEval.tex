@@ -1,0 +1,129 @@
+\documentclass{scrreprt}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\pagenumbering{arabic}
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+	\fancyhf{}% Clear header/footer
+	\fancyhead[L]{Software Metrics Calculation System Final Evaluation}% Left header
+	\fancyfoot[C]{\thepage}
+}
+
+\hypersetup{
+	bookmarks=false,    % show bookmarks bar?
+	pdftitle={Software Metrics Calculation System Final Evaluation},    % title
+	pdfauthor={Christopher Silva},                     % author
+	pdfsubject={TeX and LaTeX},                        % subject of the document
+	pdfkeywords={TeX, LaTeX, graphics, images}, % list of keywords
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=blue,       % color of internal links
+	citecolor=black,       % color of links to bibliography
+	filecolor=black,        % color of file links
+	urlcolor=purple,        % color of external links
+	linktoc=page            % only page is linked
+}%
+\author{Christopher Silva}
+\date{}
+\def\myversion{1.0 }
+\begin{document}
+	\begin{titlepage}
+		\flushright
+		\LARGE{ID-10-T}
+		\includegraphics[scale=0.08]{logo.png}
+		\rule{16cm}{5pt}\vskip1cm
+		\centering
+		\Huge{Software Metrics Calculation System}\\
+		\vspace{2cm}
+		\Huge{Final Evaluation Report}\\
+		\vspace{2cm}
+		\LARGE{Version 1.0\\}
+		\vspace{2cm}
+		Prepared by:\\
+	    Christopher Silva\\
+	    Shujing Zhang\\
+		Anthony Enem\\
+		Nathan Durst\\
+		Da Dong\\
+		\vfill
+		\rule{16cm}{5pt}
+	\end{titlepage}
+	\pagenumbering{roman}
+	\tableofcontents
+%============================================================================
+	{\let\clearpage\relax\pagebreak \chapter{Description}}
+	\pagenumbering{arabic}
+	
+	
+	The main objective of SMCS is to help first and second year computer science students become better programmers. This software will calculate and display metrics about the users source code such as lines of code, lines of documentation, cyclical complexity, etc. These metrics will be used to give the user feedback on their code and to correct commonly made mistakes.\\
+	
+%============================================================================
+	{\let\clearpage\relax \chapter{Product Pros and Cons}}
+	The following is a list of positive and negative aspects of the SMCS:\\
+	
+	\section{Pros}
+	\begin{itemize}
+		\item Friendly user interface
+		\item Low learning curve
+		\item Produces highlighted syntax of input code
+		\item Allows for selection of metrics rather than listing all of them
+	\end{itemize}
+
+	\section{Cons}
+	\begin{itemize}
+		\item Supports C++, Java, and C only
+		\item In some cases, produces incorrect results for block comments due to lack of negative look-ahead regex
+		\item Professors don't have a way of seeing the report without getting it from the user
+		\item Doesn't calculate the cyclomatic complexity metric
+	\end{itemize}
+%============================================================================	
+
+	{\let\clearpage\relax\pagebreak \chapter{Life Cycle Model}}
+	We used the Waterfall Life Cycle Model to complete our project. We worked on each phase at a time and didn't start a new phase until we had finished the previous one. We started with requirements and design. Once they were completed we moved on to implementation. Finally, we finished the life cycle with testing, deployment and maintenance. The Waterfall Life Cycle allowed us to build off of our previous components which worked well with organization and distribution of work.
+
+%============================================================================
+	{\let\clearpage\relax \chapter{Team Organization}}
+	For our team structure, we mostly used a voluntary system but at some points team members were appointed tasks by the group leader. Drafts of documents were completed by individuals and final revisions were done as a team. Also, since our system supports 3 programming languages, we split the implementation into 3 separate groups to decrease implementation time.
+	
+	
+
+%============================================================================
+	{\let\clearpage\relax \chapter{Different Approach}}
+	If we were given a second chance, we would like to have met more frequently, however, due to scheduling conflicts we were unable to meet more than twice a week. If we had more time we would have liked to spend this extra time preparing for the testing phase. We also would like to have implemented a more interactive user interface and maybe include more metrics and support more languages such as C\# or Python.
+
+
+%============================================================================	
+	{\let\clearpage\relax\pagebreak \chapter{Future Enhancements/Improvements}}
+	In future iterations, we would like to:\\
+	
+	\begin{itemize}
+		\item Include more metrics
+		\item Support more OOP languages like C\# and/or Python
+		\item Improve the user interface to be more interactive and appealing
+		\item Provide feedback messages to user to suggest improvements that can be made to their code
+		\item Send a detailed report to the users professor
+	\end{itemize}
+	
+	
+
+
+%============================================================================	
+	{\let\clearpage\relax \chapter{Conclusion}}
+	As a team, we learned:
+		\begin{itemize}
+		\item How to work and cooperate as a team, and how to delegate the work so that it was distributed evenly.
+		\item Enough is good enough. Its important that you don't spend too much time on requirements or implementation that you leave little or no time for the testing phase which takes the most time. 
+		\item Always allow extra time for testing, because testing is crucial.
+		\item Not to reinvent the wheel. Meaning, there are tons of other add-ons or tools that can be used instead of spending time implementing your own way.
+		\item How the different phases of the development life cycle work in relation to one another and which ones take the most time.
+		\item Follow the principles that relate to the life cycle model, such as Agile or Waterfall, so work will be more efficient.
+	\end{itemize}
+
+\end{document}
