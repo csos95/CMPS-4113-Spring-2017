@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+//Metrics is a function type that runs one metric on a slice of tokens and returns the result
 type Metric func([]Token) (Result, error)
 
 func LinesOfCode(tokens []Token) (Result, error) {
@@ -50,13 +51,27 @@ func LinesOfDocumentation(tokens []Token) (Result, error) {
 	return Result{Metric: "Lines of Documentation", Value: lines, Body: template.HTML(fmt.Sprintf("There are %d lines of documentation.", lines))}, nil
 }
 
+func gcd(a, b int) int {
+	for b != 0 {
+		t := b
+		b = a % t
+		a = t
+	}
+	return a
+}
+
 func RatioOfLOCToLOD(tokens []Token) (Result, error) {
 	locResult, _ := LinesOfCode(tokens)
 	loc := locResult.Value
 	lodResult, _ := LinesOfDocumentation(tokens)
 	lod := lodResult.Value
 
-	return Result{Metric: "Ratio of LOC to LOD", Value: lod / loc, Body: template.HTML(fmt.Sprintf("The ratio of Lines of Documentation to Lines of Code is %d:%d.", lod, loc))}, nil
+	div := gcd(loc, lod)
+
+	loc = loc / div
+	lod = lod / div
+
+	return Result{Metric: "Ratio of LOC to LOD", Value: lod / loc, Body: template.HTML(fmt.Sprintf("The ratio of Lines of Code to Lines of Documentation is %d:%d.", loc, lod))}, nil
 }
 
 func BlankLines(tokens []Token) (Result, error) {
@@ -112,10 +127,12 @@ func NumberOfFunctions(tokens []Token) (Result, error) {
 	return Result{Metric: "Number of Functions", Value: funcs, Body: template.HTML(fmt.Sprintf("There are %d functions.", funcs))}, nil
 }
 
+//Not implemented
 func LinesPerFunction(tokens []Token) (Result, error) {
 	return Result{Metric: "Lines per Function", Value: 0, Body: template.HTML("not yet implemented")}, nil
 }
 
+//Not implemented
 func NumberOfFunctionParameters(tokens []Token) (Result, error) {
 	return Result{Metric: "Number of Function Parameters", Value: 0, Body: template.HTML("not yet implemented")}, nil
 }
@@ -135,10 +152,13 @@ func NumberOfClasses(tokens []Token) (Result, error) {
 	return Result{Metric: "Number of Classes", Value: classes, Body: template.HTML(fmt.Sprintf("There are %d classes.", classes))}, nil
 }
 
+//Not implemented
 func MethodsPerClass(tokens []Token) (Result, error) {
 	return Result{Metric: "Methods per Class", Value: 0, Body: template.HTML("not yet implemented")}, nil
 }
 
+//CyclomaticComplexity calculates the complexity of source code
+//Not finished
 func CyclomaticComplexity(tokens []Token) (Result, error) {
 	type function struct {
 		name       string

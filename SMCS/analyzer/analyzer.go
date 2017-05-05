@@ -1,25 +1,26 @@
 package analyzer
 
 import (
-	"encoding/json"
 	"fmt"
 	"html/template"
-	"io/ioutil"
 	"log"
 )
 
+//Result holds the result of a metric
 type Result struct {
 	Metric string
 	Value  int
 	Body   template.HTML
 }
 
+//Analysis holds the results of an analysis
 type Analysis struct {
 	Language *Language
 	Source   string
 	Results  []Result
 }
 
+//Language holds a programming language description
 type Language struct {
 	Name          string   `json:"name"`
 	Description   string   `json:"description"`
@@ -31,33 +32,22 @@ type Language struct {
 	BlockComments []string `json:"blockcomments"`
 }
 
-func NewLanguage(filepath string) *Language {
-	lang := &Language{}
-
-	file, err := ioutil.ReadFile(filepath)
-	if err != nil {
-		log.Println(err)
-	}
-
-	err = json.Unmarshal(file, &lang)
-	if err != nil {
-		log.Println(err)
-	}
-	return lang
-}
-
+//Analyzer is used to parse and run metrics on source code
 type Analyzer struct {
 	Languages map[string]*Language
 	Metrics   map[string]Metric
 }
 
+//NewAnalyzer creates a new analyzer
 func NewAnalyzer() *Analyzer {
+	//Add the supported languages to the language map
 	languages := make(map[string]*Language)
 
 	languages["c"] = &Language{Name: "c", Extensions: []string{".c", ".h"}}
 	languages["cpp"] = &Language{Name: "cpp", Extensions: []string{".cpp", ".hpp"}}
 	languages["java"] = &Language{Name: "java", Extensions: []string{".java"}}
 
+	//add the supported metrics to the metric map
 	metrics := map[string]Metric{}
 
 	metrics["Lines of Code"] = LinesOfCode
@@ -74,6 +64,7 @@ func NewAnalyzer() *Analyzer {
 
 	//metrics["Cyclomatic Complexity"] = CyclomaticComplexity
 
+	//return a new analyzer with those maps
 	return &Analyzer{Languages: languages, Metrics: metrics}
 }
 
@@ -89,11 +80,15 @@ func (a *Analyzer) Extensions() map[string][]string {
 	return extensions
 }
 
+//Analyze runs the selected metrics on the given source code
 func (a *Analyzer) Analyze(language, source string, metrics []string) Analysis {
+	//create new analysis
 	analysis := Analysis{Language: a.Languages[language], Source: source}
 
+	//tokenize source code
 	tokens := Tokenize(language, analysis.Source)
 
+	//run selected metrics
 	for _, metric := range metrics {
 		result, err := a.Metrics[metric](tokens)
 		if err != nil {
@@ -103,5 +98,6 @@ func (a *Analyzer) Analyze(language, source string, metrics []string) Analysis {
 			analysis.Results = append(analysis.Results, result)
 		}
 	}
+
 	return analysis
 }
