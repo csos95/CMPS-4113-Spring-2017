@@ -32,7 +32,7 @@
 }%
 \author{Christopher Silva}
 \date{}
-\def\myversion{1.0 }
+\def\myversion{2.0 }
 \begin{document}
 	\begin{titlepage}
 		\flushright
@@ -60,13 +60,14 @@
 %============================================================================
 	\chapter{Introduction}
 	\pagenumbering{arabic}
+	This chapter will introduce you the Software Metrics Calculation System.
 	
 	\section{Overview}
 	The Software Metrics Calculation System (SMCS) is a piece of software that allows the user to analyze and view various metrics about their source code. 
 	This document will describe the features and usage of SMCS.
 	
 	\section{Background}
-	Dr. Stringfellow was interested in a software system that would help ensure that her computer science students are writing programs that fit her specifications.
+	The customer, Dr. Stringfellow, was interested in a software system that would help ensure that her computer science students are writing programs that fit her specifications.
 	SMCS was created by the Software Engineering group ID-10-T to fulfill this need.
 	
 	\section{How to use this document}
@@ -81,6 +82,7 @@
 	
 %============================================================================
 	{\let\clearpage\relax \chapter{Software Overview}}
+	This chapter will give an overview of SMCS.
 	
 	\section{Software Purpose}
 	The main objective of SMCS is to help first and second year computer science students become better programmers.
@@ -89,11 +91,16 @@
 
 	\section{Software Requirements}
 	The minimum requirements for SMCS are relatively low.\\
-	Minimum Operating System: Windows XP, OS X 10.7, Linux 2.6.23\\
-	Web Browser: Firefox, Chrome, Edge, Safari\\
+	They are:
+	\begin{itemize}
+		\item Minimum Operating System: Windows XP, OS X 10.7, Linux 2.6.23
+		\item Web Browser: Firefox, Chrome, Edge, Safari
+	\end{itemize}
 
 %============================================================================
 	{\let\clearpage\relax \chapter{Getting Started}}
+	This chapter will detail how to use SMCS.
+	
 	\section{How to Start SMCS}
 	To start SMCS in standalone mode simply double click on the application. 
 	This will start a local web server on port 8080 and launch your default web browser to the SMCS code submission page. 
@@ -101,36 +108,36 @@
 	SMCS will only open the web browser if it is in standalone mode.
 
 	\section{User interface}
-	The user interface is split into two pages, a source code submission page, and an analysis results page. The next three pages show these two pages labeled with descriptions of the UI elements.
+	The user interface is split into two pages, a source code submission page and an analysis results page. The next three pages show these two pages labeled with descriptions of the UI elements.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.7]{lguiu.png}
-		\caption{Source Code Submission page with labeled elements}
-	\end{figure}
-	
-	This page is used to select the source code and metrics you want to use in the analysis.
+	The page shown in figure 3.1 is used to select the source code and metrics you want to use in the analysis. The elements of this page are described below.
 	
 	\begin{enumerate}
+		\item File Name - This is the file that is currently selected.
 		\item Choose File - Use this button to select a source code file.
 		\item Language Selection - If the correct language is not automatically selected, use this combobox to select the correct one.
 		\item Metrics Selection - Use these checkboxes to select the metrics you wish to use.
 		\item Upload - Use this button to run the selected metrics on your source code.
-		\item File Name - This is the file that is currently selected.
 	\end{enumerate}
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.7]{lguir.png}
-		\caption{Analysis Results page with labeled elements}
+		\includegraphics[scale=0.3]{lguiu.png}
+		\caption{Source code submission page with labeled elements.}
 	\end{figure}
 	
-	This page shows your selected source code and the results of the analysis.
+	The page shown in figure 3.2 displays the selected source code and the results of its analysis. The elements of this page are described below.
 	
 	\begin{enumerate}
 		\item Source Code - Your selected source code file syntax highlighted
 		\item Metrics Results - A listing of the results of the metrics you selected.
 	\end{enumerate}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.3]{lguir.png}
+		\caption{Analysis results page with labeled elements.}
+	\end{figure}
 	
 
 %============================================================================
@@ -138,6 +145,7 @@
 	This chapter describes the metrics available to use in SMCS.
 	
 	\section{Lines of ...}
+	Metrics that the number of lines of a certain type.
 	\begin{itemize}
 		\item Code - The number of lines of code in your source.
 		\item Documentation - The number of lines of documentation in your source.
@@ -148,6 +156,7 @@
 	Note: A line that contains code and documentation will be counted as both a line of code and documentation.
 	
 	\section{Number of ...}
+	Metrics that count the number of times a programming structure appears.
 	\begin{itemize}
 		\item Functions - The number of functions in your source.
 		\item Function parameters - The number of parameters in each function. If you have too many parameters in a function it could cause trouble, especially if it is used often.
@@ -179,7 +188,7 @@
 	{\let\clearpage\relax \chapter{Appendix}}
 	
 	\section{How to Report a Bug}
-	If you find any bugs, please tell us by sending an email to ID10T.BUG@example.com\\
+	If any bugs are discovered, please send an email to ID10T.BUG@example.com.\\
 	Please include the following information when reporting a bug:\\
 	\begin{itemize}
 		\item A complete description of the problem what led to it.
